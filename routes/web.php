@@ -17,6 +17,20 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+Route::middleware(['auth:sanctum', 'verified', 'checkrole'])->get('/dashboard', function () {
+    if(Gate::allows('IsSuperAdmin'))
+    {
+
+        return view('dashboard');
+    }
+    
+
+
 })->name('dashboard');
+
+
+
+Route::view('/legal', 'legal')->name('legal');
+Route::view('/legal', 'privacy')->name('privacy');
+
+
