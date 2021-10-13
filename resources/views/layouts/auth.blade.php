@@ -41,10 +41,10 @@
                     <span class="">© 2021 McCallys Company Limited</span>
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a class="text-dark text-link" href="">Legal</a>
+                            <a class="text-dark text-link" href="/legal">Legal</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="text-dark text-link" href="">Privacy</a>
+                            <a class="text-dark text-link" href="/privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>

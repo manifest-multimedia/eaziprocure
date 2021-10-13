@@ -53,7 +53,6 @@ class CheckRole
             
             case 1: 
             // Active Account 
-            // return redirect()->route('dashboard');
             return $next($request);
             
             case 2: 

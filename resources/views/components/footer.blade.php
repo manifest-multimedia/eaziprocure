@@ -3,8 +3,8 @@
    <div class="footer-content">
        <p class="m-b-0">Copyright © McCallys.</p>
        <span>
-           <a href="" class="text-gray m-r-15">Legal</a>
-           <a href="" class="text-gray">Privacy &amp; Policy</a>
+           <a href="/legal" class="text-gray m-r-15">Legal</a>
+           <a href="/privacy" class="text-gray">Privacy &amp; Policy</a>
        </span>
    </div>
 </footer>

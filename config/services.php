@@ -30,4 +30,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'infobip' => [
+        'username' =>env('INFOBIP_USERNAME'),
+        'password' =>env('INFOBBIP_PASSWORD'), 
+        'from' => env('INFOBIP_FROM', 'ManifestGH'), 
+        'baseUrl' => env('INFOBIP_BASE_URL', null),
+    ],
+
 ];

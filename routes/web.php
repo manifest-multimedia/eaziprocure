@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -12,25 +13,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Events\Notifications; 
+use Illuminate\Http\Request; 
+use Illuminate\Http\Response; 
+use App\Notifications\NewAccountSMSNotification; 
+use Illuminate\Support\Facades\Notification;
 
-Route::get('/', function () {
-    return view('auth.login');
+
+Route::view('/', 'auth.login');
+Route::view('/legal', 'terms')->name('legal');
+Route::view('/privacy', 'privacy')->name('privacy');
+
+Route::middleware(['auth:sanctum', 'verified', 'checkrole'])->get('/dashboard', DashboardController::class)->name('dashboard');
+
+Route::get('/sms', function()
+
+{    
+    $user=Auth::user(); $content="Text"; 
+    $user->notify(new NewAccountSMSNotification($content));
+
 });
-
-Route::middleware(['auth:sanctum', 'verified', 'checkrole'])->get('/dashboard', function () {
-    if(Gate::allows('IsSuperAdmin'))
-    {
-
-        return view('dashboard');
-    }
-    
-
-
-})->name('dashboard');
-
-
-
-Route::view('/legal', 'legal')->name('legal');
-Route::view('/legal', 'privacy')->name('privacy');
-
-
