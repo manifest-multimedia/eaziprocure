@@ -24,7 +24,7 @@
             <div class="tab-pane fade show active" id="tab-account">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Basic Infomation</h4>
+                        <h4 class="card-title">Organization Details</h4>
                     </div>
                     <div class="card-body">
                         <div class="media align-items-center">
@@ -46,43 +46,54 @@
                         <form>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label class="font-weight-semibold" for="userName">Name:</label>
-                                    <input type="text" class="form-control" id="userName" placeholder="User Name" value="{{$user->name}}">
+                                    <label class="font-weight-semibold" for="userName">Company Name:</label>
+                                    <input type="text" class="form-control" id="userName" placeholder="Company Name" value="">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="font-weight-semibold" for="email">Email:</label>
+                                    <label class="font-weight-semibold" for="email">Company Email:</label>
                                     <input type="text" class="form-control" id="email" placeholder="email" value="{{$user->email}}">
                                 </div>
                             </div>
+                            <h4> Primary User Information </h4> 
+                            <hr class="m-v-25">
+                            
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
+                                <label class="font-weight-semibold" for="userName">Name:</label>
+                                <input type="text" class="form-control" id="userName" placeholder="User Name" value="{{$user->name}}">
+                            </div>
+                                <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="phoneNumber">Mobile Number:</label>
                                     <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label class="font-weight-semibold" for="role"></label>
-                                    {{-- <input type="text" class="form-control" id="dob" placeholder="Date of Birth"> 
-                                    
-                                    wire:model="message"
-                                    
-                                    --}}
-                                    <select name="role" id="" class="form-control" wire:model="role">
-                                        <option value="">Select Role in Organization</option>
-                                        <option value="staff">Staff </option>
-                                        <option value="administrator" selected>Administrator</option>
-                                        {{-- <option value=""></option> --}}
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="font-weight-semibold" for="language">Language</label>
-                                    <select id="language" class="form-control">
-                                        <option>English</option>
-                                        <option>French</option>
-                                        {{-- <option>German</option> --}}
-                                    </select>
-                                </div>
                             </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-semibold" for="role">Role</label>
+                                        
+                                        <select name="role" id="" class="form-control" wire:model="role">
+                                            <option value="">Select Role in Organization</option>
+                                            <option value="staff">Staff </option>
+                                            <option value="administrator" selected>Administrator</option>
+                                            {{-- <option value=""></option> --}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="font-weight-semibold" for="language">Language</label>
+                                        <select id="language" class="form-control">
+                                            <option>English</option>
+                                            <option>French</option>
+                                            {{-- <option>German</option> --}}
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                          
                         </form>
+
+
+                       
+
                     </div>
                 </div>
                 @if($role=='administrator')
