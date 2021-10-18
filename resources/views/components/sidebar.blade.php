@@ -69,7 +69,7 @@
                
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="/profile">
                     <span class="icon-holder">
                         <i class="anticon anticon-user"></i>
@@ -78,7 +78,7 @@
                     
                 </a>
                
-            </li>
+            </li> --}}
             @endcan
           
             {{-- Staff Menu --}}
