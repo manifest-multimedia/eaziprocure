@@ -4,6 +4,7 @@ Search Results
 </x-search>
 
 <x-quickview /> 
+<x-sidebar />
 
 
 <!-- Page Container START -->
