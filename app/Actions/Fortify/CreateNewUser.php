@@ -32,7 +32,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'account_status'=> '0', 
-            'user_role' => 'unspecified', 
+            'user_role' => 'user', 
 
         ]);
     }

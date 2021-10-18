@@ -37,26 +37,31 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label class="font-weight-semibold" for="phoneNumber">Phone Number:</label>
+                                    <label class="font-weight-semibold" for="phoneNumber">Mobile Number:</label>
                                     <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label class="font-weight-semibold" for="dob">Date of Birth:</label>
-                                    <input type="text" class="form-control" id="dob" placeholder="Date of Birth">
+                                    <label class="font-weight-semibold" for="dob">Role</label>
+                                    {{-- <input type="text" class="form-control" id="dob" placeholder="Date of Birth"> --}}
+                                    <select name="Role" id="" class="form-control">
+                                        <option value="">Staff</option>
+                                        <option value="">Administrator</option>
+                                        {{-- <option value=""></option> --}}
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="font-weight-semibold" for="language">Language</label>
                                     <select id="language" class="form-control">
                                         <option>English</option>
-                                        <option>France</option>
-                                        <option>German</option>
+                                        <option>French</option>
+                                        {{-- <option>German</option> --}}
                                     </select>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Change Password</h4>
                     </div>
@@ -81,7 +86,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> --}}
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Address Details</h4>
@@ -91,15 +96,17 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label class="font-weight-semibold" for="fullAddress">Full Address:</label>
-                                    <input type="text" class="form-control" id="fullAddress" placeholder="Full Address">
+                                    {{-- <input type="text-area" class="form-control" id="fullAddress" > --}}
+                                    <textarea name="fulladdress" id="" cols="30" rows="5" placeholder="Full Address" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="stateCity">State &amp; City:</label>
                                     <input type="text" class="form-control" id="stateCity" placeholder="State &amp; City">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="font-weight-semibold" for="language">Language</label>
+                                    <label class="font-weight-semibold" for="language">Country</label>
                                     <select id="language-2" class="form-control">
+                                        <option>Ghana</option>
                                         <option>United State</option>
                                         <option>United Kingdom</option>
                                         <option>France</option>

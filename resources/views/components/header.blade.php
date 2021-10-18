@@ -12,8 +12,8 @@
     <!-- page css -->
 
     <!-- Core css -->
-    <link href="{{asset('css/app.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/defaultapp.css')}}" rel="stylesheet"> 
+    <link href="{{asset('css/app.min.css')}}" rel="stylesheet">
 
 </head>
 
