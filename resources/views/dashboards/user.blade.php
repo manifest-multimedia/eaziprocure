@@ -20,8 +20,6 @@ Search Results
 
         {{-- <div class="clean p-250"> Hello {{Auth::user()->name}} Welcome to your Dashboard. I'm still a work in progress. Wink :) </div> --}}
         
-      
-        
     </div>
 
 </div>

@@ -14,6 +14,8 @@
     <!-- Core css -->
     <link href="{{asset('css/defaultapp.css')}}" rel="stylesheet"> 
     <link href="{{asset('css/app.min.css')}}" rel="stylesheet">
+    @livewireStyles
+    
 
 </head>
 
@@ -24,7 +26,7 @@
             <!-- Header START -->
             <div class="header">
                 <div class="logo logo-dark">
-                    <a href="index.html">
+                    <a href="/">
                         <img src="{{asset('images/logo/logo.png')}}" alt="Logo"> 
                         <img class="logo-fold" src="{{asset('images/logo/logo-fold.png')}}" alt="Logo">
                     </a>

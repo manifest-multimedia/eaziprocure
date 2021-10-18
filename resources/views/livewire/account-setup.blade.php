@@ -1,6 +1,25 @@
 <div>
     {{-- The Master doesn't talk, he acts. --}}
-    
+    <div class="page-header no-gutters has-tab">
+        
+        <h2 class="font-weight-normal">Account Setup</h2>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab-account">Step One - Organization Details</a>
+            </li>
+            @if ($role=="administrator")
+            
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-socials">Step Two - Socials</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-notification">Final Step - Verification Documents</a>
+            </li>
+            @endif
+        </ul>
+    </div>
+
+    <div class="container">
         <div class="tab-content m-t-15">
             <div class="tab-pane fade show active" id="tab-account">
                 <div class="card">
@@ -41,11 +60,16 @@
                                     <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label class="font-weight-semibold" for="dob">Role</label>
-                                    {{-- <input type="text" class="form-control" id="dob" placeholder="Date of Birth"> --}}
-                                    <select name="Role" id="" class="form-control">
-                                        <option value="">Staff</option>
-                                        <option value="">Administrator</option>
+                                    <label class="font-weight-semibold" for="role"></label>
+                                    {{-- <input type="text" class="form-control" id="dob" placeholder="Date of Birth"> 
+                                    
+                                    wire:model="message"
+                                    
+                                    --}}
+                                    <select name="role" id="" class="form-control" wire:model="role">
+                                        <option value="">Select Role in Organization</option>
+                                        <option value="staff">Staff </option>
+                                        <option value="administrator" selected>Administrator</option>
                                         {{-- <option value=""></option> --}}
                                     </select>
                                 </div>
@@ -61,35 +85,34 @@
                         </form>
                     </div>
                 </div>
-                {{-- <div class="card">
+                @if($role=='administrator')
+                <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Change Password</h4>
+                        <h4 class="card-title">Invite Organization Users</h4>
                     </div>
                     <div class="card-body">
                         <form>
                             <div class="form-row">
-                                <div class="form-group col-md-3">
-                                    <label class="font-weight-semibold" for="oldPassword">Old Password:</label>
-                                    <input type="password" class="form-control" id="oldPassword" placeholder="Old Password">
+                                <div class="form-group col-md-5">
+                                    <label class="font-weight-semibold" for="UserName">Name:</label>
+                                    <input type="text" class="form-control" id="UserName" placeholder="Staff Name">
                                 </div>
-                                <div class="form-group col-md-3">
-                                    <label class="font-weight-semibold" for="newPassword">New Password:</label>
-                                    <input type="password" class="form-control" id="newPassword" placeholder="New Password">
+                                <div class="form-group col-md-5">
+                                    <label class="font-weight-semibold" for="user-email">Email:</label>
+                                    <input type="text" class="form-control" id="userEmail" placeholder="Email">
                                 </div>
-                                <div class="form-group col-md-3">
-                                    <label class="font-weight-semibold" for="confirmPassword">Confirm Password:</label>
-                                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <button class="btn btn-primary m-t-30">Change</button>
+                                
+                                <div class="form-group col-md-2">
+                                    <button class="btn btn-primary m-t-30">Invite</button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                </div> --}}
+                </div>
+
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Address Details</h4>
+                        <h4 class="card-title">Company Address</h4>
                     </div>
                     <div class="card-body">
                         <form>
@@ -118,7 +141,10 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="tab-network">
+
+           
+            @endif
+            <div class="tab-pane fade" id="tab-socials">
                 <div class="row">
                     <div class="col-md-12 mx-auto">
                         <div class="card">
@@ -230,6 +256,8 @@
                                             </div>
                                         </div>
                                     </li>
+
+                                   
                                     {{-- <li class="list-group-item p-h-0">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex align-items-center">
@@ -255,13 +283,15 @@
             </div>
             <div class="tab-pane fade" id="tab-notification">
                 <div class="row">
-                    <div class="col-md-8 mx-auto">
+                    <div class="col-md-12 mx-auto">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Notification Config</h4>
+                                <h4 class="card-title">Verification Documents</h4>
                             </div>
                             <div class="card-body">
-                                <ul class="list-group list-group-flush">
+
+                                Upload Required Documents for Verifying Your Organization
+                                {{-- <ul class="list-group list-group-flush">
                                     <li class="list-group-item p-h-0">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex align-items-center">
@@ -395,13 +425,19 @@
                                             </div>
                                         </div>
                                     </li>
-                                </ul> 
+                                </ul>  --}}
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
+
+
+
         </div>
-    
+
+      
 
 </div>
+

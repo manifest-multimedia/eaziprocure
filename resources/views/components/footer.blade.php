@@ -30,6 +30,8 @@
 <!-- Core JS -->
 <script src="{{asset('js/app.min.js')}}"></script>
 
+@livewireScripts
+
 </body>
 
 </html>

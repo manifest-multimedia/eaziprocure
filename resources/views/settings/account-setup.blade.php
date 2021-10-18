@@ -12,24 +12,7 @@ Search Results
     
 <!-- Content Wrapper START -->
 <div class="main-content">
-
-    <div class="page-header no-gutters has-tab">
-        
-        <h2 class="font-weight-normal">Account Setup</h2>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#tab-account">Organization</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-network">Socials</a>
-            </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-notification">Notification</a>
-            </li> --}}
-        </ul>
-    </div>
-    <div class="container">
-        
+           
         @livewire('account-setup')
         
     </div>
