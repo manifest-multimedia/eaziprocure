@@ -3,10 +3,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header justify-content-between align-items-center">
-                <h5 class="modal-title">Theme Config</h5>
+                <h5 class="modal-title">Quick Access</h5>
             </div>
             <div class="modal-body scrollable">
-                <div class="m-b-30">
+                {{-- <div class="m-b-30">
                     <h5 class="m-b-0">Header Color</h5>
                     <p>Config header background color</p>
                     <div class="theme-configurator d-flex m-t-10">
@@ -31,9 +31,9 @@
                             <label for="header-danger"></label>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div>
+                </div> --}}
+                {{-- <hr> --}}
+                {{-- <div>
                     <h5 class="m-b-0">Side Nav Dark</h5>
                     <p>Change Side Nav to dark</p>
                     <div class="switch d-inline">
@@ -49,7 +49,7 @@
                         <input type="checkbox" name="side-nav-fold-toogle" id="side-nav-fold-toogle">
                         <label for="side-nav-fold-toogle"></label>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>            

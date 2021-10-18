@@ -26,6 +26,9 @@ Route::view('/privacy', 'privacy')->name('privacy');
 
 Route::middleware(['auth:sanctum', 'verified', 'checkrole'])->get('/dashboard', DashboardController::class)->name('dashboard');
 
+Route::get('/account-setup', function(){ return view('settings.account-setup');})->name('account_setup'); 
+
+
 Route::get('/sms', function()
 
 {    
