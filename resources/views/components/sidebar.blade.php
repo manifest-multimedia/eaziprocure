@@ -3,6 +3,9 @@
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
 
+            {{-- Super Admin Menu --}}
+
+            @can('isSuperAdmin')
             <li class="nav-item">
                 <a href="/dashboard">
                     <span class="icon-holder">
@@ -14,6 +17,31 @@
                
             </li>
 
+            <li class="nav-item">
+                <a href="/profile">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-user"></i>
+                    </span>
+                    <span class="title">Profile</span>
+                    
+                </a>
+               
+            </li>
+            @endcan
+
+            {{-- Admin Menu --}}
+
+            @can('isAdmin')
+            <li class="nav-item">
+                <a href="/dashboard">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-dashboard"></i>
+                    </span>
+                    <span class="title">Dashboard</span>
+                    
+                </a>
+               
+            </li>
 
             <li class="nav-item">
                 <a href="/profile">
@@ -25,6 +53,61 @@
                 </a>
                
             </li>
+            @endcan
+
+            {{-- User Menu --}}
+
+            @can('isUser')
+            <li class="nav-item">
+                <a href="/dashboard">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-dashboard"></i>
+                    </span>
+                    <span class="title">Dashboard</span>
+                    
+                </a>
+               
+            </li>
+
+            <li class="nav-item">
+                <a href="/profile">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-user"></i>
+                    </span>
+                    <span class="title">Profile</span>
+                    
+                </a>
+               
+            </li>
+            @endcan
+          
+            {{-- Staff Menu --}}
+
+            @can('isStaff')
+            <li class="nav-item">
+                <a href="/dashboard">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-dashboard"></i>
+                    </span>
+                    <span class="title">Dashboard</span>
+                    
+                </a>
+            
+            </li>
+
+            <li class="nav-item">
+                <a href="/profile">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-user"></i>
+                    </span>
+                    <span class="title">Profile</span>
+                    
+                </a>
+            
+            </li>
+            @endcan
+
+            
             {{-- <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">

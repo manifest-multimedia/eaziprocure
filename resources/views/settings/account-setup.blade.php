@@ -12,7 +12,9 @@ Search Results
     
 <!-- Content Wrapper START -->
 <div class="main-content">
+
     <div class="page-header no-gutters has-tab">
+        
         <h2 class="font-weight-normal">Account Setup</h2>
         <ul class="nav nav-tabs">
             <li class="nav-item">
@@ -26,9 +28,7 @@ Search Results
             </li> --}}
         </ul>
     </div>
-    <div class="row">
-
-        {{-- <div class="clean p-250"> Hello {{Auth::user()->name}} Welcome to your Dashboard. I'm still a work in progress. Wink :) </div> --}}
+    <div class="container">
         
         @livewire('account-setup')
         
