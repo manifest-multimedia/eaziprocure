@@ -198,34 +198,12 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Facebook</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://facebook.com/{{$facebook}} 
-                                                    @if (is_null($socials))
+                                                <label class="m-b-0">https://facebook.com/           
                                                     <input type="text" placeholder="@username" wire:model="facebookUpdated"></label>
-                                                    <div class="switch m-t-5 m-l-10">
-                                                        <input type="checkbox" id="switch-fb">
-                                                        <label for="switch-fb"></label>
-                                                    </div>
-                                                    @else
-                                                    @foreach ($socials as $item)
-                                                    @switch($item->platform)
-                                                    @case('Facebook')
-                                                    
-                                                    <input type="text" placeholder="@username" value="{{$item->username}}" wire:model="facebookUpdated"></label>
-                                                    <div class="switch m-t-5 m-l-10">
-                                                        <input type="checkbox" id="switch-fb" checked>
-                                                        <label for="switch-fb"></label>
-                                                    </div>
-                                                                    
-                                                                    @break
-                                                                @case('instagram')
-                                                                    
-                                                                    @break
-                                                                @default
-                                                                    
-                                                            @endswitch
-                                                        @endforeach
-                                                    @endif
-                                                
+                                                        <div class="switch m-t-5 m-l-10">
+                                                            <input type="checkbox" id="switch-fb" {{is_null($facebook) ? '' : "checked"}} disabled>
+                                                            <label for="switch-fb"></label>
+                                                        </div>              
                                             </div>
                                         </div>
                                     </li>
@@ -240,7 +218,7 @@
                                             <div class="d-flex align-items-center">
                                                 <label class="m-b-0">https://instagram.com/ <input type="text" placeholder="@username" wire:model="instagramUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-inst" checked="">
+                                                    <input type="checkbox" id="switch-inst" {{is_null($instagram) ? '' : "checked"}} disabled>
                                                     <label for="switch-inst"></label>
                                                 </div>
                                             </div>
@@ -257,7 +235,7 @@
                                             <div class="d-flex align-items-center">
                                                 <label class="m-b-0">https://twitter.com/ <input type="text" placeholder="@username" wire:model="twitterUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-tw" checked="">
+                                                    <input type="checkbox" id="switch-tw" {{is_null($twitter) ? '' : "checked"}} disabled>
                                                     <label for="switch-tw"></label>
                                                 </div>
                                             </div>
@@ -274,7 +252,7 @@
                                             <div class="d-flex align-items-center">
                                                 <label class="m-b-0">https://dribble.com/ <input type="text" placeholder="@username" wire:model="dribbbleUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-dr" checked="">
+                                                    <input type="checkbox" id="switch-dr" {{is_null($dribbble) ? '' : "checked"}} disabled>
                                                     <label for="switch-dr"></label>
                                                 </div>
                                             </div>
@@ -292,7 +270,7 @@
                                             <div class="d-flex align-items-center">
                                                 <label class="m-b-0">https://github.com/ <input type="text" placeholder="@username" wire:model="githubUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-gh" checked="">
+                                                    <input type="checkbox" id="switch-gh" {{is_null($github) ? '' : "checked"}} disabled>
                                                     <label for="switch-gh"></label>
                                                 </div>
                                             </div>
@@ -309,7 +287,7 @@
                                             <div class="d-flex align-items-center">
                                                 <label class="m-b-0">https://linkedin.com/ <input type="text" placeholder="@username" wire:model="linkedinUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-ln" checked="">
+                                                    <input type="checkbox" id="switch-ln" {{is_null($linkedin) ? '' : "checked"}} disabled>
                                                     <label for="switch-ln"></label>
                                                 </div>
                                             </div>

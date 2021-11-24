@@ -36,63 +36,67 @@ class AccountSetup extends Component
         
         $this->user=Auth::user(); 
         $this->role='administrator'; 
-    }
 
-    public function render()
-    {
 
-        $this->organizations=User::find(1)->organizations;
-        $this->user=User::find(1); 
-        $this->socials=User::find(1)->socials; 
+        $this->socials=User::find($this->user->id)->socials; 
 
         if(!is_null($this->socials)) {
             
             foreach ($this->socials as $item) {
                
                 switch (strtolower($item->platform)) {
-                    case 'facebook':
-                        
-                        if(is_null($this->facebookUpdated)) {   
-                            $this->facebook=$item->username;
-                             
+                    case 'facebook':      
+                       if (strtolower($item->platform)==='facebook') {
+                           $this->facebookUpdated=$item->username;   
+                           $this->facebook=$this->facebookUpdated;                          
+                        } 
+                    case 'instagram':
+                        if ($item->platform==="instagram") {
+                            $this->instagramUpdated=$item->username; 
+                            $this->instagram=$this->instagramUpdated;
                         }
-                        
-                    case 'instagram': 
-
-                        if (is_null($this->instagramUpdated)) {
-                            $this->instagram=$item->username; 
-                        }
-
                     case 'twitter':
-                        if (is_null($this->twitterUpdated)){
-                            $this->instagram=$item->username; 
-                        }
+                       if ($item->platform==='twitter') {
+                           $this->twitterUpdated=$item->username;
+                           $this->twitter=$this->twitterUpdated; 
+                       }
 
                     case 'dribbble':
-                        if(is_null($this->dribbbleUpdated)){
-                            $this->dribbble=$item->username; 
-                        }  
-                        
+                        if ($item->platform==='dribbble') {
+                            $this->dribbbleUpdated=$item->username;  
+                            $this->dribbble=$this->dribbbleUpdated; 
+                        }
+
                     case 'github':
-                        if(is_null($this->githubUpdated)){
-                            $this->github=$item->username; 
-                        }    
-
+                        if ($item->platform==='github') {
+                            $this->githubUpdated=$item->username; 
+                            $this->github=$this->githubUpdated; 
+                        }
                     case 'linkedin':
-                        if(is_null($this->linkedinUpdated)){
-                            $this->linkedin=$item->username;
-                        }    
-
+                        if ($item->platform==='linkedin') {
+                            $this->linkedinUpdated=$item->username;
+                            $this->linkedin=$this->linkedinUpdated; 
+                        }
                         break;
                     
                     default:
                         
-                        // print 'Unsupported Platform'; 
+                        // 'Unsupported Platform'; 
 
                         break;
                 }
             }
         }
+
+        // $this->facebookUpdated="Test";
+    }
+
+    public function render()
+    {
+
+        $this->organizations=User::find($this->user->id)->organizations;
+        $this->user=User::find($this->user->id); 
+       
 
         return view('livewire.account-setup');
     }
@@ -116,28 +120,61 @@ class AccountSetup extends Component
 
     }
     public function updatedFacebookUpdated(){
-        
-       $this->facebook=$this->facebookUpdated; 
+        $this->facebookUpdated=$this->facebookUpdated;
 
+        if (empty($this->facebookUpdated)) {
+            $this->facebook=null;
+        }
+        else {
+            
+            $this->facebook=$this->facebookUpdated; 
+        }
+      
     }
     public function updatedInstagramUpdated(){
-        
-        $this->instagram=$this->instagramUpdated; 
+        if (empty($this->instagramUpdated)) {
+            $this->instagram=null;
+        }
+        else{
+            $this->instagram=$this->instagramUpdated; 
+        }
  
      }
      public function updatedTwitterUpdated(){
-        
-        $this->twitter=$this->twitterUpdated; 
+        if (empty($this->twitterUpdated)) {
+            $this->twitter=null; 
+        }
+        else{
+
+            $this->twitter=$this->twitterUpdated; 
+        }
  
     }
     public function updatedDribbbleUpdated(){
-        
-        $this->dribbble=$this->dribbbleUpdated; 
+        if (empty($this->dribbbleUpdated)) {
+            $this->dribbble=null; 
+        }
+        else{
+            $this->dribbble=$this->dribbbleUpdated; 
+        }
  
     }
     public function updatedGithubUpdated(){
-        
-        $this->github=$this->githubUpdated; 
+        if (empty($this->githubUpdated)) {
+            $this->github=null; 
+        }
+        else{
+            $this->github=$this->githubUpdated; 
+        }
+ 
+    }
+    public function updatedLinkedinUpdated(){
+        if (empty($this->linkedinUpdated)) {
+            $this->linkedin=null; 
+        }
+        else{
+            $this->linkedin=$this->linkedinUpdated; 
+        }
  
     }
 
