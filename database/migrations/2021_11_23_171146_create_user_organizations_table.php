@@ -13,7 +13,6 @@ class CreateUserOrganizationsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('user_organizations');
         Schema::create('user_organizations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
