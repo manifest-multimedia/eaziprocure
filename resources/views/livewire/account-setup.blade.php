@@ -4,16 +4,16 @@
         
         <h2 class="font-weight-normal">Account Setup</h2>
         <ul class="nav nav-tabs">
-            <li class="nav-item">
+            <li class="nav-item" wire:ignore>
                 <a class="nav-link active" data-toggle="tab" href="#tab-account">Step One - Organization Details</a>
             </li>
             @if ($role=="administrator")
             
-            <li class="nav-item">
+            <li class="nav-item" wire:ignore>
                 <a class="nav-link" data-toggle="tab" href="#tab-socials">Step Two - Socials</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-notification">Final Step - Verification Documents</a>
+                <a class="nav-link" data-toggle="tab" href="#tab-notification" wire:ignore>Final Step - Verification Documents</a>
             </li>
             @endif
         </ul>
@@ -21,25 +21,27 @@
 
     <div class="container">
         <div class="tab-content m-t-15">
-            <div class="tab-pane fade show active" id="tab-account">
+            <div class="tab-pane fade show active" id="tab-account" wire:ignore.self>
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Organization Details</h4>
                     </div>
                     <div class="card-body">
                         <div class="media align-items-center">
-                            <div class="avatar avatar-image  m-h-10 m-r-15" style="height: 80px; width: 80px">
-                                <img src="{{asset("images/avatars/thumb-3.jpg")}}" alt="">
+                            <div class="avatar avatar-image  m-h-10 m-r-15" style="height: 90px !important; width: 90px !important;">
+                                <img src="{{asset($logo)}}" alt="Logo" style="object-fit:cover !important">
                             </div>
                             <div class="m-l-20 m-r-20">
                                 <h5 class="m-b-5 font-size-18">Company Logo</h5>
                                 <p class="opacity-07 font-size-13 m-b-0">
                                     Recommended Dimensions: <br>
-                                    120x120 Max fil size: 5MB
+                                    120x120 Max file size: 2MB
                                 </p>
                             </div>
                             <div>
-                                <button class="btn btn-tone btn-primary">Upload</button>
+                                <label for="logo" class="btn btn-tone btn-primary">
+                                <input type="file" id="logo" style="display:none" wire:model="logo"> Upload </label> 
+                                {{-- <button class="btn btn-tone btn-primary">Upload</button> --}}
                             </div>
                         </div>
                         <hr class="m-v-25">
@@ -47,7 +49,14 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="userName">Company Name:</label>
+
+                                    @if(is_null($organizations))
                                     <input type="text" class="form-control" id="userName" placeholder="Company Name" value="">
+                                    @else 
+                                        @foreach ($organizations as $item)
+                                            <input type="text" class="form-control" id="userName" placeholder="Company Name" value="{{$item->org_name}}">
+                                        @endforeach
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="email">Company Email:</label>
@@ -150,12 +159,28 @@
                             </div>
                         </form>
                     </div>
+                    {{-- <div class="has-tab">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-account">Home</a>
+                            </li>
+                            @if ($role=="administrator")
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-socials">Next</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-notification">Final Step - Verification Documents</a>
+                            </li>
+                            @endif
+                        </ul>
+                    </div> --}}
                 </div>
             </div>
 
            
             @endif
-            <div class="tab-pane fade" id="tab-socials">
+            <div class="tab-pane fade" id="tab-socials" wire:ignore.self>
                 <div class="row">
                     <div class="col-md-12 mx-auto">
                         <div class="card">
@@ -173,11 +198,34 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Facebook</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://facebook.com/ <input type="text" placeholder="@username"></label>
-                                                <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-fb" checked="">
-                                                    <label for="switch-fb"></label>
-                                                </div>
+                                                <label class="m-b-0">https://facebook.com/{{$facebook}} 
+                                                    @if (is_null($socials))
+                                                    <input type="text" placeholder="@username" wire:model="facebookUpdated"></label>
+                                                    <div class="switch m-t-5 m-l-10">
+                                                        <input type="checkbox" id="switch-fb">
+                                                        <label for="switch-fb"></label>
+                                                    </div>
+                                                    @else
+                                                    @foreach ($socials as $item)
+                                                    @switch($item->platform)
+                                                    @case('Facebook')
+                                                    
+                                                    <input type="text" placeholder="@username" value="{{$item->username}}" wire:model="facebookUpdated"></label>
+                                                    <div class="switch m-t-5 m-l-10">
+                                                        <input type="checkbox" id="switch-fb" checked>
+                                                        <label for="switch-fb"></label>
+                                                    </div>
+                                                                    
+                                                                    @break
+                                                                @case('instagram')
+                                                                    
+                                                                    @break
+                                                                @default
+                                                                    
+                                                            @endswitch
+                                                        @endforeach
+                                                    @endif
+                                                
                                             </div>
                                         </div>
                                     </li>
@@ -190,9 +238,9 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Instagram</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://instagram.com/ <input type="text" placeholder="@username"></label>
+                                                <label class="m-b-0">https://instagram.com/ <input type="text" placeholder="@username" wire:model="instagramUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-inst">
+                                                    <input type="checkbox" id="switch-inst" checked="">
                                                     <label for="switch-inst"></label>
                                                 </div>
                                             </div>
@@ -207,7 +255,7 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Twitter</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://twitter.com/ <input type="text" placeholder="@username"></label>
+                                                <label class="m-b-0">https://twitter.com/ <input type="text" placeholder="@username" wire:model="twitterUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
                                                     <input type="checkbox" id="switch-tw" checked="">
                                                     <label for="switch-tw"></label>
@@ -224,9 +272,9 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Dribbble</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://dribble.com/ <input type="text" placeholder="@username"></label>
+                                                <label class="m-b-0">https://dribble.com/ <input type="text" placeholder="@username" wire:model="dribbbleUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-dr">
+                                                    <input type="checkbox" id="switch-dr" checked="">
                                                     <label for="switch-dr"></label>
                                                 </div>
                                             </div>
@@ -242,7 +290,7 @@
 
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://github.com/ <input type="text" placeholder="@username"></label>
+                                                <label class="m-b-0">https://github.com/ <input type="text" placeholder="@username" wire:model="githubUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
                                                     <input type="checkbox" id="switch-gh" checked="">
                                                     <label for="switch-gh"></label>
@@ -259,7 +307,7 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Linkedin</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://linkedin.com/ <input type="text" placeholder="@username"></label>
+                                                <label class="m-b-0">https://linkedin.com/ <input type="text" placeholder="@username" wire:model="linkedinUpdated"></label>
                                                 <div class="switch m-t-5 m-l-10">
                                                     <input type="checkbox" id="switch-ln" checked="">
                                                     <label for="switch-ln"></label>
@@ -292,7 +340,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="tab-notification">
+            <div class="tab-pane fade" id="tab-notification" wire:ignore.self>
                 <div class="row">
                     <div class="col-md-12 mx-auto">
                         <div class="card">
@@ -301,142 +349,32 @@
                             </div>
                             <div class="card-body">
 
-                                Upload Required Documents for Verifying Your Organization
-                                {{-- <ul class="list-group list-group-flush">
-                                    <li class="list-group-item p-h-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-icon avatar-blue">
-                                                    <i class="anticon anticon-user"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <h5 class="font-weight-semibold m-b-0">Everyone can look me up</h5>
-                                                    <p class="m-b-0 font-weight-normal">Allow people found on your public.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-config-1" checked="">
-                                                    <label for="switch-config-1"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item p-h-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-icon avatar-cyan">
-                                                    <i class="anticon anticon-mobile"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <h5 class="font-weight-semibold m-b-0">Everyone can contact me</h5>
-                                                    <p class="m-b-0 font-weight-normal">Allow any peole to contact.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-config-2" checked=""> 
-                                                    <label for="switch-config-2"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item p-h-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-icon avatar-gold">
-                                                    <i class="anticon anticon-environment"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <h5 class="font-weight-semibold m-b-0">Show my location</h5>
-                                                    <p class="m-b-0 font-weight-normal">Turning on Location lets you explore what's around you.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-config-3">
-                                                    <label for="switch-config-3"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item p-h-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-icon avatar-purple">
-                                                    <i class="anticon anticon-mail"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <h5 class="font-weight-semibold m-b-0">Email Notifications</h5>
-                                                    <p class="m-b-0 font-weight-normal">Receive daily email notifications.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-config-4" checked="">
-                                                    <label for="switch-config-4"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item p-h-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-icon avatar-red">
-                                                    <i class="anticon anticon-question"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <h5 class="font-weight-semibold m-b-0">Unknow Source</h5>
-                                                    <p class="m-b-0 font-weight-normal">Allow all downloads from unknow source.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-config-5">
-                                                    <label for="switch-config-5"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item p-h-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-icon avatar-green">
-                                                    <i class="anticon anticon-swap"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <h5 class="font-weight-semibold m-b-0">Data Synchronization</h5>
-                                                    <p class="m-b-0 font-weight-normal">Allow data synchronize with cloud server.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-config-6" checked="">
-                                                    <label for="switch-config-6"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item p-h-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-icon avatar-orange">
-                                                    <i class="anticon anticon-usergroup-add"></i>
-                                                </div>
-                                                <div class="m-l-15">
-                                                    <h5 class="font-weight-semibold m-b-0">Groups Invitation</h5>
-                                                    <p class="m-b-0 font-weight-normal">Allow any groups invitation</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-config-7" checked="">
-                                                    <label for="switch-config-7"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>  --}}
+                               <div class="files" style="padding-bottom:30px">
+                                   Upload Required Documents for Verifying Your Organization
+                            </div> 
+
+                                <div class="custom-file"  style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
+                                </div> 
+                                    <div class="custom-file" style="padding-bottom:50px">
+                                        <label for="customFile" class="custom-file-label">  Certificate To Commence Business </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                    </div>
+                                    <div class="custom-file" style="padding-bottom:50px">
+                                        <label for="customFile" class="custom-file-label"> Certificate of Incorporation </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                    </div>
+                                    <div class="custom-file" style="padding-bottom:50px">
+                                        <label for="customFile" class="custom-file-label"> GRA Registration </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                    </div>
+                                    <div class="custom-file" style="padding-bottom:50px">
+                                        <label for="customFile" class="custom-file-label"> Tax Clearance Certificate </label><input id="customFile"  class="custom-file-input" type="file">
+                                    </div>
+                                    <div class="custom-file" style="padding-bottom:50px">
+                                        <label for="customFile" class="custom-file-label"> SSNIT Clearance </label><input id="customFile"  class="custom-file-input" type="file"> 
+                                    </div>
+                                    <div class="custom-file" style="padding-bottom:50px">
+                                        <label for="customFile" class="custom-file-label"> PPA Certificate </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                    </div>
+                                                               
                             </div>
                         </div>
                     </div>
@@ -448,7 +386,7 @@
 
         </div>
 
-      
+      {{-- <a href="#tab-socials" data-toggle="tab"> Next</a> --}}
 
 </div>
 
