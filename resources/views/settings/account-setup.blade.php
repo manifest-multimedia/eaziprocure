@@ -1,22 +1,8 @@
-<x-header /> 
-<x-search> 
-Search Results
-</x-search>
+<x-backend-layout> 
+    <x-slot name="title"> 
+        EaziProcure &mdash; Account Setup
+    </x-slot>
 
-<x-quickview /> 
-<x-sidebar />
+    @livewire('account-setup')
 
-
-<!-- Page Container START -->
-<div class="page-container">
-    
-<!-- Content Wrapper START -->
-<div class="main-content">
-           
-        @livewire('account-setup')
-        
-    </div>
-
-</div>
-
-<x-footer /> 
+</x-backend-layout>

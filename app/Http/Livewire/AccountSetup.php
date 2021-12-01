@@ -46,37 +46,33 @@ class AccountSetup extends Component
                
                 switch (strtolower($item->platform)) {
                     case 'facebook':      
-                       if (strtolower($item->platform)==='facebook') {
                            $this->facebookUpdated=$item->username;   
                            $this->facebook=$this->facebookUpdated;                          
-                        } 
+                    break; 
+
                     case 'instagram':
-                        if ($item->platform==="instagram") {
                             $this->instagramUpdated=$item->username; 
                             $this->instagram=$this->instagramUpdated;
-                        }
+                    break; 
+
                     case 'twitter':
-                       if ($item->platform==='twitter') {
                            $this->twitterUpdated=$item->username;
                            $this->twitter=$this->twitterUpdated; 
-                       }
+                    break; 
 
                     case 'dribbble':
-                        if ($item->platform==='dribbble') {
                             $this->dribbbleUpdated=$item->username;  
                             $this->dribbble=$this->dribbbleUpdated; 
-                        }
+                    break; 
 
                     case 'github':
-                        if ($item->platform==='github') {
                             $this->githubUpdated=$item->username; 
                             $this->github=$this->githubUpdated; 
-                        }
+                    break; 
+
                     case 'linkedin':
-                        if ($item->platform==='linkedin') {
                             $this->linkedinUpdated=$item->username;
                             $this->linkedin=$this->linkedinUpdated; 
-                        }
                         break;
                     
                     default:

@@ -11,26 +11,28 @@
 <!-- Footer END -->
 
 </div>
+
 <!-- Page Container END -->
-
 {{-- Load Search  --}}
-
 {{-- Load Quick View --}}
+
 </div>
 </div>
 
 
 <!-- Core Vendors JS -->
-<script src="{{asset('js/vendors.min.js')}}"></script>
+<script src="{{asset('js/vendors.min.js')}}" defer></script>
 
 <!-- page js -->
-<script src="{{asset('vendors/chartjs/Chart.min.js')}}"></script>
-<script src="{{asset('js/pages/dashboard-default.js')}}"></script>
+<script src="{{asset('vendors/chartjs/Chart.min.js')}}" defer></script>
+<script src="{{asset('js/pages/dashboard-default.js')}}" defer></script>
 
 <!-- Core JS -->
-<script src="{{asset('js/app.min.js')}}"></script>
+<script src="{{asset('js/app.min.js')}}" defer></script>
 
+@stack('modals')
 @livewireScripts
+
 
 </body>
 

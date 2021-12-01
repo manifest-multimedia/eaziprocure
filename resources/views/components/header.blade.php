@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>eProcure</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{$slot}}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('images/logo/favicon.png')}}">
@@ -14,11 +16,14 @@
     <!-- Core css -->
     <link href="{{asset('css/defaultapp.css')}}" rel="stylesheet"> 
     <link href="{{asset('css/app.min.css')}}" rel="stylesheet">
+
+    {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
+    {{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
+    <script src="//unpkg.com/alpinejs" defer></script>
+
     @livewireStyles
     
-
 </head>
-
 
 <body>
     <div class="app">

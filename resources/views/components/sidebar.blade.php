@@ -44,7 +44,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="/profile">
+                <a href="/user/profile">
                     <span class="icon-holder">
                         <i class="anticon anticon-user"></i>
                     </span>
