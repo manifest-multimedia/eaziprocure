@@ -20,6 +20,7 @@ class CreateOrgProfilesTable extends Migration
             $table->text('org_address')->nullable(); 
             $table->string('org_city')->nullable(); 
             $table->string('org_country')->nullable(); 
+            $table->string('org_logo')->nullable(); 
             $table->timestamps();
             
         });

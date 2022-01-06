@@ -1,10 +1,9 @@
-<x-auth-layout>
-    <x-slot name="title"> 
-        EaziProcure &mdash; Two Factor Authentication 
-    </x-slot>
-    <x-slot name="page_title">
-    Authorize
-    </x-slot>
+<x-guest-layout>
+    <x-jet-authentication-card>
+        <x-slot name="logo">
+            <x-jet-authentication-card-logo />
+        </x-slot>
+
         <div x-data="{ recovery: false }">
             <div class="mb-4 text-sm text-gray-600" x-show="! recovery">
                 {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator application.') }}
@@ -30,7 +29,7 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <button type="button" class="btn btn-primary"
+                    <button type="button" class="text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer"
                                     x-show="! recovery"
                                     x-on:click="
                                         recovery = true;
@@ -39,7 +38,7 @@
                         {{ __('Use a recovery code') }}
                     </button>
 
-                    <button type="button" class="btn btn-primary"
+                    <button type="button" class="text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer"
                                     x-show="recovery"
                                     x-on:click="
                                         recovery = false;
@@ -54,4 +53,5 @@
                 </div>
             </form>
         </div>
-    </x-auth-layout>
+    </x-jet-authentication-card>
+</x-guest-layout>

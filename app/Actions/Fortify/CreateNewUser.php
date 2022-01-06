@@ -35,5 +35,7 @@ class CreateNewUser implements CreatesNewUsers
             'user_role' => 'user', 
 
         ]);
+
+   
     }
 }

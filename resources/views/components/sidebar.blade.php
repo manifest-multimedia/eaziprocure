@@ -75,9 +75,7 @@
                         <i class="anticon anticon-user"></i>
                     </span>
                     <span class="title">Profile</span>
-                    
                 </a>
-               
             </li> --}}
             @endcan
           

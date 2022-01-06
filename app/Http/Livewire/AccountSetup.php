@@ -17,7 +17,7 @@ class AccountSetup extends Component
     public $user=[]; 
     public $role; 
     public $organizations=[];
-    public $logo='images/avatars/thumb-3.jpg'; 
+    public $logo; 
     public $socials; 
     public $facebook; 
     public $facebookUpdated; 
@@ -36,6 +36,12 @@ class AccountSetup extends Component
         
         $this->user=Auth::user(); 
         $this->role='administrator'; 
+
+        $org=User::find($this->user->id)->organizations;
+        
+        // dd($org);
+
+        $this->logo='images/avatars/thumb-3.jpg';
 
 
         $this->socials=User::find($this->user->id)->socials; 
