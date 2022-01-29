@@ -345,9 +345,7 @@
                                     
                             
                             @if ($registration_type=='Sole Proprietorship')
-                                
-                                <div class="custom-file"  style="padding-bottom:50px; margin-top:30px">
-                                    Upload the Required documents for your Sole Propritorship Business
+                                <div class="custom-file m-t-30 p-b-50">
                                     <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
                                 </div> 
                                 <div class="custom-file" style="padding-bottom:50px">

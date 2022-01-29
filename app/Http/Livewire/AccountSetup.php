@@ -40,7 +40,6 @@ class AccountSetup extends Component
 
         $org=User::find($this->user->id)->organizations;
         
-        // dd($org);
 
         $this->logo='images/avatars/thumb-3.jpg';
 
@@ -182,9 +181,17 @@ class AccountSetup extends Component
     }
 public function invitation() {
 
+    $current_user; 
+    $current_organization;
     $name; 
     $email;     
     
+    //build url
+    $buldurl=$systemurl."/invidation".'/'.$current_user.$current_organization;
+
+
+    //Store Invitation Details 
+
     //send invitation 
 
 }

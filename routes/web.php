@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response; 
 use App\Notifications\NewAccountSMSNotification; 
 use Illuminate\Support\Facades\Notification;
+use App\Http\Controllers\InvitationController; 
 
 
 Route::view('/', 'auth.login');
@@ -31,6 +32,7 @@ Route::get('/account-setup', function(){ return view('settings.account-setup');}
 Route::get('/disabled', function() { return view('disabled');})->name('account_disabled'); 
 Route::get('/deleted', function() { return view('disabled');})->name('account_deleted'); 
 
+Route::get('/invitation/{user}/{org}', [InvitationController::class, 'getInvidationDetails']);
 
 
 Route::get('/sms', function()
