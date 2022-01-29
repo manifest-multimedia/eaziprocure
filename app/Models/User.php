@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Notifications\CustomResetPasswordNotification; 
+use App\Notifications\WelcomeEmailNotification; 
 
 class User extends Authenticatable
 {
@@ -60,6 +62,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+        /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPasswordNotification($token));
+    }
+
 
     public function organizations()
     {

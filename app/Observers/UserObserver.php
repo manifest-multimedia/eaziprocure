@@ -27,7 +27,10 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        //
+        //Check if Account Status Changed to Completed
+        //Send Email Notification 
+        
+
     }
 
     /**

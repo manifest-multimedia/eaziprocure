@@ -33,4 +33,12 @@ if (! function_exists('SMSnotify')){
      }   
  }
 
+ if(!function_exists("getFirstName")){
+    function getFirstName($name){
+        $firstname=explode(' ', trim($name))[0];
+        return $firstname; 
+    }
+}
+
+
  ?> 

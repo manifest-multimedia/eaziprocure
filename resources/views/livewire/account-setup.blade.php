@@ -330,8 +330,19 @@
                                <div class="files" style="padding-bottom:30px">
                                    Upload Required Documents for Verifying Your Organization
                             </div> 
+                            <div> 
+                                <label> Business Registration Type </label> 
+                                <select name="type_of_business" id="business_type" class="form-control">
+                                    <option value="">Select Business Registration Type</option>
+                                    <option value="">Sole Proprietorship</option>
+                                    <option value="">Company Limited by Shares</option>
+                                    <option value="">Company Limited by Guarantee</option>
+                                    <option value="">Unlimited Company</option>
+                                    <option value="">External Company</option>
 
-                                <div class="custom-file"  style="padding-bottom:50px">
+                                </select>
+                            </div>
+                                    {{-- <div class="custom-file"  style="padding-bottom:50px">
                                     <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
                                 </div> 
                                     <div class="custom-file" style="padding-bottom:50px">
@@ -351,7 +362,7 @@
                                     </div>
                                     <div class="custom-file" style="padding-bottom:50px">
                                         <label for="customFile" class="custom-file-label"> PPA Certificate </label> <input id="customFile"  class="custom-file-input" type="file"> 
-                                    </div>
+                                    </div> --}}
                                                                
                             </div>
                         </div>

@@ -179,7 +179,14 @@ class AccountSetup extends Component
         }
  
     }
+public function invitation() {
 
+    $name; 
+    $email;     
+    
+    //send invitation 
+
+}
     
 
 }

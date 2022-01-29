@@ -41,11 +41,12 @@ class WelcomeEmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Welcome to EaziProcure and thanks for singing up! You have joined thousands of organizations just like yours who manage thier procurements with EaziProcure.')
+                    ->subject('⚡ Welcome to EaziProcure')
+                    ->greeting('Hello '.getFirstName($notifiable->name).'!')
+                    ->line('Welcome to EaziProcure and thanks for singing up! You have joined thousands of organizations just like yours who manage their procurements with EaziProcure.')
                     ->action('Sign In To Your Account', url('https://eaziprocure.com'))
                     ->line('We hope you enjoy this opportunity to take EaziProcure for a spin. Feel free to kick the tires and get acquainted with no limits and no obligations on your forever free plan!')
-                    ->line('PS: You can always upgrade to a paid plan anytime to enjoy more features and limitless possibilities!');
-                    
+                    ->line('PS: You can always upgrade to a paid plan anytime to enjoy more features and limitless possibilities!');   
     }
 
     /**
