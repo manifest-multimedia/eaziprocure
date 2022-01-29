@@ -331,38 +331,115 @@
                                    Upload Required Documents for Verifying Your Organization
                             </div> 
                             <div> 
-                                <label> Business Registration Type </label> 
-                                <select name="type_of_business" id="business_type" class="form-control">
+                                <label> Business Registration Type</label> 
+                                <select name="type_of_business" id="business_type" class="form-control" wire:model='registration_type'>
                                     <option value="">Select Business Registration Type</option>
-                                    <option value="">Sole Proprietorship</option>
-                                    <option value="">Company Limited by Shares</option>
-                                    <option value="">Company Limited by Guarantee</option>
-                                    <option value="">Unlimited Company</option>
-                                    <option value="">External Company</option>
+                                    <option value="Sole Proprietorship">Sole Proprietorship</option>
+                                    <option value="Company Limited by Shares">Company Limited by Shares</option>
+                                    <option value="Company Limited by Guarantee">Company Limited by Guarantee</option>
+                                    <option value="Unlimited Company">Unlimited Company</option>
+                                    <option value="External Company">External Company</option>
 
                                 </select>
                             </div>
-                                    {{-- <div class="custom-file"  style="padding-bottom:50px">
+                                    
+                            
+                            @if ($registration_type=='Sole Proprietorship')
+                                
+                                <div class="custom-file"  style="padding-bottom:50px; margin-top:30px">
+                                    Upload the Required documents for your Sole Propritorship Business
                                     <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
                                 </div> 
-                                    <div class="custom-file" style="padding-bottom:50px">
-                                        <label for="customFile" class="custom-file-label">  Certificate To Commence Business </label> <input id="customFile"  class="custom-file-input" type="file"> 
-                                    </div>
-                                    <div class="custom-file" style="padding-bottom:50px">
-                                        <label for="customFile" class="custom-file-label"> Certificate of Incorporation </label> <input id="customFile"  class="custom-file-input" type="file"> 
-                                    </div>
-                                    <div class="custom-file" style="padding-bottom:50px">
-                                        <label for="customFile" class="custom-file-label"> GRA Registration </label> <input id="customFile"  class="custom-file-input" type="file"> 
-                                    </div>
-                                    <div class="custom-file" style="padding-bottom:50px">
-                                        <label for="customFile" class="custom-file-label"> Tax Clearance Certificate </label><input id="customFile"  class="custom-file-input" type="file">
-                                    </div>
-                                    <div class="custom-file" style="padding-bottom:50px">
-                                        <label for="customFile" class="custom-file-label"> SSNIT Clearance </label><input id="customFile"  class="custom-file-input" type="file"> 
-                                    </div>
-                                    <div class="custom-file" style="padding-bottom:50px">
-                                        <label for="customFile" class="custom-file-label"> PPA Certificate </label> <input id="customFile"  class="custom-file-input" type="file"> 
-                                    </div> --}}
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> GRA Registration </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+                                <a href="#" class="btn btn-primary m-t-10"> Complete Setup</a>
+                            @endif
+
+                            @if ($registration_type=='Company Limited by Shares')
+                                
+                                <div class="custom-file"  style="padding-bottom:50px; margin-top:30px">
+
+                                    <label for="customFile" class="custom-file-label"> Certificate of Incorporation </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+                                
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label">  Certificate To Commence Business </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> Tax Clearance Certificate </label><input id="customFile"  class="custom-file-input" type="file">
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> SSNIT Clearance </label><input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> PPA Certificate </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div> 
+                                <a href="#" class="btn btn-primary m-t-10"> Complete Setup</a>
+                            @endif
+                            @if ($registration_type=='Company Limited by Guarantee')
+                                
+                                <div class="custom-file"  style="padding-bottom:50px; margin-top:30px">
+
+                                    <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
+                                </div> 
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label">  Certificate To Commence Business </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> Tax Clearance Certificate </label><input id="customFile"  class="custom-file-input" type="file">
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> SSNIT Clearance </label><input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> PPA Certificate </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div> 
+                                <a href="#" class="btn btn-primary m-t-10"> Complete Setup</a>
+                            @endif
+                            @if ($registration_type=='Unlimited Company')
+                                
+                                <div class="custom-file"  style="padding-bottom:50px; margin-top:30px">
+
+                                    <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
+                                </div> 
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label">  Certificate To Commence Business </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> Tax Clearance Certificate </label><input id="customFile"  class="custom-file-input" type="file">
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> SSNIT Clearance </label><input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> PPA Certificate </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div> 
+                                <a href="#" class="btn btn-primary m-t-10"> Complete Setup</a>
+                            @endif
+                            @if ($registration_type=='External Company')
+                                
+                                <div class="custom-file"  style="padding-bottom:50px; margin-top:30px">
+
+                                    <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
+                                </div> 
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label">  Certificate To Commence Business </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> Tax Clearance Certificate </label><input id="customFile"  class="custom-file-input" type="file">
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> SSNIT Clearance </label><input id="customFile"  class="custom-file-input" type="file"> 
+                                </div>
+                                <div class="custom-file" style="padding-bottom:50px">
+                                    <label for="customFile" class="custom-file-label"> PPA Certificate </label> <input id="customFile"  class="custom-file-input" type="file"> 
+                                </div> 
+                                <a href="#" class="btn btn-primary m-t-10"> Complete Setup</a>
+                            @endif
+
+             
                                                                
                             </div>
                         </div>

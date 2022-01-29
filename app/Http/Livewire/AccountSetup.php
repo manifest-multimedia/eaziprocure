@@ -31,6 +31,7 @@ class AccountSetup extends Component
     public $githubUpdated; 
     public $linkedin; 
     public $linkedinUpdated; 
+    public $registration_type='default';
 
     public function mount(){
         
