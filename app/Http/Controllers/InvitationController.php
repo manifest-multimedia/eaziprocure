@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User; 
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class InvitationController extends Controller
@@ -14,13 +15,17 @@ class InvitationController extends Controller
         // Get Invitation Details 
 
         // $invitedby=User::where('id', $user)->first(); 
+
         if($invitedby=User::find($user)){
 
             $invitedby=$invitedby->name;
             
-            return 'Holla Amigos Diaz ' .$invitedby;
+            Alert::alert('Title', 'Message', 'Type');
+
+            return redirect('/404')->with('success', 'yay!');
+            
         } else{
-            return 'Error! Invalid Invitation';
+            return redirect('/404')->with('toast_error', 'Error! Invalid Invitation');
         } 
         
         // dd($invitation);

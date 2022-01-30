@@ -16,7 +16,7 @@ class AccountSetup extends Component
 
     public $user=[]; 
     public $role; 
-    public $organizations=[];
+    //public $organizations=[];
     public $logo; 
     public $socials; 
     public $facebook; 
@@ -32,6 +32,7 @@ class AccountSetup extends Component
     public $linkedin; 
     public $linkedinUpdated; 
     public $registration_type='default';
+    public $org_count; 
 
     public function mount(){
         
@@ -96,11 +97,35 @@ class AccountSetup extends Component
     public function render()
     {
 
-        $this->organizations=User::find($this->user->id)->organizations;
+        $query=User::find($this->user->id)->organizations();
+        if($query->count()){
+            $this->org_count=$query->count(); 
+            $organizations=User::find($this->user->id);
+           
+            // Tag::whereHas('categories', function ($query) use ($chosenCategoriesIds) {
+            //     $query->whereIn('id', $chosenCategoriesIds);
+            // })->get();
+
+
+         } else {
+             $this->org_count=0; 
+             $organizations=[]; 
+         }
+
+
+        // if (!$this->organizations=User::find($this->user->id)->organizations)
+        // {
+        //  $this->organizations=null; 
+        // }
+        // else{
+        //     $this->organizations=User::find($this->user->id)->organizations(); 
+        // }
+        
+        
         $this->user=User::find($this->user->id); 
        
 
-        return view('livewire.account-setup');
+        return view('livewire.account-setup', compact('organizations'));
     }
 
     public function updatedRole(){

@@ -27,7 +27,9 @@ Route::view('/privacy', 'privacy')->name('privacy');
 
 Route::middleware(['auth:sanctum', 'verified', 'checkrole'])->get('/dashboard', DashboardController::class)->name('dashboard');
 
-Route::get('/account-setup', function(){ return view('settings.account-setup');})->name('account_setup'); 
+Route::get('/account-setup', function(){ 
+    
+    return view('settings.account-setup');})->name('account_setup'); 
 
 Route::get('/disabled', function() { return view('disabled');})->name('account_disabled'); 
 Route::get('/deleted', function() { return view('disabled');})->name('account_deleted'); 

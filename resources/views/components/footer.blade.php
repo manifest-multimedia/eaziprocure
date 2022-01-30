@@ -18,8 +18,9 @@
 
 </div>
 </div>
-
-
+<!-- Sweet Alert --> 
+@include('sweetalert::alert')
+<!-- Sweet Alert --> 
 <!-- Core Vendors JS -->
 <script src="{{asset('js/vendors.min.js')}}" defer></script>
 
@@ -32,6 +33,7 @@
 
 @stack('modals')
 @livewireScripts
+
 
 
 </body>

@@ -49,13 +49,17 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="userName">Company Name:</label>
+                                    
+                                    @if($org_count===0)
 
-                                    @if(is_null($organizations))
                                     <input type="text" class="form-control" id="userName" placeholder="Company Name" value="">
+
                                     @else 
-                                        @foreach ($organizations as $item)
+                                  
+                                        @foreach ($organizations->organizations as $item)
                                             <input type="text" class="form-control" id="userName" placeholder="Company Name" value="{{$item->org_name}}">
                                         @endforeach
+
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6">
@@ -345,6 +349,7 @@
                                     
                             
                             @if ($registration_type=='Sole Proprietorship')
+                               
                                 <div class="custom-file m-t-30 p-b-50">
                                     <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
                                 </div> 
@@ -380,7 +385,7 @@
                                 
                                 <div class="custom-file"  style="padding-bottom:50px; margin-top:30px">
 
-                                    <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
+                                    <label for="customFile" class="custom-file-label"> Certificate of Incorporation <label> <input id="customFile"  class="custom-file-input" type="file">
                                 </div> 
                                 <div class="custom-file" style="padding-bottom:50px">
                                     <label for="customFile" class="custom-file-label">  Certificate To Commence Business </label> <input id="customFile"  class="custom-file-input" type="file"> 
@@ -400,7 +405,7 @@
                                 
                                 <div class="custom-file"  style="padding-bottom:50px; margin-top:30px">
 
-                                    <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
+                                    <label for="customFile" class="custom-file-label"> Certificate of Incorporation <label> <input id="customFile"  class="custom-file-input" type="file">
                                 </div> 
                                 <div class="custom-file" style="padding-bottom:50px">
                                     <label for="customFile" class="custom-file-label">  Certificate To Commence Business </label> <input id="customFile"  class="custom-file-input" type="file"> 
@@ -420,7 +425,7 @@
                                 
                                 <div class="custom-file"  style="padding-bottom:50px; margin-top:30px">
 
-                                    <label for="customFile" class="custom-file-label"> Business Registration <label> <input id="customFile"  class="custom-file-input" type="file">
+                                    <label for="customFile" class="custom-file-label"> Certificate of Incorporation <label> <input id="customFile"  class="custom-file-input" type="file">
                                 </div> 
                                 <div class="custom-file" style="padding-bottom:50px">
                                     <label for="customFile" class="custom-file-label">  Certificate To Commence Business </label> <input id="customFile"  class="custom-file-input" type="file"> 
