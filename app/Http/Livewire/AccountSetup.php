@@ -6,7 +6,10 @@ use Livewire\Component;
 use Auth;
 use App\Models\User; 
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Notification;
+// use Livewire\Carbon;
 
+use App\Notifications\NewUserInvitationNotification; 
 
 class AccountSetup extends Component
 
@@ -34,6 +37,9 @@ class AccountSetup extends Component
     public $registration_type='default';
     public $org_count; 
 
+    public $StaffEmail; 
+    public $StaffName; 
+
     public function mount(){
         
         $this->user=Auth::user(); 
@@ -42,7 +48,7 @@ class AccountSetup extends Component
         $org=User::find($this->user->id)->organizations;
         
 
-        $this->logo='images/avatars/thumb-3.jpg';
+        $this->logo=asset('images/avatars/thumb-3.jpg');
 
 
         $this->socials=User::find($this->user->id)->socials; 
@@ -106,25 +112,13 @@ class AccountSetup extends Component
             //     $query->whereIn('id', $chosenCategoriesIds);
             // })->get();
 
-
          } else {
              $this->org_count=0; 
              $organizations=[]; 
          }
-
-
-        // if (!$this->organizations=User::find($this->user->id)->organizations)
-        // {
-        //  $this->organizations=null; 
-        // }
-        // else{
-        //     $this->organizations=User::find($this->user->id)->organizations(); 
-        // }
-        
-        
+                
         $this->user=User::find($this->user->id); 
        
-
         return view('livewire.account-setup', compact('organizations'));
     }
 
@@ -142,8 +136,17 @@ class AccountSetup extends Component
     }
 
     public function updatedLogo(){
+        $logo=$this->logo;
 
-        $this->logo = $this->logo->temporaryUrl();
+        $this->validate([
+            'logo' => 'image|max:5024', 
+        ]); 
+
+    //    $url = $logo->store('logos', 'public'); 
+       $url = $logo->store('logos', 'public'); 
+
+        $this->logo = 'storage/'.$this->logo->temp;
+        
 
     }
     public function updatedFacebookUpdated(){
@@ -177,6 +180,7 @@ class AccountSetup extends Component
         }
  
     }
+    
     public function updatedDribbbleUpdated(){
         if (empty($this->dribbbleUpdated)) {
             $this->dribbble=null; 
@@ -206,14 +210,28 @@ class AccountSetup extends Component
     }
 public function invitation() {
 
-    $current_user; 
-    $current_organization;
-    $name; 
-    $email;     
+    $email = $this->StaffEmail;
+    $name = $this->StaffName; 
+    $user=[$email, $name];
     
+    
+    // dd('Invitation');
+    $current_user=$this->user;
+    $current_user_id=$current_user->id; 
+    $current_user_name=$current_user->name; 
+    $current_organization=User::find($this->user->id)->organizations->first();
+    $organization_name=$current_organization->org_name;
+    $organization_id=$current_organization->id; 
+    // dd($current_organization);
+    $name=getFirstName($name); 
+    $email;     
+    $systemurl='https://eaziprocure.com';
     //build url
-    $buldurl=$systemurl."/invidation".'/'.$current_user.$current_organization;
+    $buldurl=$systemurl."/invitation".'/'.$current_user_id.'/'.$organization_id;
+   
+    Notification::route('mail', $email)->notify(new NewUserInvitationNotification($name, $email, $buldurl, $organization_name, $current_user_name));
 
+   
 
     //Store Invitation Details 
 

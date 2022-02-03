@@ -5,15 +5,15 @@
         <h2 class="font-weight-normal">Account Setup</h2>
         <ul class="nav nav-tabs">
             <li class="nav-item" wire:ignore>
-                <a class="nav-link active" data-toggle="tab" href="#tab-account">Step One - Organization Details</a>
+                <a class="nav-link active" role="tab" data-toggle="tab" href="#tab-account">Step One - Organization Details</a>
             </li>
             @if ($role=="administrator")
             
             <li class="nav-item" wire:ignore>
-                <a class="nav-link" data-toggle="tab" href="#tab-socials">Step Two - Socials</a>
+                <a class="nav-link" role="tab" data-toggle="tab" href="#tab-socials">Step Two - Socials</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-notification" wire:ignore>Final Step - Verification Documents</a>
+                <a class="nav-link" role="tab" data-toggle="tab" href="#tab-verifcation" wire:ignore>Final Step - Verification Documents</a>
             </li>
             @endif
         </ul>
@@ -26,6 +26,8 @@
                     <div class="card-header">
                         <h4 class="card-title">Organization Details</h4>
                     </div>
+
+                    <form enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="media align-items-center">
                             <div class="avatar avatar-image  m-h-10 m-r-15" style="height: 90px !important; width: 90px !important;">
@@ -38,6 +40,7 @@
                                     120x120 Max file size: 2MB
                                 </p>
                             </div>
+                          
                             <div>
                                 <label for="logo" class="btn btn-tone btn-primary">
                                 <input type="file" id="logo" style="display:none" wire:model="logo"> Upload </label> 
@@ -45,7 +48,7 @@
                             </div>
                         </div>
                         <hr class="m-v-25">
-                        <form>
+                        
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="userName">Company Name:</label>
@@ -119,15 +122,15 @@
                             <div class="form-row">
                                 <div class="form-group col-md-5">
                                     <label class="font-weight-semibold" for="UserName">Name:</label>
-                                    <input type="text" class="form-control" id="UserName" placeholder="Staff Name">
+                                    <input type="text" class="form-control" id="UserName" placeholder="Staff Name" wire:model="StaffName">
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label class="font-weight-semibold" for="user-email">Email:</label>
-                                    <input type="text" class="form-control" id="userEmail" placeholder="Email">
+                                    <input type="text" class="form-control" id="userEmail" placeholder="Email" wire:model="StaffEmail">
                                 </div>
                                 
                                 <div class="form-group col-md-2">
-                                    <button class="btn btn-primary m-t-30">Invite</button>
+                                    <a class="btn btn-primary m-t-30" href="#" wire:click='invitation'>Invite</a>
                                 </div>
                             </div>
                         </form>
@@ -174,12 +177,22 @@
                                 <a class="nav-link" data-toggle="tab" href="#tab-socials">Next</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab-notification">Final Step - Verification Documents</a>
+                                <a class="nav-link" data-toggle="tab" href="#tab-verifcation">Final Step - Verification Documents</a>
                             </li>
                             @endif
                         </ul>
                     </div> --}}
+
+                   
                 </div>
+
+                  {{-- Step 1 Next Button --}}
+            <div class="col-md-6">
+                
+                <button id="nextbtn" class="btn btn-primary nextbtn" >Next Step</button>
+              </div> 
+              {{-- End Step 1 Next Button--}}
+
             </div>
 
            
@@ -321,8 +334,17 @@
                         </div>
                     </div>
                 </div>
+          
+            {{-- Step 2 Buttons--}}
+            <div class="col-md-6">
+                <button id="previousbtn" class="btn btn-primary previousbtn">Previous Step</button>
+                <button id="nextbtn" class="btn btn-primary nextbtn" >Next Step</button>
+              </div> 
+              {{-- End Step 2 Buttons --}}
+
             </div>
-            <div class="tab-pane fade" id="tab-notification" wire:ignore.self>
+
+            <div class="tab-pane fade" id="tab-verifcation" wire:ignore.self>
                 <div class="row">
                     <div class="col-md-12 mx-auto">
                         <div class="card">
@@ -456,6 +478,6 @@
         </div>
 
       {{-- <a href="#tab-socials" data-toggle="tab"> Next</a> --}}
+        
 
 </div>
-

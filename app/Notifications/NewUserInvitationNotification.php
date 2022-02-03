@@ -11,14 +11,24 @@ class NewUserInvitationNotification extends Notification
 {
     use Queueable;
 
+    public $name; 
+    public $email;
+    public $url; 
+    public $organization;
+    public $invitedby;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name, $email, $url, $organization, $invitedby)
     {
-        //
+         $this->name=$name; 
+         $this->email=$email; 
+         $this->url=$url; 
+         $this->organization=$organization;
+         $this->invitedby=$invitedby;
     }
 
     /**
@@ -41,8 +51,10 @@ class NewUserInvitationNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->subject('Invitation to Join your Organization')
+                    ->greeting('Dear ' .$this->name.',')
+                    ->line($this->invitedby.' is inviting you to setup your account on eaziprocure for your organization - '.$this->organization)
+                    ->action('Accept Invitation', url($this->url))
                     ->line('Thank you for using our application!');
     }
 
