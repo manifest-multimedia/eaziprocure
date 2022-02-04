@@ -9,7 +9,14 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Notification;
 use App\Models\UserOrganizations; 
 use App\Models\org_profiles;
+use App\Models\social_profiles;
 // use Livewire\Carbon;
+
+// Track & Delete Unwanted/Unused Images 
+// $image_path = "/images/filename.ext";  // Value is not URL but directory file path
+// if(File::exists($image_path)) {
+//     File::delete($image_path);
+// }
 
 use App\Notifications\NewUserInvitationNotification; 
 
@@ -123,7 +130,6 @@ class AccountSetup extends Component
             }
         }
 
-        // $this->facebookUpdated="Test";
     }
 
     public function render()
@@ -174,11 +180,6 @@ class AccountSetup extends Component
         if(is_null($org) ){
             //Create Organization 
             $create_organization=new org_profiles;
-            // $create_organization->org_name='';
-            // $create_organization->org_email='';
-            // $create_organization->org_address='';
-            // $create_organization->org_city='';
-            // $create_organization->org_country='';
             $create_organization->org_logo=$this->logo;
             $create_organization->save();
             
@@ -220,14 +221,9 @@ class AccountSetup extends Component
 
             //Update Logo for Existing Organization 
             $update_details=org_profiles::where('id', $org->id)->first();
-            // $update_details->org_name='';
-            // $update_details->org_email='';
-            // $update_details->org_address='';
-            // $update_details->org_city='';
-            // $update_details->org_country='';
             $update_details->org_logo=$this->logo;
             $update_details->save();
-            // dd('Updated');
+    
         }
         
 
@@ -236,62 +232,199 @@ class AccountSetup extends Component
 
     }
     public function updatedFacebookUpdated(){
-        $this->facebookUpdated=$this->facebookUpdated;
+        //Check for existing organization for user. 
+        $user_id=Auth::user()->id; 
+        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
+        
+        $profile=social_profiles::where('org_id', $org_id)
+        ->where('platform', 'facebook')->first();
 
-        if (empty($this->facebookUpdated)) {
-            $this->facebook=null;
+        if(is_null($profile)){
+            // Create Profile 
+            $create_profile=new social_profiles; 
+            $create_profile->org_id=$org_id; 
+            $create_profile->platform='facebook'; 
+            $create_profile->link='https://facebook.com/'.$this->facebookUpdated; 
+            $create_profile->username=$this->facebookUpdated;
+            $create_profile->save();
+
         }
-        else {
+        else{
             
-            $this->facebook=$this->facebookUpdated; 
+           
+                // Update Profile
+                $update_profile=social_profiles::where('org_id', $org_id)
+                ->where('platform', 'facebook')->first();
+                $update_profile->link='https://facebook.com/'.$this->facebookUpdated; 
+    
+                $update_profile->username=$this->facebookUpdated; 
+                $update_profile->save();
+           
+
         }
       
     }
     public function updatedInstagramUpdated(){
-        if (empty($this->instagramUpdated)) {
-            $this->instagram=null;
+        //Check for existing organization for user. 
+        $user_id=Auth::user()->id; 
+        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
+        
+        $profile=social_profiles::where('org_id', $org_id)
+        ->where('platform', 'instagram')->first();
+
+        if(is_null($profile)){
+            // Create Profile 
+            $create_profile=new social_profiles; 
+            $create_profile->org_id=$org_id; 
+            $create_profile->platform='instagram'; 
+            $create_profile->link='https://instagram.com/'.$this->instagramUpdated; 
+            $create_profile->username=$this->instagramUpdated;
+            $create_profile->save();
+
         }
         else{
-            $this->instagram=$this->instagramUpdated; 
+            
+            
+                // Update Profile
+                $update_profile=social_profiles::where('org_id', $org_id)
+                ->where('platform', 'instagram')->first();
+                $update_profile->link='https://instagram.com/'.$this->instagramUpdated; 
+    
+                $update_profile->username=$this->instagramUpdated; 
+                $update_profile->save(); 
+
         }
  
      }
-     public function updatedTwitterUpdated(){
-        if (empty($this->twitterUpdated)) {
-            $this->twitter=null; 
-        }
-        else{
 
-            $this->twitter=$this->twitterUpdated; 
-        }
+
+     public function updatedTwitterUpdated(){
+       //Check for existing organization for user. 
+       $user_id=Auth::user()->id; 
+       $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
+       
+       $profile=social_profiles::where('org_id', $org_id)
+       ->where('platform', 'twitter')->first();
+
+       if(is_null($profile)){
+           // Create Profile 
+           $create_profile=new social_profiles; 
+           $create_profile->org_id=$org_id; 
+           $create_profile->platform='twitter'; 
+           $create_profile->link='https://twitter.com/'.$this->twitterUpdated; 
+           $create_profile->username=$this->twitterUpdated;
+           $create_profile->save();
+
+       }
+       else{
+           
+           
+               // Update Profile
+               $update_profile=social_profiles::where('org_id', $org_id)
+               ->where('platform', 'twitter')->first();
+               $update_profile->link='https://twitter.com/'.$this->twitterUpdated; 
+   
+               $update_profile->username=$this->twitterUpdated; 
+               $update_profile->save(); 
+
+       }
  
     }
     
     public function updatedDribbbleUpdated(){
-        if (empty($this->dribbbleUpdated)) {
-            $this->dribbble=null; 
+        //Check for existing organization for user. 
+        $user_id=Auth::user()->id; 
+        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
+        
+        $profile=social_profiles::where('org_id', $org_id)
+        ->where('platform', 'dribbble')->first();
+
+        if(is_null($profile)){
+            // Create Profile 
+            $create_profile=new social_profiles; 
+            $create_profile->org_id=$org_id; 
+            $create_profile->platform='dribbble'; 
+            $create_profile->link='https://dribbble.com/'.$this->dribbbleUpdated; 
+            $create_profile->username=$this->dribbbleUpdated;
+            $create_profile->save();
+
         }
         else{
-            $this->dribbble=$this->dribbbleUpdated; 
+            
+            
+                // Update Profile
+                $update_profile=social_profiles::where('org_id', $org_id)
+                ->where('platform', 'dribbble')->first();
+                $update_profile->link='https://dribbble.com/'.$this->dribbbleUpdated; 
+    
+                $update_profile->username=$this->dribbbleUpdated; 
+                $update_profile->save(); 
+
         }
  
     }
     public function updatedGithubUpdated(){
-        if (empty($this->githubUpdated)) {
-            $this->github=null; 
-        }
-        else{
-            $this->github=$this->githubUpdated; 
-        }
+       //Check for existing organization for user. 
+       $user_id=Auth::user()->id; 
+       $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
+       
+       $profile=social_profiles::where('org_id', $org_id)
+       ->where('platform', 'github')->first();
+
+       if(is_null($profile)){
+           // Create Profile 
+           $create_profile=new social_profiles; 
+           $create_profile->org_id=$org_id; 
+           $create_profile->platform='github'; 
+           $create_profile->link='https://github.com/'.$this->githubUpdated; 
+           $create_profile->username=$this->githubUpdated;
+           $create_profile->save();
+
+       }
+       else{
+           
+        // dd($this->githubUpdated);
+               // Update Profile
+               $username=$this->githubUpdated; 
+               $update_profile=social_profiles::where('org_id', $org_id)
+               ->where('platform', 'github')->first();
+               $update_profile->link='https://github.com/'.$username; 
+
+               $update_profile->username=$this->githubUpdated; 
+               $update_profile->save(); 
+
+       }
  
     }
     public function updatedLinkedinUpdated(){
-        if (empty($this->linkedinUpdated)) {
-            $this->linkedin=null; 
-        }
-        else{
-            $this->linkedin=$this->linkedinUpdated; 
-        }
+        //Check for existing organization for user. 
+       $user_id=Auth::user()->id; 
+       $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
+       
+       $profile=social_profiles::where('org_id', $org_id)
+       ->where('platform', 'linkedin')->first();
+
+       if(is_null($profile)){
+           // Create Profile 
+           $create_profile=new social_profiles; 
+           $create_profile->org_id=$org_id; 
+           $create_profile->platform='linkedin'; 
+           $update_profile->link='https://linkedin.com/company'.'/'.$this->linkedinUpdated;           $create_profile->username=$this->linkedinUpdated;
+           $create_profile->save();
+
+       }
+       else{
+           
+           
+               // Update Profile
+               $update_profile=social_profiles::where('org_id', $org_id)
+               ->where('platform', 'linkedin')->first();
+               $update_profile->link='https://linkedin.com/company'.'/'.$this->linkedinUpdated; 
+   
+               $update_profile->username=$this->linkedinUpdated; 
+               $update_profile->save(); 
+
+       }
  
     }
 
