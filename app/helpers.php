@@ -1,5 +1,8 @@
 <?php 
 
+use App\Models\UserOrganizations; 
+use App\Models\org_profiles;
+
 if (! function_exists('SMSnotify')){
      
      function SMSnotify($destination, $message, $sender, $authorization){
@@ -39,6 +42,15 @@ if (! function_exists('SMSnotify')){
         return $firstname; 
     }
 }
+
+if(!function_exists('getCountriesList')) {
+    function getCountriesList(){
+    
+    return Countries::getList('en');
+        
+}
+}
+
 
 
  ?> 

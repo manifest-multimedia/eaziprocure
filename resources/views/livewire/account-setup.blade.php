@@ -31,8 +31,11 @@
                     <div class="card-body">
                         <div class="media align-items-center">
                             <div class="avatar avatar-image  m-h-10 m-r-15" style="height: 90px !important; width: 90px !important;">
+                               
                                 <img src="{{asset($logo)}}" alt="Logo" style="object-fit:cover !important">
+                                
                             </div>
+                        
                             <div class="m-l-20 m-r-20">
                                 <h5 class="m-b-5 font-size-18">Company Logo</h5>
                                 <p class="opacity-07 font-size-13 m-b-0">
@@ -41,9 +44,20 @@
                                 </p>
                             </div>
                           
-                            <div>
+                            <div 
+                            x-data="{ isUploading: false, progress: 0 }"
+                            x-on:livewire-upload-start="isUploading = true"
+                            x-on:livewire-upload-finish="isUploading = false"
+                            x-on:livewire-upload-error="isUploading = false"
+                            x-on:livewire-upload-progress="progress = $event.detail.progress">
                                 <label for="logo" class="btn btn-tone btn-primary">
+
+
                                 <input type="file" id="logo" style="display:none" wire:model="logo"> Upload </label> 
+
+                                <div x-show="isUploading">
+                                    <progress max="100" x-bind:value="progress"></progress>
+                                </div>
                                 {{-- <button class="btn btn-tone btn-primary">Upload</button> --}}
                             </div>
                         </div>
@@ -51,23 +65,12 @@
                         
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label class="font-weight-semibold" for="userName">Company Name:</label>
-                                    
-                                    @if($org_count===0)
-
-                                    <input type="text" class="form-control" id="userName" placeholder="Company Name" value="">
-
-                                    @else 
-                                  
-                                        @foreach ($organizations->organizations as $item)
-                                            <input type="text" class="form-control" id="userName" placeholder="Company Name" value="{{$item->org_name}}">
-                                        @endforeach
-
-                                    @endif
+                                    <label class="font-weight-semibold" for="userName">Company Name: </label>
+                                    <input type="text" class="form-control" id="userName" placeholder="Company Name" value="{{$company_name}}" wire:model.lazy="company_name">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="email">Company Email:</label>
-                                    <input type="text" class="form-control" id="email" placeholder="email" value="{{$user->email}}">
+                                    <input type="text" class="form-control" id="email" placeholder="Company Email" value="{{$company_email}}" wire:model.lazy='company_email'>
                                 </div>
                             </div>
                             <h4> Primary User Information </h4> 
@@ -147,20 +150,22 @@
                                 <div class="form-group col-md-12">
                                     <label class="font-weight-semibold" for="fullAddress">Full Address:</label>
                                     {{-- <input type="text-area" class="form-control" id="fullAddress" > --}}
-                                    <textarea name="fulladdress" id="" cols="30" rows="5" placeholder="Full Address" class="form-control"></textarea>
+                                    <textarea name="fulladdress" id="" cols="30" rows="5" placeholder="Full Address" class="form-control" wire:model.lazy="company_address">{{$company_address}}</textarea>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="stateCity">State &amp; City:</label>
-                                    <input type="text" class="form-control" id="stateCity" placeholder="State &amp; City">
+                                    <input type="text" class="form-control" id="stateCity" placeholder="State &amp; City" value="{{$company_city}}" wire:model.lazy="company_city">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="language">Country</label>
-                                    <select id="language-2" class="form-control">
-                                        <option>Ghana</option>
-                                        <option>United State</option>
-                                        <option>United Kingdom</option>
-                                        <option>France</option>
-                                        <option>German</option>
+                                    <select id="country" class="form-control" value="{{$company_country}}" wire:model.lazy="company_country">
+                                        <option value="Ghana">Ghana</option>
+                                        
+                                        @foreach ($listcountries as $country)
+                                    
+                                        <option value="{{$country}}"> {{$country}} </option>
+                                        @endforeach
+                                        
                                     </select>
                                 </div>
                             </div>
