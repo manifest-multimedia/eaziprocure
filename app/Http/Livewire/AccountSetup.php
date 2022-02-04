@@ -401,15 +401,18 @@ class AccountSetup extends Component
        $user_id=Auth::user()->id; 
        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
        
-       $profile=social_profiles::where('org_id', $org_id)
-       ->where('platform', 'linkedin')->first();
+       $profile=social_profiles::where([
+           ['org_id', $org_id], 
+           ['platform', 'linkedin'],
+        ])->first();
 
        if(is_null($profile)){
            // Create Profile 
            $create_profile=new social_profiles; 
            $create_profile->org_id=$org_id; 
            $create_profile->platform='linkedin'; 
-           $update_profile->link='https://linkedin.com/company'.'/'.$this->linkedinUpdated;           $create_profile->username=$this->linkedinUpdated;
+           $create_profile->link='https://linkedin.com/company'.'/'.$this->linkedinUpdated;           
+           $create_profile->username=$this->linkedinUpdated;
            $create_profile->save();
 
        }
@@ -612,8 +615,6 @@ public function updatedCompanyCountry(){
 
     }
 }
-
-
 
 
 }

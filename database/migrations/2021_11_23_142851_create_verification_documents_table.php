@@ -16,6 +16,7 @@ class CreateVerificationDocumentsTable extends Migration
         Schema::create('verification_documents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('document_title')->nullable();
+            $table->string('url')->nullable();
             $table->string('uploaded_by')->nullable(); 
             $table->string('approved_by')->nullable(); 
             $table->unsignedInteger('org_id'); 
