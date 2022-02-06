@@ -30,8 +30,10 @@ class AccountSetup extends Component
     public $role; 
     public $listcountries=[];
     public $logo; 
+ 
     public $socials; 
     public $facebook; 
+    public $facebook_switch;
     public $facebookUpdated; 
     public $instagram;
     public $instagramUpdated; 
@@ -54,6 +56,16 @@ class AccountSetup extends Component
     public $company_address;
     public $company_city;
     public $company_country;
+
+    //verification documents
+    
+    public $business_registration_doc; 
+    public $gra_registration_doc; 
+    public $incorporation_cert_doc; 
+    public $commence_business_cert_doc; 
+    public $ssnit_clearance_doc; 
+    public $tax_clearance_doc; 
+    public $ppa_cert_doc; 
 
     public function mount(){
         
@@ -92,8 +104,12 @@ class AccountSetup extends Component
                
                 switch (strtolower($item->platform)) {
                     case 'facebook':      
-                           $this->facebookUpdated=$item->username;   
-                           $this->facebook=$this->facebookUpdated;                          
+                           if(is_null($this->facebookUpdated=$item->username)){
+                            $this->facebook=null; 
+                        }   else {
+                               $this->facebook=$this->facebookUpdated;                          
+
+                           }
                     break; 
 
                     case 'instagram':
@@ -155,6 +171,152 @@ class AccountSetup extends Component
         return view('livewire.account-setup', compact('organizations'));
     }
 
+    public function updatedRegistrationType() {
+
+        switch ($this->registration_type) {
+            case 'Sole Proprietorship':
+               //Check if Org Profile Exists
+
+               $user_id=Auth::user()->id; 
+               $org=UserOrganizations::where('user_id', $user_id)->first(); 
+               
+               if(is_null($org)) {
+                //Create Organization 
+                $create_organization=new org_profiles;
+                $create_organization->org_type=$this->registration_type;
+                $create_organization->save();
+                
+                $org_id=$create_organization->id; 
+                   
+               }
+               
+               else {
+       
+                    //Update Registration Type for Existing Organization 
+                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details->org_type=$this->registration_type;
+                $update_details->save();
+       
+               }
+
+                break;
+
+            case 'Company Limited by Shares':
+                 //Check if Org Profile Exists
+
+               $user_id=Auth::user()->id; 
+               $org=UserOrganizations::where('user_id', $user_id)->first(); 
+               
+               if(is_null($org)) {
+                //Create Organization 
+                $create_organization=new org_profiles;
+                $create_organization->org_type=$this->registration_type;
+                $create_organization->save();
+                
+                $org_id=$create_organization->id; 
+                   
+               }
+               
+               else {
+       
+                    //Update Registration Type for Existing Organization 
+                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details->org_type=$this->registration_type;
+                $update_details->save();
+       
+               }
+                
+                break;
+
+            case 'Company Limited by Guarantee':
+                 //Check if Org Profile Exists
+
+               $user_id=Auth::user()->id; 
+               $org=UserOrganizations::where('user_id', $user_id)->first(); 
+               
+               if(is_null($org)) {
+                //Create Organization 
+                $create_organization=new org_profiles;
+                $create_organization->org_type=$this->registration_type;
+                $create_organization->save();
+                
+                $org_id=$create_organization->id; 
+                   
+               }
+               
+               else {
+       
+                    //Update Registration Type for Existing Organization 
+                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details->org_type=$this->registration_type;
+                $update_details->save();
+       
+               }
+                
+                break;
+            
+            case 'Unlimited Company':
+                 //Check if Org Profile Exists
+
+               $user_id=Auth::user()->id; 
+               $org=UserOrganizations::where('user_id', $user_id)->first(); 
+               
+               if(is_null($org)) {
+                //Create Organization 
+                $create_organization=new org_profiles;
+                $create_organization->org_type=$this->registration_type;
+                $create_organization->save();
+                
+                $org_id=$create_organization->id; 
+                   
+               }
+               
+               else {
+       
+                    //Update Registration Type for Existing Organization 
+                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details->org_type=$this->registration_type;
+                $update_details->save();
+       
+               }
+                
+                break;
+
+            case 'External Company':
+                 //Check if Org Profile Exists
+
+               $user_id=Auth::user()->id; 
+               $org=UserOrganizations::where('user_id', $user_id)->first(); 
+               
+               if(is_null($org)) {
+                //Create Organization 
+                $create_organization=new org_profiles;
+                $create_organization->org_type=$this->registration_type;
+                $create_organization->save();
+                
+                $org_id=$create_organization->id; 
+                   
+               }
+               
+               else {
+       
+                    //Update Registration Type for Existing Organization 
+                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details->org_type=$this->registration_type;
+                $update_details->save();
+       
+               }
+                
+                break;
+        
+
+            default:
+                # code...
+                break;
+        }
+
+    }
+
     public function updatedRole(){
 
         switch ($this->role) {
@@ -170,12 +332,9 @@ class AccountSetup extends Component
 
     public function updatedLogo(){
 
-       
         //Check for existing organization for user. 
         $user_id=Auth::user()->id; 
         $org=UserOrganizations::where('user_id', $user_id)->first(); 
-
-      
 
         if(is_null($org) ){
             //Create Organization 
@@ -226,12 +385,16 @@ class AccountSetup extends Component
     
         }
         
-
         $this->logo=$this->logo;
-
 
     }
     public function updatedFacebookUpdated(){
+        if(empty($this->facebookUpdated)){
+            $this->facebook=null;
+        } else {
+            
+            $this->facebook=$this->facebookUpdated;
+        }
         //Check for existing organization for user. 
         $user_id=Auth::user()->id; 
         $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
@@ -251,7 +414,6 @@ class AccountSetup extends Component
         }
         else{
             
-           
                 // Update Profile
                 $update_profile=social_profiles::where('org_id', $org_id)
                 ->where('platform', 'facebook')->first();
@@ -259,9 +421,10 @@ class AccountSetup extends Component
     
                 $update_profile->username=$this->facebookUpdated; 
                 $update_profile->save();
-           
 
         }
+
+        
       
     }
     public function updatedInstagramUpdated(){
@@ -284,7 +447,6 @@ class AccountSetup extends Component
         }
         else{
             
-            
                 // Update Profile
                 $update_profile=social_profiles::where('org_id', $org_id)
                 ->where('platform', 'instagram')->first();
@@ -296,7 +458,6 @@ class AccountSetup extends Component
         }
  
      }
-
 
      public function updatedTwitterUpdated(){
        //Check for existing organization for user. 
@@ -317,7 +478,6 @@ class AccountSetup extends Component
 
        }
        else{
-           
            
                // Update Profile
                $update_profile=social_profiles::where('org_id', $org_id)
@@ -436,9 +596,7 @@ class AccountSetup extends Component
         $email = $this->StaffEmail;
         $name = $this->StaffName; 
         $user=[$email, $name];
-        
-        
-        // dd('Invitation');
+    
         $current_user=$this->user;
         $current_user_id=$current_user->id; 
         $current_user_name=$current_user->name; 
@@ -452,13 +610,11 @@ class AccountSetup extends Component
         //build url
         $buldurl=$systemurl."/invitation".'/'.$current_user_id.'/'.$organization_id;
     
+        //Send invitation 
         Notification::route('mail', $email)->notify(new NewUserInvitationNotification($name, $email, $buldurl, $organization_name, $current_user_name));
-
-    
 
         //Store Invitation Details 
 
-        //send invitation 
 
     }
     
@@ -554,7 +710,6 @@ class AccountSetup extends Component
     }
 }
 
-
 public function updatedCompanyCity(){
    
     //Check for existing organization for user. 
@@ -616,5 +771,77 @@ public function updatedCompanyCountry(){
     }
 }
 
+// Verification Documents Upload 
+  
+    // public $tax_clearance_doc; 
+    // public $ppa_cert_doc; 
+public function updatedBusinessRegistrationDoc(){
+
+//Check if business registration type supports uploading this file. 
+//Validate File & Upload 
+//Mark File Status As Complete.
+
+}
+
+public function updatedIncorporationCertDoc(){
+
+    //Check if business registration type supports uploading this file. 
+    //Validate File & Upload 
+    //Mark File Status As Complete.
+    
+    
+    }
+
+public function updatedGraRegistrationDoc(){
+    //Check if business registration type supports uploading this file. 
+    //Validate File & Upload 
+    //Mark File Status As Complete.
+}
+
+public function updatedSnnitClearanceDoc(){
+    //Check if business registration type supports uploading this file. 
+    //Validate File & Upload 
+    //Mark File Status As Complete.
+}
+
+public function updatedCommenceBusinessCertDoc(){
+    //Check if business registration type supports uploading this file. 
+    //Validate File & Upload 
+    //Mark File Status As Complete.
+}
+
+public function updatedTaxClearanceDoc(){
+    //Check if business registration type supports uploading this file. 
+    //Validate File & Upload 
+    //Mark File Status As Complete.
+}
+
+public function updatedPPACertDoc(){
+    //Check if business registration type supports uploading this file. 
+    //Validate File & Upload 
+    //Mark File Status As Complete.
+}
+
+public function CompleteSetup(){
+
+    //Check for existing organization for user. 
+    $user_id=Auth::user()->id; 
+    $org=UserOrganizations::where('user_id', $user_id)->first();
+
+
+    //Check for all details
+
+
+    //Mark Account as Verified
+
+    $complete_setup=User::find($user_id);
+    $complete_setup->account_status='1';
+    $complete_setup->save(); 
+
+    return redirect('/dashboard'); 
+
+    //Proceed to dashboard
+
+}
 
 }

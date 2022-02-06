@@ -217,13 +217,13 @@
                                                 <div class="avatar avatar-icon" style="color: #4267b1; background: rgba(66, 103, 177, 0.1)">
                                                     <i class="anticon anticon-facebook"></i>
                                                 </div>
-                                                <div class="font-size-15 font-weight-semibold m-l-15">Facebook</div>
+                                                <div class="font-size-15 font-weight-semibold m-l-15">Facebook {{$facebook_switch}}</div>
                                             </div>
                                             <div class="d-flex align-items-center">
                                                 <label class="m-b-0">https://facebook.com/           
                                                     <input type="text" placeholder="@username" wire:model.lazy="facebookUpdated"></label>
                                                         <div class="switch m-t-5 m-l-10">
-                                                            <input type="checkbox" id="switch-fb" {{is_null($facebook) ? '' : "checked"}} disabled>
+                                                            <input type="checkbox" id="switch-fb" {{is_null($facebook) ? '' : "checked"}} wire:model="facebook_switch">
                                                             <label for="switch-fb"></label>
                                                         </div>              
                                             </div>
@@ -373,8 +373,7 @@
                                     <option value="External Company">External Company</option>
 
                                 </select>
-                            </div>
-                                    
+                            </div>  
                             
                             @if ($registration_type=='Sole Proprietorship')
                                
@@ -384,7 +383,7 @@
                                 <div class="custom-file" style="padding-bottom:50px">
                                     <label for="customFile" class="custom-file-label"> GRA Registration </label> <input id="customFile"  class="custom-file-input" type="file"> 
                                 </div>
-                                <a href="#" class="btn btn-primary m-t-10"> Complete Setup</a>
+                                <a href="#" class="btn btn-primary m-t-10" wire:click='CompleteSetup'> Complete Setup</a>
                             @endif
 
                             @if ($registration_type=='Company Limited by Shares')
