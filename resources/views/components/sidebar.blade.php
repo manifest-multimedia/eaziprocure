@@ -69,14 +69,23 @@
                
             </li>
 
-            {{-- <li class="nav-item">
-                <a href="/profile">
+            <li class="nav-item">
+                <a href="/user/profile">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-shopping-cart"></i>
+                    </span>
+                    <span class="title">Shopping Area</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/shopping-area">
                     <span class="icon-holder">
                         <i class="anticon anticon-user"></i>
                     </span>
                     <span class="title">Profile</span>
                 </a>
-            </li> --}}
+            </li>
             @endcan
           
             {{-- Staff Menu --}}

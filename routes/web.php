@@ -37,6 +37,15 @@ Route::get('/deleted', function() { return view('disabled');})->name('account_de
 Route::get('/invitation/{user}/{org}', [InvitationController::class, 'getInvidationDetails']);
 
 
+Route::get('/upgrade', function(){
+    return view('upgrade'); 
+});
+
+Route::get('/organizations', function(){
+    return view('organizations'); 
+});
+
+
 Route::get('/sms', function()
 
 {    

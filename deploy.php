@@ -43,7 +43,7 @@ task('build', function () {
 
 
 set('INFOBIP_SENDER', 'ManifestGH');
-set('INFOBIP_AUTHORIZATION', 'App db184ed638df3de1d2d608ab8eac7ab2-81ea90e5-399f-4e23-84c5-242e959520a6');
+set('INFOBIP_AUTHORIZATION', 'App 06110a86450f846024081f35d866106d-e48dffa7-fe26-44e4-a2fb-ad992d673c32');
 
 task('notify', function(){
     
@@ -62,6 +62,12 @@ task('notify', function(){
 
     }); 
 
+    task('phprestart', function(){
+        run('sudo service php7.4-fpm reload');
+        
+    });
+
+
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
@@ -69,4 +75,5 @@ after('deploy:failed', 'deploy:unlock');
 
 before('deploy:symlink', 'artisan:migrate');
 
-after('success', 'notify');
+// after('success', 'notify');
+after('success', 'phprestart');

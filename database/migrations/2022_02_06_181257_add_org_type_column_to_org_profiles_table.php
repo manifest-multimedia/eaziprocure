@@ -14,7 +14,7 @@ class AddOrgTypeColumnToOrgProfilesTable extends Migration
     public function up()
     {
         Schema::table('org_profiles', function (Blueprint $table) {
-            $table->string('org_type')->nullable; 
+            $table->string('org_type')->nullable(); 
         });
     }
 
