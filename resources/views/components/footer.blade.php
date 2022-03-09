@@ -50,7 +50,7 @@ $(document).ready(function(e) {
     <script src="{{asset('js/app.min.js')}}" defer></script>
     
     @stack('modals')
-    @livewireScripts
+    {{-- @livewireScripts --}}
    
 </footer>
 <!-- Footer END -->
