@@ -8,8 +8,8 @@ use App\Models\User;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Notification;
 use App\Models\UserOrganizations; 
-use App\Models\org_profiles;
-use App\Models\social_profiles;
+use App\Models\OrgProfiles;
+use App\Models\SocialProfiles;
 // use Livewire\Carbon;
 
 // Track & Delete Unwanted/Unused Images 
@@ -85,7 +85,7 @@ class AccountSetup extends Component
         }
         else {
 
-            $org_details=org_profiles::where('id', $org->org_id)->first(); 
+            $org_details=OrgProfiles::where('id', $org->org_id)->first(); 
             $this->logo=$org_details->org_logo;
             $this->company_name=$org_details->org_name; 
             $this->company_email=$org_details->org_email; 
@@ -182,7 +182,7 @@ class AccountSetup extends Component
                
                if(is_null($org)) {
                 //Create Organization 
-                $create_organization=new org_profiles;
+                $create_organization=new OrgProfiles;
                 $create_organization->org_type=$this->registration_type;
                 $create_organization->save();
                 
@@ -193,7 +193,7 @@ class AccountSetup extends Component
                else {
        
                     //Update Registration Type for Existing Organization 
-                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details=OrgProfiles::where('id', $org->id)->first();
                 $update_details->org_type=$this->registration_type;
                 $update_details->save();
        
@@ -209,7 +209,7 @@ class AccountSetup extends Component
                
                if(is_null($org)) {
                 //Create Organization 
-                $create_organization=new org_profiles;
+                $create_organization=new OrgProfiles;
                 $create_organization->org_type=$this->registration_type;
                 $create_organization->save();
                 
@@ -220,7 +220,7 @@ class AccountSetup extends Component
                else {
        
                     //Update Registration Type for Existing Organization 
-                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details=OrgProfiles::where('id', $org->id)->first();
                 $update_details->org_type=$this->registration_type;
                 $update_details->save();
        
@@ -236,7 +236,7 @@ class AccountSetup extends Component
                
                if(is_null($org)) {
                 //Create Organization 
-                $create_organization=new org_profiles;
+                $create_organization=new OrgProfiles;
                 $create_organization->org_type=$this->registration_type;
                 $create_organization->save();
                 
@@ -247,7 +247,7 @@ class AccountSetup extends Component
                else {
        
                     //Update Registration Type for Existing Organization 
-                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details=OrgProfiles::where('id', $org->id)->first();
                 $update_details->org_type=$this->registration_type;
                 $update_details->save();
        
@@ -263,7 +263,7 @@ class AccountSetup extends Component
                
                if(is_null($org)) {
                 //Create Organization 
-                $create_organization=new org_profiles;
+                $create_organization=new OrgProfiles;
                 $create_organization->org_type=$this->registration_type;
                 $create_organization->save();
                 
@@ -274,7 +274,7 @@ class AccountSetup extends Component
                else {
        
                     //Update Registration Type for Existing Organization 
-                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details=OrgProfiles::where('id', $org->id)->first();
                 $update_details->org_type=$this->registration_type;
                 $update_details->save();
        
@@ -290,7 +290,7 @@ class AccountSetup extends Component
                
                if(is_null($org)) {
                 //Create Organization 
-                $create_organization=new org_profiles;
+                $create_organization=new OrgProfiles;
                 $create_organization->org_type=$this->registration_type;
                 $create_organization->save();
                 
@@ -301,7 +301,7 @@ class AccountSetup extends Component
                else {
        
                     //Update Registration Type for Existing Organization 
-                $update_details=org_profiles::where('id', $org->id)->first();
+                $update_details=OrgProfiles::where('id', $org->id)->first();
                 $update_details->org_type=$this->registration_type;
                 $update_details->save();
        
@@ -338,7 +338,7 @@ class AccountSetup extends Component
 
         if(is_null($org) ){
             //Create Organization 
-            $create_organization=new org_profiles;
+            $create_organization=new OrgProfiles;
             $create_organization->org_logo=$this->logo;
             $create_organization->save();
             
@@ -379,7 +379,7 @@ class AccountSetup extends Component
            $this->logo = 'storage/'.$url;
 
             //Update Logo for Existing Organization 
-            $update_details=org_profiles::where('id', $org->id)->first();
+            $update_details=OrgProfiles::where('id', $org->id)->first();
             $update_details->org_logo=$this->logo;
             $update_details->save();
     
@@ -399,12 +399,12 @@ class AccountSetup extends Component
         $user_id=Auth::user()->id; 
         $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
         
-        $profile=social_profiles::where('org_id', $org_id)
+        $profile=SocialProfiles::where('org_id', $org_id)
         ->where('platform', 'facebook')->first();
 
         if(is_null($profile)){
             // Create Profile 
-            $create_profile=new social_profiles; 
+            $create_profile=new SocialProfiles; 
             $create_profile->org_id=$org_id; 
             $create_profile->platform='facebook'; 
             $create_profile->link='https://facebook.com/'.$this->facebookUpdated; 
@@ -415,7 +415,7 @@ class AccountSetup extends Component
         else{
             
                 // Update Profile
-                $update_profile=social_profiles::where('org_id', $org_id)
+                $update_profile=SocialProfiles::where('org_id', $org_id)
                 ->where('platform', 'facebook')->first();
                 $update_profile->link='https://facebook.com/'.$this->facebookUpdated; 
     
@@ -432,12 +432,12 @@ class AccountSetup extends Component
         $user_id=Auth::user()->id; 
         $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
         
-        $profile=social_profiles::where('org_id', $org_id)
+        $profile=SocialProfiles::where('org_id', $org_id)
         ->where('platform', 'instagram')->first();
 
         if(is_null($profile)){
             // Create Profile 
-            $create_profile=new social_profiles; 
+            $create_profile=new SocialProfiles; 
             $create_profile->org_id=$org_id; 
             $create_profile->platform='instagram'; 
             $create_profile->link='https://instagram.com/'.$this->instagramUpdated; 
@@ -448,7 +448,7 @@ class AccountSetup extends Component
         else{
             
                 // Update Profile
-                $update_profile=social_profiles::where('org_id', $org_id)
+                $update_profile=SocialProfiles::where('org_id', $org_id)
                 ->where('platform', 'instagram')->first();
                 $update_profile->link='https://instagram.com/'.$this->instagramUpdated; 
     
@@ -464,12 +464,12 @@ class AccountSetup extends Component
        $user_id=Auth::user()->id; 
        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
        
-       $profile=social_profiles::where('org_id', $org_id)
+       $profile=SocialProfiles::where('org_id', $org_id)
        ->where('platform', 'twitter')->first();
 
        if(is_null($profile)){
            // Create Profile 
-           $create_profile=new social_profiles; 
+           $create_profile=new SocialProfiles; 
            $create_profile->org_id=$org_id; 
            $create_profile->platform='twitter'; 
            $create_profile->link='https://twitter.com/'.$this->twitterUpdated; 
@@ -480,7 +480,7 @@ class AccountSetup extends Component
        else{
            
                // Update Profile
-               $update_profile=social_profiles::where('org_id', $org_id)
+               $update_profile=SocialProfiles::where('org_id', $org_id)
                ->where('platform', 'twitter')->first();
                $update_profile->link='https://twitter.com/'.$this->twitterUpdated; 
    
@@ -496,12 +496,12 @@ class AccountSetup extends Component
         $user_id=Auth::user()->id; 
         $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
         
-        $profile=social_profiles::where('org_id', $org_id)
+        $profile=SocialProfiles::where('org_id', $org_id)
         ->where('platform', 'dribbble')->first();
 
         if(is_null($profile)){
             // Create Profile 
-            $create_profile=new social_profiles; 
+            $create_profile=new SocialProfiles; 
             $create_profile->org_id=$org_id; 
             $create_profile->platform='dribbble'; 
             $create_profile->link='https://dribbble.com/'.$this->dribbbleUpdated; 
@@ -513,7 +513,7 @@ class AccountSetup extends Component
             
             
                 // Update Profile
-                $update_profile=social_profiles::where('org_id', $org_id)
+                $update_profile=SocialProfiles::where('org_id', $org_id)
                 ->where('platform', 'dribbble')->first();
                 $update_profile->link='https://dribbble.com/'.$this->dribbbleUpdated; 
     
@@ -528,12 +528,12 @@ class AccountSetup extends Component
        $user_id=Auth::user()->id; 
        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
        
-       $profile=social_profiles::where('org_id', $org_id)
+       $profile=SocialProfiles::where('org_id', $org_id)
        ->where('platform', 'github')->first();
 
        if(is_null($profile)){
            // Create Profile 
-           $create_profile=new social_profiles; 
+           $create_profile=new SocialProfiles; 
            $create_profile->org_id=$org_id; 
            $create_profile->platform='github'; 
            $create_profile->link='https://github.com/'.$this->githubUpdated; 
@@ -546,7 +546,7 @@ class AccountSetup extends Component
         // dd($this->githubUpdated);
                // Update Profile
                $username=$this->githubUpdated; 
-               $update_profile=social_profiles::where('org_id', $org_id)
+               $update_profile=SocialProfiles::where('org_id', $org_id)
                ->where('platform', 'github')->first();
                $update_profile->link='https://github.com/'.$username; 
 
@@ -561,14 +561,14 @@ class AccountSetup extends Component
        $user_id=Auth::user()->id; 
        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
        
-       $profile=social_profiles::where([
+       $profile=SocialProfiles::where([
            ['org_id', $org_id], 
            ['platform', 'linkedin'],
         ])->first();
 
        if(is_null($profile)){
            // Create Profile 
-           $create_profile=new social_profiles; 
+           $create_profile=new SocialProfiles; 
            $create_profile->org_id=$org_id; 
            $create_profile->platform='linkedin'; 
            $create_profile->link='https://linkedin.com/company'.'/'.$this->linkedinUpdated;           
@@ -580,7 +580,7 @@ class AccountSetup extends Component
            
            
                // Update Profile
-               $update_profile=social_profiles::where('org_id', $org_id)
+               $update_profile=SocialProfiles::where('org_id', $org_id)
                ->where('platform', 'linkedin')->first();
                $update_profile->link='https://linkedin.com/company'.'/'.$this->linkedinUpdated; 
    
@@ -626,7 +626,7 @@ class AccountSetup extends Component
          
          if(is_null($org)) {
 
-            $create_organization=new org_profiles;
+            $create_organization=new OrgProfiles;
             $create_organization->org_name='';
             $create_organization->save();
             
@@ -642,7 +642,7 @@ class AccountSetup extends Component
          }
          else{
 
-            $update_details=org_profiles::where('id', $org->id)->first();
+            $update_details=OrgProfiles::where('id', $org->id)->first();
             $update_details->org_name=$this->company_name;
             $update_details->save();
 
@@ -656,7 +656,7 @@ class AccountSetup extends Component
        
        if(is_null($org)) {
 
-          $create_organization=new org_profiles;
+          $create_organization=new OrgProfiles;
           $create_organization->org_email='';
           $create_organization->save();
           
@@ -672,7 +672,7 @@ class AccountSetup extends Component
        }
        else{
 
-          $update_details=org_profiles::where('id', $org->id)->first();
+          $update_details=OrgProfiles::where('id', $org->id)->first();
           $update_details->org_email=$this->company_email;
           $update_details->save();
 
@@ -687,7 +687,7 @@ class AccountSetup extends Component
     
     if(is_null($org)) {
 
-       $create_organization=new org_profiles;
+       $create_organization=new OrgProfiles;
        $create_organization->org_address='';
        $create_organization->save();
        
@@ -703,7 +703,7 @@ class AccountSetup extends Component
     }
     else{
 
-       $update_details=org_profiles::where('id', $org->id)->first();
+       $update_details=OrgProfiles::where('id', $org->id)->first();
        $update_details->org_address=$this->company_address;
        $update_details->save();
 
@@ -718,7 +718,7 @@ public function updatedCompanyCity(){
     
     if(is_null($org)) {
 
-       $create_organization=new org_profiles;
+       $create_organization=new OrgProfiles;
        $create_organization->org_city='';
        $create_organization->save();
        
@@ -733,7 +733,7 @@ public function updatedCompanyCity(){
     }
     else{
 
-       $update_details=org_profiles::where('id', $org->id)->first();
+       $update_details=OrgProfiles::where('id', $org->id)->first();
        $update_details->org_city=$this->company_city;
        $update_details->save();
 
@@ -749,7 +749,7 @@ public function updatedCompanyCountry(){
     
     if(is_null($org)) {
 
-       $create_organization=new org_profiles;
+       $create_organization=new OrgProfiles;
        $create_organization->org_country='';
        $create_organization->save();
        
@@ -764,7 +764,7 @@ public function updatedCompanyCountry(){
     }
     else{
 
-       $update_details=org_profiles::where('id', $org->id)->first();
+       $update_details=OrgProfiles::where('id', $org->id)->first();
        $update_details->org_country=$this->company_country;
        $update_details->save();
 
