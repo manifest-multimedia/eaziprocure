@@ -1,5 +1,8 @@
-<!-- Content Wrapper START -->
-<div class="main-content">
+<x-backend-layout> 
+    <x-slot name="title"> 
+        EaziProcure &mdash; Shopping Area
+    </x-slot>
+
     <div class="page-header">
         <h2 class="header-title">Orders List</h2>
         <div class="header-sub-title">
@@ -301,5 +304,4 @@
             </div>
         </div>
     </div>
-</div>
-<!-- Content Wrapper END -->
+</x-backend-layout>

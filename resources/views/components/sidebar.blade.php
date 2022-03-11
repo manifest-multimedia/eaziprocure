@@ -70,7 +70,16 @@
             </li>
 
             <li class="nav-item">
-                <a href="/user/profile">
+                <a href="/account-setup">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-idcard"></i>
+                    </span>
+                    <span class="title">Complete Setup</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/shopping-area">
                     <span class="icon-holder">
                         <i class="anticon anticon-shopping-cart"></i>
                     </span>
@@ -79,13 +88,16 @@
             </li>
 
             <li class="nav-item">
-                <a href="/shopping-area">
+                <a href="/user/profile">
                     <span class="icon-holder">
                         <i class="anticon anticon-user"></i>
                     </span>
-                    <span class="title">Profile</span>
+                    <span class="title">User Profile</span>
                 </a>
             </li>
+
+           
+
             @endcan
           
             {{-- Staff Menu --}}

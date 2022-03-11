@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class org_profiles extends Model
+class OrgProfiles extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class org_profiles extends Model
 
     public function socials()
     {
-        return $this->hasMany(social_profiles::class); 
+        return $this->hasMany(SocialProfiles::class); 
     }
 
 }

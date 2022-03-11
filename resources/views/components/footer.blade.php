@@ -59,8 +59,8 @@ $(document).ready(function(e) {
 
 <!-- Page Container END -->
 
-<script src="//unpkg.com/alpinejs" defer></script>
 <livewire:scripts />
+<script src="//unpkg.com/alpinejs" defer></script>
 
 </body>
 
