@@ -47,11 +47,8 @@ $(document).ready(function(e) {
 });
 
 </script> 
-
- 
     
-    </div>
-    </div>
+    
     @stack('modals')
 
     <livewire:scripts />
@@ -65,7 +62,8 @@ $(document).ready(function(e) {
    
 </footer>
 <!-- Footer END -->
-
+</div>
+</div>
 </div>
 
 <!-- Page Container END -->

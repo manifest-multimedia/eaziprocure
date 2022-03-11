@@ -27,7 +27,6 @@
 {{$slot}}
 </div>
 
+<x-footer /> 
 </div>
 
-
-<x-footer /> 

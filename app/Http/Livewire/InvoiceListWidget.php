@@ -8,9 +8,9 @@ class InvoiceListWidget extends Component
 {
 
     public $invoices=[];
-
+    
     public function mount(){
-        
+
     }
 
     public function render()
