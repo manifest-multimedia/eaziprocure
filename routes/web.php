@@ -28,11 +28,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardCont
 
 Route::get('/account-setup', function(){ return view('settings.account-setup');})->name('account_setup'); 
 Route::get('/shopping-area', function(){ return view('shopping-area'); })->name('shopping-area'); 
-Route::get('/organizations', function(){ return view('organizations'); 
 
+Route::get('/organizations', function(){ return view('marketplace');}); 
+Route::get('/sms', function(){ return view('sms'); });
 Route::get('/upgrade', function(){ return view('upgrade'); });
 Route::get('/disabled', function() { return view('disabled');})->name('account_disabled'); 
 Route::get('/deleted', function() { return view('disabled');})->name('account_deleted'); 
 Route::get('/invitation/{user}/{org}', [InvitationController::class, 'getInvidationDetails']);
 
-});

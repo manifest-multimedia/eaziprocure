@@ -74,10 +74,36 @@
                     <span class="icon-holder">
                         <i class="anticon anticon-idcard"></i>
                     </span>
-                    <span class="title">Complete Setup</span>
+                    <span class="title">Account Setup</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('organizations')}}">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-solution"></i>
+                    </span>
+                    <span class="title">Businesses</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('invoices')}}">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-file"></i>
+                    </span>
+                    <span class="title">Invoices</span>
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a href="{{url('sms')}}">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-message"></i>
+                    </span>
+                    <span class="title">SMS</span>
+                </a>
+            </li>
+
+            
             <li class="nav-item">
                 <a href="/shopping-area">
                     <span class="icon-holder">
@@ -86,6 +112,8 @@
                     <span class="title">Shopping Area</span>
                 </a>
             </li>
+            
+          
 
             <li class="nav-item">
                 <a href="/user/profile">
@@ -96,7 +124,18 @@
                 </a>
             </li>
 
-           
+            
+
+            <li class="nav-item">
+                <a href="/user/profile">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-logout"></i>
+                    </span>
+                    <span class="title">Logout</span>
+                </a>
+            </li>
+
+
 
             @endcan
           
