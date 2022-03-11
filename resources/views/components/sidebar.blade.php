@@ -126,14 +126,7 @@
 
             
 
-            <li class="nav-item">
-                <a href="/user/profile">
-                    <span class="icon-holder">
-                        <i class="anticon anticon-logout"></i>
-                    </span>
-                    <span class="title">Logout</span>
-                </a>
-            </li>
+           @component('components.logout-link') @endcomponent 
 
 
 

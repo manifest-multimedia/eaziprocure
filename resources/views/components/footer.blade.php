@@ -11,10 +11,27 @@
 {{-- Scripts --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="{{asset('js/vendors.min.js')}}"></script>
-<script src="{{asset('js/pages/pricing.js')}}"></script>
-<script src="{{asset('js/app.min.js')}}"></script>
-<script src="{{asset('js/pages/dashboard-crm.js')}}"></script>
+
+<!-- Core JS -->
+<script src="{{asset('js/app.min.js')}}" defer></script>
+
+<!-- Core Vendors JS -->
+<script src="{{asset('js/vendors.min.js')}}" defer></script>
+
+<!-- page js -->
+<script src="{{asset('js/pages/pricing.js')}}" defer></script>
+<script src="{{asset('vendors/chartjs/Chart.min.js')}}" defer></script>
+<script src="{{asset('js/pages/dashboard-crm.js')}}" defer></script>
+{{-- <script src="{{asset('js/pages/dashboard-default.js')}}" defer></script> --}}
+
+    <!-- Sweet Alert --> 
+    @include('sweetalert::alert')
+    <!-- Sweet Alert --> 
+
+   {{-- Load Search  --}}
+    
+   {{-- Load Quick View --}}
+
 {{-- Account Setup Next Button Script --}}
 <script> 
 $(document).ready(function(e) {
@@ -31,26 +48,20 @@ $(document).ready(function(e) {
 
 </script> 
 
-    {{-- Load Search  --}}
-    {{-- Load Quick View --}}
+ 
     
     </div>
     </div>
-    <!-- Sweet Alert --> 
-    @include('sweetalert::alert')
-    <!-- Sweet Alert --> 
-    <!-- Core Vendors JS -->
-    <script src="{{asset('js/vendors.min.js')}}" defer></script>
-    
-    <!-- page js -->
-    <script src="{{asset('vendors/chartjs/Chart.min.js')}}" defer></script>
-    <script src="{{asset('js/pages/dashboard-default.js')}}" defer></script>
-    
-    <!-- Core JS -->
-    <script src="{{asset('js/app.min.js')}}" defer></script>
-    
     @stack('modals')
-    {{-- @livewireScripts --}}
+
+    <livewire:scripts />
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <script> 
+    function logout() {
+        document.getElementById('logout').submit(); 
+    }
+    </script> 
    
 </footer>
 <!-- Footer END -->
@@ -58,9 +69,6 @@ $(document).ready(function(e) {
 </div>
 
 <!-- Page Container END -->
-
-<livewire:scripts />
-<script src="//unpkg.com/alpinejs" defer></script>
 
 </body>
 
