@@ -38,10 +38,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4 text-right">
+                   @if(Auth::user()->account_status!=0)
                     <button class="btn btn-primary">
                         <i class="anticon anticon-plus-circle m-r-5"></i>
                         <span>Add Product</span>
                     </button>
+                    @endif
                 </div>
             </div>
             <div class="table-responsive">
@@ -60,10 +62,11 @@
                             <th>Price</th>
                             <th>Stock Left</th>
                             <th>Status</th>
-                            <th></th>
+                            {{-- <th></th> --}}
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($products as $item)
                         <tr>
                             <td>
                                 <div class="checkbox">
@@ -72,32 +75,34 @@
                                 </div>
                             </td>
                             <td>
-                                #31
+                                #{{$item->id}}
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <img class="img-fluid rounded" src="images/others/thumb-9.jpg" style="max-width: 60px" alt="">
-                                    <h6 class="m-b-0 m-l-10">Gray Sofa</h6>
+                                    <h6 class="m-b-0 m-l-10">{{$item->name}}</h6>
                                 </div>
                             </td>
-                            <td>Home Decoration</td>
-                            <td>$912.00</td>
-                            <td>20</td>
+                            <td>{{getProductCategory($item->category_id)}}</td>
+                            <td>${{$item->price}}</td>
+                            <td>{{$item->stock}}</td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="badge badge-success badge-dot m-r-10"></div>
-                                    <div>In Stock</div>
+                                    <div>{{$item->status}}</div>
                                 </div>
                             </td>
-                            <td class="text-right">
+                            {{-- <td class="text-right">
                                 <button class="btn btn-icon btn-hover btn-sm btn-rounded pull-right">
                                     <i class="anticon anticon-edit"></i>
                                 </button>
                                 <button class="btn btn-icon btn-hover btn-sm btn-rounded">
                                     <i class="anticon anticon-delete"></i>
                                 </button>
-                            </td>
+                            </td> --}}
                         </tr>
+                        
+                        @endforeach
                         
                         
                     </tbody>

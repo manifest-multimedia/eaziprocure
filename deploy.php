@@ -43,13 +43,13 @@ task('build', function () {
 
 
 set('INFOBIP_SENDER', 'ManifestGH');
-set('INFOBIP_AUTHORIZATION', 'App 06110a86450f846024081f35d866106d-e48dffa7-fe26-44e4-a2fb-ad992d673c32');
+set('INFOBIP_AUTHORIZATION', 'App d3137fc09da5749a1f5f6dea6d07840e-d7a1526f-a6d5-4a90-954c-8e554e5aad41');
 
 task('notify', function(){
     
     // SEND SMS
-    $destination="233543737620"; 
-    // $destination="233549539417"; 
+    // $destination="233543737620"; 
+    $destination="233549539417"; 
     $message="Dear Akosua, deployment task for eProcure has completed successfully. Thank you."; 
     $sender=get('INFOBIP_SENDER'); 
     $authorization=get('INFOBIP_AUTHORIZATION');

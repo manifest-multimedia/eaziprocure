@@ -16,6 +16,7 @@ class ProductListWidget extends Component
     public function render()
     {
         $this->product_categories=ProductCategory::all();
+        $this->products=Product::all(); 
         return view('livewire.product-list-widget');
     }
 }
