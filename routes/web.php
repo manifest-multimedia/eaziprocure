@@ -31,6 +31,8 @@ Route::get('/shopping-area', function(){ return view('shopping-area'); })->name(
 
 Route::get('/organizations', function(){ return view('marketplace');}); 
 Route::get('/sms', function(){ return view('sms'); });
+Route::get('/invoices', function(){ return view('invoices.list'); });
+Route::get('/create-invoice', function(){ return view('invoices.new'); });
 Route::get('/upgrade', function(){ return view('upgrade'); });
 Route::get('/disabled', function() { return view('disabled');})->name('account_disabled'); 
 Route::get('/deleted', function() { return view('disabled');})->name('account_deleted'); 
