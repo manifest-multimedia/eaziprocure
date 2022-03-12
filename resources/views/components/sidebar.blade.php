@@ -125,9 +125,8 @@
             </li>
 
             
-
-           @component('components.logout-link') @endcomponent 
-
+            <x-logout-link /> 
+           
 
 
             @endcan

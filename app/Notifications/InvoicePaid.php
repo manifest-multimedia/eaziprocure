@@ -16,9 +16,16 @@ class InvoicePaid extends Notification
      *
      * @return void
      */
-    public function __construct()
+
+     public $invoice_date; 
+     public $invoice_amount; 
+     public $invoice_id;
+
+    public function __construct($data)
     {
-        //
+        $this->invoice_date=$data->invoice_date;
+        $this->invoice_id=$data->invoice_id; 
+        $this->invoice_amount=$data->invoice_amount; 
     }
 
     /**
@@ -47,6 +54,12 @@ class InvoicePaid extends Notification
     }
 
     public function toDatabase($notifiable) {
+
+        return [
+            'invoice_id'=>$this->invoice_id, 
+            'date_created'=>$this->invoice_date, 
+            'amount'=>$this->invoice_amount,
+        ];
         
     }
 

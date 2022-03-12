@@ -60,6 +60,9 @@ $(document).ready(function(e) {
     }
     </script> 
    
+   {{-- Chart Data --}}
+   @livewire('chart-data')
+
 </footer>
 <!-- Footer END -->
 </div>
