@@ -11,9 +11,8 @@ class OveralRatingWidget extends Component
 
     public function mount(){
 
-        $this->rating=5; 
+        $this->rating=''; 
 
-    
     }
 
     public function render()

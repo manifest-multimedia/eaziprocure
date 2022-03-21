@@ -14,12 +14,13 @@
                 </div>
             
                     @break
+
                 @case(2)
+
                 <div class="star-rating m-t-15">
                     <input type="radio" id="star1-5" name="rating-1" value="5" checked disabled/><label for="star1-5" title="5 star"></label>
                     <input type="radio" id="star1-4" name="rating-1" value="4" disabled/><label for="star1-4" title="4 star"></label>
                 </div>
-            
                     
                     @break
 
@@ -45,6 +46,7 @@
                     @break
 
                 @case(5)
+
                 <div class="star-rating m-t-15">
                     <input type="radio" id="star1-5" name="rating-1" value="5" checked disabled/><label for="star1-5" title="5 star"></label>
                     <input type="radio" id="star1-4" name="rating-1" value="4" disabled/><label for="star1-4" title="4 star"></label>
@@ -54,6 +56,7 @@
                 </div>
             
                     @break
+                    
                 @default
                     
             @endswitch
