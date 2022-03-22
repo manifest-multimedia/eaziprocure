@@ -2,6 +2,7 @@
 
 use App\Models\UserOrganizations; 
 use App\Models\OrgProfiles;
+use App\Models\ProductCategory; 
 
 if (! function_exists('SMSnotify')){
      
@@ -65,7 +66,13 @@ if(!function_exists('getCustomerLogo')){
     }
 }
 
+if(!function_exists('getProductCategory')){
+    function getProductCategory($id){
+        $category=ProductCategory::find($id)->name; 
+        return $category;
+    }
 
+}
 
 if(!function_exists('getCountriesList')) {
     function getCountriesList(){

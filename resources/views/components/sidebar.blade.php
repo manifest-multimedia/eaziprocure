@@ -70,14 +70,6 @@
             </li>
 
             <li class="nav-item">
-                <a href="/account-setup">
-                    <span class="icon-holder">
-                        <i class="anticon anticon-idcard"></i>
-                    </span>
-                    <span class="title">Account Setup</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{url('organizations')}}">
                     <span class="icon-holder">
                         <i class="anticon anticon-solution"></i>
@@ -85,44 +77,107 @@
                     <span class="title">Businesses</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{url('invoices')}}">
-                    <span class="icon-holder">
-                        <i class="anticon anticon-file"></i>
-                    </span>
-                    <span class="title">Invoices</span>
-                </a>
-            </li>
 
-            <li class="nav-item">
-                <a href="{{url('sms')}}">
-                    <span class="icon-holder">
-                        <i class="anticon anticon-message"></i>
-                    </span>
-                    <span class="title">SMS</span>
-                </a>
-            </li>
-
-            
+           
             <li class="nav-item">
                 <a href="/shopping-area">
                     <span class="icon-holder">
-                        <i class="anticon anticon-shopping-cart"></i>
+                        <i class="anticon anticon-shop"></i>
                     </span>
                     <span class="title">Shopping Area</span>
                 </a>
             </li>
             
-          
+            
 
-            <li class="nav-item">
-                <a href="/user/profile">
-                    <span class="icon-holder">
-                        <i class="anticon anticon-user"></i>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);"> 
+                    <span class="icon-holder"> 
+                        <i class="anticon anticon-container"> </i>
                     </span>
-                    <span class="title">User Profile</span>
+                    <span class="title"> Procurement </span>
+                    <span class="arrow">
+                    <i class="arrow-icon"></i>
+                    </span>
                 </a>
+                
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('tenders')}}">View Tenders</a></li>
+                    <li><a href="{{url('new-tender')}}">Create Tender</a></li>
+                    <li><a href="{{url('edit-tender')}}">Edit Tender</a></li>
+                    <li><a href="{{url('tender-history')}}">History</a></li>
+                </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);"> 
+                    <span class="icon-holder"> 
+                        <i class="anticon anticon-dollar"> </i>
+                    </span>
+                    <span class="title"> Finance </span>
+                    <span class="arrow">
+                    <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('quotes')}}"> Quotes</a></li>
+                    <li><a href="{{url('invoices')}}">Invoices</a></li>
+                    <li><a href="{{url('finance-reports')}}">Reports</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);"> 
+                    <span class="icon-holder"> 
+                        <i class="anticon anticon-shopping-cart"> </i>
+                    </span>
+                    <span class="title"> Products </span>
+                    <span class="arrow">
+                    <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                
+                <ul class="dropdown-menu">
+                    <li><a href="">Add New Product</a></li>
+                    <li><a href="">View Products</a></li>
+                    <li><a href=""> Stock Management</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);"> 
+                    <span class="icon-holder"> 
+                        <i class="anticon anticon-team"> </i>
+                    </span>
+                    <span class="title"> CRM </span>
+                    <span class="arrow">
+                    <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('sms')}}">SMS</a></li>
+                    <li><a href="{{url('contacts')}}">Contacts</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);"> 
+                    <span class="icon-holder"> 
+                        <i class="anticon anticon-setting"> </i>
+                    </span>
+                    <span class="title"> Settings </span>
+                    <span class="arrow">
+                    <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('account-setup')}}">Account Setup</a></li>
+                    <li><a href="{{url('upgrade')}}">Upgrade </a></li>
+                    <li><a href="{{url('user/profile')}}">User Profile</a></li>
+                    <li><a href="{{url('business-profiles')}}">Business Profiles</a></li>
+                </ul>
+            </li>
+
+           
 
             
             <x-logout-link /> 

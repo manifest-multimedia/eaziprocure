@@ -3,8 +3,6 @@
         EaziProcure &mdash; Dashboard
     </x-slot>
 
-Admin Dashboard
-
-      
+Admin Dashboard 
 
 </x-backend-layout>
