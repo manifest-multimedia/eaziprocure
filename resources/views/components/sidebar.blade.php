@@ -137,9 +137,9 @@
                 </a>
                 
                 <ul class="dropdown-menu">
-                    <li><a href="">Add New Product</a></li>
-                    <li><a href="">View Products</a></li>
-                    <li><a href=""> Stock Management</a></li>
+                    <li><a href="{{url('products')}}">Add New Product</a></li>
+                    <li><a href="{{url('new-product')}}">View Products</a></li>
+                    <li><a href="{{url('stock-management')}}"> Stock Management</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">

@@ -43,9 +43,9 @@ Route::get('/create-invoice', function(){ return view('invoices.new'); });
 Route::get('finance-reports', function(){ return view('reports.financial-reports');})->name('reports');
 
 //Products 
-Route::get('products', function(){ return '';})->name('products');
-Route::get('new-product', function(){ return '';})->name('new-product');
-Route::get('stock-management', function(){ return '';})->name('stocks');
+Route::get('products', function(){ return view('products.list');})->name('products');
+Route::get('new-product', function(){ return view('products.create');})->name('new-product');
+Route::get('stock-management', function(){ return view('products.stock-management');})->name('stocks');
 
 //Contracts
 Route::get('/new-contract', function(){ return '';})->name('contract'); 
