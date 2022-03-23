@@ -28,10 +28,10 @@ add('writable_dirs', []);
 // Hosts
 
 host('18.119.130.230')
-->user('ubuntu')
+->user('mccallys')
 ->become('root')
 ->port(22)
-->identityFile('~/.ssh/mccallys.pem')
+// ->identityFile('~/.ssh/mccallys.pem')
 ->forwardAgent(true)
     ->set('deploy_path', '/var/www/eaziprocure.com');
 

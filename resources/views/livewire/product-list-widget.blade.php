@@ -27,6 +27,7 @@
                                 
                             </select>
                         </div>
+                        
                         <div class="m-b-10">
                             <select class="custom-select" style="min-width: 180px;">
                                 <option selected>Status</option>
@@ -35,15 +36,23 @@
                                 <option value="outOfStock">Out of Stock</option>
                             </select>
                         </div>
+
+                        <div class="col-md-9">
+                                <div class="input-affix">
+                                    <i class="prefix-icon anticon anticon-search opacity-04"></i>
+                                    <input type="text" class="form-control" placeholder="Product Search" wire:model='livesearch'>
+                                </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 text-right">
-                   @if(Auth::user()->account_status!=0)
-                    <button class="btn btn-primary">
+                   {{-- @if(Auth::user()->account_status!=0) --}}
+                    <a href="{{url('new-product')}}" class="btn btn-primary">
                         <i class="anticon anticon-plus-circle m-r-5"></i>
                         <span>Add Product</span>
-                    </button>
-                    @endif
+                    </a>
+                    {{-- @endif --}}
                 </div>
             </div>
             <div class="table-responsive">
@@ -56,7 +65,7 @@
                                     <label for="checkAll" class="m-b-0"></label>
                                 </div>
                             </th>
-                            <th>ID</th>
+                            {{-- <th>ID</th> --}}
                             <th>Product</th>
                             <th>Category</th>
                             <th>Price</th>
@@ -74,9 +83,9 @@
                                     <label for="check-item-1" class="m-b-0"></label>
                                 </div>
                             </td>
-                            <td>
+                            {{-- <td>
                                 #{{$item->id}}
-                            </td>
+                            </td> --}}
                             <td>
                                 <div class="d-flex align-items-center">
                                     <img class="img-fluid rounded" src="images/others/thumb-9.jpg" style="max-width: 60px" alt="">
