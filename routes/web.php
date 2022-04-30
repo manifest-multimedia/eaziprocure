@@ -20,7 +20,8 @@ use App\Notifications\NewAccountSMSNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\InvitationController; 
 
-Route::view('/', 'auth.login');
+Route::view('/', 'frontend.home')->name('home');
+// Route::view('/', 'auth.login');
 Route::view('/legal', 'terms')->name('legal');
 Route::view('/privacy', 'privacy')->name('privacy');
 
