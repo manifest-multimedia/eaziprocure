@@ -94,7 +94,7 @@
 </section>
 <!--====== Partners Section End ======-->
 
-    <x-frontend-services />
+    {{-- <x-frontend-services /> --}}
 
     {{-- <!--====== Solutions Section Start ======-->
     <section class="solutions-section rel z-1 pb-100 rpb-70">

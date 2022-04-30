@@ -98,7 +98,7 @@
         <!--====== Isotope ======-->
         <script src="{{asset('frontend/js/isotope.pkgd.min.js')}}"></script>
         <!--====== Circle Progress ======-->
-        <script src="asset('frontend/js/circle-progress.min.js')"></script>
+        <script src="{{asset('frontend/js/circle-progress.min.js')}}"></script>
         <!--====== Image loaded ======-->
         <script src="{{asset('frontend/js/imagesloaded.pkgd.min.js')}}"></script>
         <!--====== Nice Select ======-->
