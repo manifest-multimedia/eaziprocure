@@ -41,11 +41,11 @@ class WelcomeEmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('⚡ Welcome to EaziProcure')
+                    ->subject('⚡ Welcome to Eazibusiness')
                     ->greeting('Hello '.getFirstName($notifiable->name).'!')
-                    ->line('Welcome to EaziProcure and thanks for singing up! You have joined thousands of organizations just like yours who manage their procurements with EaziProcure.')
-                    ->action('Sign In To Your Account', url('https://eaziprocure.com'))
-                    ->line('We hope you enjoy this opportunity to take EaziProcure for a spin. Feel free to kick the tires and get acquainted with no limits and no obligations on your forever free plan!')
+                    ->line('Welcome to Eazibusiness and thanks for singing up! You have joined thousands of organizations just like yours who manage their entire business processes in one place with Eazibusiness.')
+                    ->action('Sign In To Your Account', url('https://eazibusiness.com/login'))
+                    ->line('We hope you enjoy this opportunity to take Eazibusiness for a spin. Feel free to kick the tires and get acquainted with no limits and no obligations on your forever free plan!')
                     ->line('PS: You can always upgrade to a paid plan anytime to enjoy more features and limitless possibilities!');   
     }
 
