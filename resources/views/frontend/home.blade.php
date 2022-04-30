@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-xl-7 col-lg-10">
                <div class="section-title mb-45">
-                   <h2>Running <span>1000s</span> Updates & Deployments Weekly</h2>
+                   <h2>Running <span>100s</span> of Updates & Deployments Weekly</h2>
                </div>
                 {{-- <div class="row">
                     <div class="col-lg-3 col-sm-4 col-6">
