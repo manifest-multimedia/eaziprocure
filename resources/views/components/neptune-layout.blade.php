@@ -69,10 +69,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col">
-                                    {{-- <div class="page-description">
-                                        <h1>Large Header</h1>
-                                        <span>Large header with toolbar.</span>
-                                    </div> --}}
+                                  <x-neptune-large-header />
                                 </div>
                             </div>
                             <div class="row">
