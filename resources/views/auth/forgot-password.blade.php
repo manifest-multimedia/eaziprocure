@@ -1,6 +1,6 @@
-@extends('layouts.auth')
-@section('title', 'Recover')
-@section('form')
+<x-neptune-auth-layout> 
+<x-slot name="title"> Recover </x-slot>
+
 <div class="mb-4 text-sm text-gray-600 text-center">
     {{ __('Forgot your password? Enter your email for a password reset link to recover your account.') }}
 </div>
@@ -29,8 +29,4 @@
     </div>
 </form>
 
-    
-@endsection 
-    
-
-   
+</x-neptune-auth-layout>

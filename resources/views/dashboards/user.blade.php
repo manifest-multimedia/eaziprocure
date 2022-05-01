@@ -1,13 +1,13 @@
-<x-backend-layout>  
+<x-neptune-layout>  
 <x-slot name="title"> 
-    EaziProcure &mdash; Dashboard
+    Eazibusiness &mdash; Dashboard
 </x-slot>
 
 <div class="page-header no-gutters">
     <div class="d-md-flex align-items-md-center justify-content-between">
         <div class="media m-v-10 align-items-center">
             <div class="avatar avatar-image avatar-lg">
-                <img src="{{ Auth::user()->profile_photo_url }}" alt="profile-photo">
+                {{-- <img src="{{ Auth::user()->profile_photo_url }}" alt="profile-photo"> --}}
             </div>
             <div class="media-body m-l-15">
                 <h4 class="m-b-0">Welcome, {{getFirstName(Auth::user()->name)}}!</h4>
@@ -63,4 +63,4 @@
     
     <x-latest-transactions />       
     
-</x-backend-layout>
+</x-neptune-layout>
