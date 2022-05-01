@@ -1,5 +1,3 @@
-
-    <!-- Simplicity is the consequence of refined emotions. - Jean D'Alembert -->
     <!DOCTYPE html>
     <html lang="en">
     
