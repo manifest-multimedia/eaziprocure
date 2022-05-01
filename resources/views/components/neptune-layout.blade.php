@@ -28,8 +28,8 @@
         <link href="{{asset('neptune/css/main.min.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/css/custom.css')}}" rel="stylesheet">
     
-        <link rel="icon" type="image/png" sizes="32x32" href="{{asset('neptune/images/neptune.png')}}" />
-        <link rel="icon" type="image/png" sizes="16x16" href="{{asset('neptune/images/neptune.png')}}" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{{asset('frontend/images/favicon.png')}}" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{{asset('frontend/images/favicon.png')}}" />
     
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,12 +43,14 @@
         <div class="app header-large align-content-stretch d-flex flex-wrap">
             <div class="app-sidebar">
                 <div class="logo">
-                    <a href="index.html" class="logo-icon"><span class="logo-text">Neptune</span></a>
+                    <a href="#" class="logo-icon"><span class="logo-text">Eazibusiness</span></a>
                     <div class="sidebar-user-switcher user-activity-online">
                         <a href="#">
-                            <img src="../../assets/images/avatars/avatar.png">
+                            <img src="{{Auth::user()->profile_photo_url}}">
                             <span class="activity-indicator"></span>
-                            <span class="user-info-text">Chloe<br><span class="user-state-info">On a call</span></span>
+                            <span class="user-info-text">{{getFirstName(Auth::user()->name)}}<br>
+                                {{-- <span class="user-state-info">On a call</span> --}}
+                        </span>
                         </a>
                     </div>
                 </div>
