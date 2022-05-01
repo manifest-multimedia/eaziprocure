@@ -83,6 +83,8 @@
             </div>
         </div>
     
+        @livewire('chart-data')
+
         <!-- Javascripts -->
         <script src="{{asset('neptune/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('neptune/plugins/bootstrap/js/popper.min.js')}}"></script>
