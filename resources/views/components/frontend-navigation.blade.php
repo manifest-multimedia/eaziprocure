@@ -11,7 +11,7 @@
                 <!-- Main Menu -->
                 <nav class="main-menu navbar-expand-lg">
                     <div class="navbar-header">
-                        <div class="logo-mobile"><a href="index.html"><img src="{{asset('frontend/images/logos/logo.png')}}" alt="Logo"></a></div>
+                        <div class="logo-mobile"><a href="{{URL::Route('home')}}"><img src="{{asset('frontend/images/logos/logo.png')}}" alt="Logo"></a></div>
                         <!-- Toggle Button -->
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="main-menu">
                             <span class="icon-bar"></span>
