@@ -49,8 +49,8 @@
                                     <li><a href="team-details.html">Team Profile</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">contact</a></li>
-                        </ul> --}}
+                            <li><a href="contact.html">contact</a></li>--}}
+                        </ul> 
                     </div>
 
                 </nav>

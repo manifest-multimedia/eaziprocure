@@ -87,5 +87,5 @@
     <img class="close-shape" src="{{asset('frontend/images/shapes/close.png')}}" alt="Shape">
     <img class="circle-shape" src="{{asset('frontend/images/shapes/circle.png')}}" alt="Shape">
     <div class="left-circles"></div>
-    <div class="right-circles"></div>
+    {{-- <div class="right-circles"></div> --}}
 </footer>

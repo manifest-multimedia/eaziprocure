@@ -7,7 +7,8 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        {{-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> --}}
+        <meta name="viewport"  />
     
         <!--====== Title ======-->
         <title>EaziBusiness - Complete Business Automation </title>
@@ -48,70 +49,55 @@
             <div class="preloader"></div>
     
     
-        <!--====== Header Part Start ======-->
-        <header class="main-header">
-    
-            <!--Header-Top-->
-            <div class="header-top text-center text-white bg-blue py-5">
-                <div class="container rel z-1">
-                    <p>{{__('Welcome to Eazibusiness - Your Number Complete Business Automation Platform')}}</p>
-                    <img class="header-left-shape" src="{{asset('frontend/images/shapes/header-top-left.png')}}" alt="shape">
-                    <img class="header-right-shape slideLeftRight infinite" src="{{asset('frontend/images/shapes/header-top-right.png')}}" alt="shape">
+            <!--====== Header Part Start ======-->
+            <header class="main-header">
+                <!--Header-Top-->
+                <div class="header-top text-center text-white bg-blue py-5">
+                    <div class="container rel z-1">
+                        <p>{{__('Welcome to Eazibusiness - Your Number Complete Business Automation Platform')}}</p>
+                        <img class="header-left-shape" src="{{asset('frontend/images/shapes/header-top-left.png')}}" alt="shape">
+                        <img class="header-right-shape slideLeftRight infinite" src="{{asset('frontend/images/shapes/header-top-right.png')}}" alt="shape">
+                    </div>
                 </div>
-            </div>
-            
-           <x-frontend-navigation />
+                <x-frontend-navigation />
+            </header>
+            <!--====== Header Part End ======-->
 
-        </header>
-        <!--====== Header Part End ======-->
-
-
-
+            {{$slot}}
         
-
-{{$slot}}
-        
-        
-       
-        </section>
-        <!--====== Blog Section End ======-->
-
-           
             <x-frontend-footer />
             <!--====== Footer Section End ======-->
-    
         </div>
-        <!--End pagewrapper-->
+            <!--End pagewrapper-->
     
-    
-        <!-- Scroll Top Button -->
-        <livewire:scripts />
-        <button class="scroll-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></button>
-    
-        <!--====== Jquery ======-->
-        <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
-        <!--====== Bootstrap ======-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+            <!-- Scroll Top Button -->
+            <livewire:scripts />
+            <button class="scroll-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></button>
+        
+            <!--====== Jquery ======-->
+            <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}" defer></script>
+            <!--====== Bootstrap ======-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous" defer></script>
 
-        <script src="{{asset('frontend/js/bootstrap.4.5.3.min.js')}}" defer></script>
-        <!--====== Appear js ======-->
-        <script src="{{asset('frontend/js/appear.js')}}"></script>
-        <!--====== WOW js ======-->
-        <script src="{{asset('frontend/js/wow.min.js')}}"></script>
-        <!--====== Isotope ======-->
-        <script src="{{asset('frontend/js/isotope.pkgd.min.js')}}"></script>
-        <!--====== Circle Progress ======-->
-        <script src="{{asset('frontend/js/circle-progress.min.js')}}"></script>
-        <!--====== Image loaded ======-->
-        <script src="{{asset('frontend/js/imagesloaded.pkgd.min.js')}}"></script>
-        <!--====== Nice Select ======-->
-        <script src="{{asset('frontend/js/jquery.nice-select.min.js')}}"></script>
-        <!--====== Magnific ======-->
-        <script src="{{asset('frontend/js/jquery.magnific-popup.min.js')}}"></script>
-        <!--====== Slick Slider ======-->
-        <script src="{{asset('frontend/js/slick.min.js')}}"></script>
-        <!--====== Main JS ======-->
-        <script src="{{asset('frontend/js/script.js')}}"></script>
+            <script src="{{asset('frontend/js/bootstrap.4.5.3.min.js')}}" defer></script>
+            <!--====== Appear js ======-->
+            <script src="{{asset('frontend/js/appear.js')}}" defer></script>
+            <!--====== WOW js ======-->
+            <script src="{{asset('frontend/js/wow.min.js')}}" defer></script>
+            <!--====== Isotope ======-->
+            <script src="{{asset('frontend/js/isotope.pkgd.min.js')}}" defer></script>
+            <!--====== Circle Progress ======-->
+            <script src="{{asset('frontend/js/circle-progress.min.js')}}" defer></script>
+            <!--====== Image loaded ======-->
+            <script src="{{asset('frontend/js/imagesloaded.pkgd.min.js')}}" defer></script>
+            <!--====== Nice Select ======-->
+            <script src="{{asset('frontend/js/jquery.nice-select.min.js')}}" defer></script>
+            <!--====== Magnific ======-->
+            <script src="{{asset('frontend/js/jquery.magnific-popup.min.js')}}" defer></script>
+            <!--====== Slick Slider ======-->
+            <script src="{{asset('frontend/js/slick.min.js')}}" defer></script>
+            <!--====== Main JS ======-->
+            <script src="{{asset('frontend/js/script.js')}}" defer></script>
     </body>
-    
-    </html>
+        
+</html>
