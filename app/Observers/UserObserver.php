@@ -16,7 +16,7 @@ class UserObserver
     public function created(User $user)
     {
         // Send Welcome Email When New User is Created
-        // $user->notify(new WelcomeEmailNotification()); 
+         $user->notify(new WelcomeEmailNotification()); 
     }
 
     /**
