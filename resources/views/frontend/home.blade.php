@@ -7,18 +7,18 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-11">
                         <div class="hero-content rmb-75">
-                            <span class="sub-title wow fadeInUp delay-0-2s">Complete Business Automation Software</span>
-                            <h1 class="mb-15 wow fadeInUp delay-0-4s">One App for All Your Business Needs!</h1>
-                            <p class="wow fadeInUp delay-0-5s">Eazibusiness is built to do the heavy lifting so you can run your business with breeze! Running a business has never been easier!</p>
+                            <span class="sub-title wow fadeInUp delay-0-2s">{{__('Complete Business Automation Software')}}</span>
+                            <h1 class="mb-15 wow fadeInUp delay-0-4s">{{__('One App for All Your Business Needs!')}}</h1>
+                            <p class="wow fadeInUp delay-0-5s">{{__('Eazibusiness is built to do the heavy lifting so you can run your business with breeze! Running a business has never been easier!')}}</p>
                             <ul class="list-style-one mt-30 wow fadeInUp delay-0-6s">
-                                <li>Enjoy 14-day free trial</li>
-                                <li> Access to All Premium Features during trial</li>
-                                <li> Complete Whitelable Solution for Partners</li>
-                                <li> Restful API for Developers</li>
+                                <li>{{__('Enjoy 14-day free trial')}}</li>
+                                <li> {{__('Access to All Premium Features during trial')}}</li>
+                                <li> {{__('Complete Whitelable Solution for Partners')}}</li>
+                                <li> {{__('Restful API for Developers')}}</li>
                             </ul>
                             <div class="hero-btns mt-40 wow fadeInUp delay-0-8s">
-                                <a href="{{URL::Route('register')}}" class="theme-btn mb-15">Get Free 14 Day Trial  <i class="fas fa-arrow-right"></i></a>
-                                <a href="{{URL::Route('home')}}" class="theme-btn style-two mb-15">Learn More <i class="fas fa-arrow-right"></i></a>
+                                <a href="{{URL::Route('register')}}" class="theme-btn mb-15">{{__('Get Free 14 Day Trial')}}<i class="fas fa-arrow-right"></i></a>
+                                <a href="{{URL::Route('home')}}" class="theme-btn style-two mb-15">{{__('Learn More')}} <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-xl-7 col-lg-10">
                <div class="section-title mb-45">
-                   <h2>Running <span>100s</span> of Updates & Deployments Weekly</h2>
+                   <h2>{{__('Running')}} <span>{{__('100s')}}</span> {{__('of Updates & Deployments Weekly')}}</h2>
                </div>
                 {{-- <div class="row">
                     <div class="col-lg-3 col-sm-4 col-6">

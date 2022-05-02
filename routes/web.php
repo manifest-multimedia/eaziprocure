@@ -20,7 +20,17 @@ use App\Notifications\NewAccountSMSNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\InvitationController; 
 
-Route::view('/', 'frontend.home')->name('home');
+Route::get('/{locale?}', function($locale=null) {
+
+    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+
+        app()->setLocale($locale);
+        # code...
+    }
+
+    return view('frontend.home');
+}
+)->name('home');
 Route::view('/test', 'frontend.test')->name('test');
 // Route::view('/', 'auth.login');
 Route::view('/legal', 'terms')->name('legal');

@@ -37,7 +37,8 @@
         <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
         <!--====== Responsive css ======-->
         <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
-    
+        <livewire:styles />
+        
     </head>
     
     <body>
@@ -53,7 +54,7 @@
             <!--Header-Top-->
             <div class="header-top text-center text-white bg-blue py-5">
                 <div class="container rel z-1">
-                    <p>Welcome to Eazibusiness - Your Number Complete Business Automation Platform</p>
+                    <p>{{__('Welcome to Eazibusiness - Your Number Complete Business Automation Platform')}}</p>
                     <img class="header-left-shape" src="{{asset('frontend/images/shapes/header-top-left.png')}}" alt="shape">
                     <img class="header-right-shape slideLeftRight infinite" src="{{asset('frontend/images/shapes/header-top-right.png')}}" alt="shape">
                 </div>
@@ -84,13 +85,15 @@
     
     
         <!-- Scroll Top Button -->
+        <livewire:scripts />
         <button class="scroll-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></button>
-    
     
         <!--====== Jquery ======-->
         <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
         <!--====== Bootstrap ======-->
-        <script src="{{asset('frontend/js/bootstrap.4.5.3.min.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+        <script src="{{asset('frontend/js/bootstrap.4.5.3.min.js')}}" defer></script>
         <!--====== Appear js ======-->
         <script src="{{asset('frontend/js/appear.js')}}"></script>
         <!--====== WOW js ======-->
@@ -109,7 +112,6 @@
         <script src="{{asset('frontend/js/slick.min.js')}}"></script>
         <!--====== Main JS ======-->
         <script src="{{asset('frontend/js/script.js')}}"></script>
-    
     </body>
     
     </html>

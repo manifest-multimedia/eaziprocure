@@ -79,7 +79,7 @@
             </div>
         </div> --}}
         <div class="copyright-area text-center">
-            <p>© 2022 <a href="{{URL::Route('home')}}">Eazibusiness.</a> All rights reserved</p>
+            <p>© 2022 <a href="{{URL::Route('home')}}">Eazibusiness.</a> {{__('All rights reserved')}}</p>
         </div>
     </div>
     <img class="dots-shape" src="{{asset('frontend/images/shapes/dots.png')}}" alt="Shape">

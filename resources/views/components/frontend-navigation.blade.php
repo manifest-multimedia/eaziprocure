@@ -62,18 +62,13 @@
                 <div class="nav-search">
                     <button class="fa fa-search"></button>
                     <form action="#" class="hide">
-                        <input type="text" placeholder="Search" class="searchbox" required="">
+                        <input type="text" placeholder="{{__('Search')}}" class="searchbox" required="">
                         <button type="submit" class="searchbutton fa fa-search"></button>
                     </form>
                 </div>
                 
-                <!-- Language Changer-->
-                <select name="language" id="language">
-                    <option value="English">English</option>
-                    <option value="Bengali">French</option>
-                    {{-- <option value="Arabic">Arabic</option> --}}
-                </select>
-                <a href="{{URL::Route('register')}}" class="theme-btn style-two">Get Started <i class="fas fa-arrow-right"></i></a>
+                @livewire('language-switcher')
+                <a href="{{URL::Route('register')}}" class="theme-btn style-two">{{__('Get Started')}} <i class="fas fa-arrow-right"></i></a>
             </div>
 
         </div>

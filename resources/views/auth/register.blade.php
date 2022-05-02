@@ -12,7 +12,7 @@
             @csrf
 
             <div class="form-group">
-                <label for="Name" class="mb-2">Enter full name</label>
+                <label for="Name" class="mb-2">{{__('Enter full name')}}</label>
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" placeholder='Name' required autofocus autocomplete="name" />
             </div>
 
