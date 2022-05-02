@@ -13,8 +13,8 @@
         {{__('Language')}}
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="/">{{__('English')}}</a>
-        <a class="dropdown-item" href="/fr">{{__('French')}}</a>
+        <a class="dropdown-item" href="/language/en">{{__('English')}}</a>
+        <a class="dropdown-item" href="/language/fr">{{__('French')}}</a>
         {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
       </div>
     </div>
