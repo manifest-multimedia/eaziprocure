@@ -27,7 +27,11 @@
         <!-- Theme Styles -->
         <link href="{{asset('neptune/css/main.min.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/css/custom.css')}}" rel="stylesheet">
-    
+        <!--====== Font Awesome ======-->
+        <link rel="stylesheet" href="{{asset('frontend/css/fontawesome.5.9.0.min.css')}}">
+        <!--====== Flaticon CSS ======-->
+        <link rel="stylesheet" href="{{asset('frontend/css/flaticon.css')}}">
+        
         <link rel="icon" type="image/png" sizes="32x32" href="{{asset('frontend/images/favicon.png')}}" />
         <link rel="icon" type="image/png" sizes="16x16" href="{{asset('frontend/images/favicon.png')}}" />
     

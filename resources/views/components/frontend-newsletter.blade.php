@@ -9,7 +9,7 @@
                     <div class="newsletter-content p-60 wow fadeInUp delay-0-2s">
                         <div class="section-title mb-30">
                             <span class="sub-title">{{__('Our Newsletter')}}</span>
-                            <h2>{{__('Subscribe Our Newsletter to Get More Updates')}}</h2>
+                            <h2>{{__('Subscribe to our Newsletter to Get More Updates')}}</h2>
                         </div>
                         <form class="newsletter-form" action="#">
                             <div class="newsletter-email">
