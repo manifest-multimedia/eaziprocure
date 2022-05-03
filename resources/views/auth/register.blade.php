@@ -1,9 +1,9 @@
 <x-neptune-auth-layout>
-<x-slot name='title'> Register </x-slot>
+<x-slot name='title'> {{__('Register')}} </x-slot>
 
 
 
-<p class="auth-description">Create your free account!<br>Enjoy 14-day free trial.</p>
+<p class="auth-description">{{__("Create your free account!")}}<br>{{__('Enjoy 14-day free trial.')}}</p>
 
 
         <x-jet-validation-errors class="mb-4" />
@@ -13,22 +13,22 @@
 
             <div class="form-group">
                 <label for="Name" class="mb-2">{{__('Enter full name')}}</label>
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" placeholder='Name' required autofocus autocomplete="name" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" placeholder="{{__('Name')}}" required autofocus autocomplete="name" />
             </div>
 
             <div class="form-group mt-2 mb-2">
-                <label for="Email" class="mb-2 mt-2">Enter valid business email address </label>
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" placeholder="Email" required />
+                <label for="Email" class="mb-2 mt-2">{{__('Enter valid business email address')}}</label>
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" placeholder="{{__('Email')}}" required />
             </div>
 
             <div class="form-gorup mt-2 mb-2">
-              <label for="password" class="mt-2 mb-2">Enter a secure password</label>  
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" placeholder="Password" required autocomplete="new-password" />
+              <label for="password" class="mt-2 mb-2">{{__('Enter a secure password')}}</label>  
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" placeholder="{{__('Password')}}" required autocomplete="new-password" />
             </div>
 
             <div class="form-group mt-2 mb-2">
-<label for="password_confirmation" class="mt-2 mb-2">Confirm password</label>
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" placeholder='Password Confirmation' required autocomplete="new-password" />
+<label for="password_confirmation" class="mt-2 mb-2">{{__('Confirm password')}}</label>
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" placeholder="{{__('Password Confirmation')}}" required autocomplete="new-password" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
