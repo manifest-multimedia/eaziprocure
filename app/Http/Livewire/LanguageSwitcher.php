@@ -9,7 +9,7 @@ class LanguageSwitcher extends Component
     public $lang;
 
     public function mount(){
-        $this->lang="LN";
+        // $this->lang="LN";
     }
 
     public function render()
@@ -19,6 +19,6 @@ class LanguageSwitcher extends Component
     }
 
     public function updatedLang(){
-        dd('updated');
+      
     }
 }

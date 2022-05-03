@@ -8,7 +8,7 @@
         <option value="French" {{ $ app()->getLocale() === "fr" ? "selected": ""}}>{{__('French')}} {{$lang}}</option>
         <option value="Arabic">Arabic</option> 
     </select>--}}
-    <div class="dropdown" id="language">
+    <div class="dropdown mr-1 ml-1" id="language">
       <button class="btn btn btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{__('Language')}}
       </button>

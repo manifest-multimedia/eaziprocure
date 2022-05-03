@@ -11,7 +11,11 @@
                 <!-- Main Menu -->
                 <nav class="main-menu navbar-expand-lg">
                     <div class="navbar-header">
-                        <div class="logo-mobile"><a href="{{URL::Route('home')}}"><img src="{{asset('frontend/images/logos/logo.png')}}" alt="Logo"></a></div>
+                        <div class="logo-mobile">
+                            <a href="{{URL::Route('home')}}">
+                                <img src="{{asset('frontend/images/logos/logo.png')}}" alt="Logo">
+                            </a>
+                        </div>
                         <!-- Toggle Button -->
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="main-menu">
                             <span class="icon-bar"></span>
@@ -68,7 +72,8 @@
                 </div>
                 
                 @livewire('language-switcher')
-                <a href="{{URL::Route('register')}}" class="theme-btn style-two">{{__('Get Started')}} <i class="fas fa-arrow-right"></i></a>
+                <a href="{{URL::Route('login')}}" class="theme-btn style-three mr-1 ml-1">{{__('Login')}} <i class="fas fa-user"></i></a>
+                <a href="{{URL::Route('register')}}" class="theme-btn style-six mr-1 ml-1">{{__('Get Started')}} <i class="fas fa-arrow-right"></i></a>
             </div>
 
         </div>
