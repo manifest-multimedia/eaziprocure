@@ -1,12 +1,12 @@
     <!-- Simplicity is the essence of happiness. - Cedric Bledsoe -->
-    <li class="nav-item">
-        <a href="{{route('logout')}}" onclick="event.preventDefault();logout()">
+    <li>
+        <a href="{{route('logout')}}" onclick="event.preventDefault();logout()" class="dropdown-item">
             <span class="icon-holder">
                 <i class="anticon anticon-logout"></i>
             </span>
-            <span class="title">Logout</span>
+            <span class="title">{{__('Logout')}}</span>
         </a>
     </li>
-    <form id="logout" action="{{ route('logout') }}" method="POST" style="padding-bottom:40px">
+    <form id="logout" action="{{ route('logout') }}" method="POST">
         @csrf
     </form>

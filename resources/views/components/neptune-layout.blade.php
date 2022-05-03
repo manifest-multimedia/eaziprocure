@@ -82,8 +82,30 @@
                 </div>
             </div>
         </div>
-    
+
+        @include('sweetalert::alert')
+        
         @livewire('chart-data')
+        <livewire:scripts />
+        <script src="//unpkg.com/alpinejs" defer></script>
+
+        {{-- Import --}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- Core Vendors JS -->
+<script src="{{asset('js/vendors.min.js')}}" defer></script>
+
+<!-- page js -->
+<script src="{{asset('js/pages/pricing.js')}}" defer></script>
+<script src="{{asset('vendors/chartjs/Chart.min.js')}}" defer></script>
+<script src="{{asset('js/pages/dashboard-crm.js')}}" defer></script>
+{{-- Imported --}}
+        <script> 
+            function logout() {
+                document.getElementById('logout').submit(); 
+            }
+            </script> 
 
         <!-- Javascripts -->
         <script src="{{asset('neptune/plugins/jquery/jquery-3.5.1.min.js')}}"></script>

@@ -98,6 +98,13 @@
             <script src="{{asset('frontend/js/slick.min.js')}}" defer></script>
             <!--====== Main JS ======-->
             <script src="{{asset('frontend/js/script.js')}}" defer></script>
+
+            <script> 
+                function logout() {
+                    document.getElementById('logout').submit(); 
+                }
+                </script> 
+
     </body>
         
 </html>

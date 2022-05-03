@@ -72,8 +72,8 @@
                                         <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown" data-bs-toggle="dropdown"><img src="{{ Auth::user()->profile_photo_url }}" alt=""></a>
                                             <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
                                                 {{-- <li><a class="dropdown-item" href="#"><img src="../../assets/images/flags/germany.png" alt="">German</a></li>--}}
-                                                <li><a class="dropdown-item" href="/user/profile">Profile</a></li> 
-                                                {{-- <x-logout-link /> --}}
+                                                <li><a class="dropdown-item" href="/user/profile">{{__('Profile')}}</a></li> 
+                                                <x-logout-link />
                                                 {{-- <li><a class="dropdown-item" href="#"> Logout</a></li>  --}}
                                             </ul>
                                     </li>
