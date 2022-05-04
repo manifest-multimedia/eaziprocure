@@ -75,7 +75,7 @@ class AccountSetup extends Component
 
         $org=User::find($this->user->id)->organizations;
         
-        //Check for existing orgnizatino for user. 
+        //Check for existing orgnization for user. 
         $user_id=Auth::user()->id; 
         $org=UserOrganizations::where('user_id', $user_id)->first(); 
         if(is_null($org)) {
@@ -194,8 +194,8 @@ class AccountSetup extends Component
        
                     //Update Registration Type for Existing Organization 
                 $update_details=OrgProfiles::where('id', $org->id)->first();
-                $update_details->org_type=$this->registration_type;
-                $update_details->save();
+                $update_details->update(['org_type'=>$this->registration_type]);
+                // $update_details->save();
        
                }
 
@@ -221,8 +221,7 @@ class AccountSetup extends Component
        
                     //Update Registration Type for Existing Organization 
                 $update_details=OrgProfiles::where('id', $org->id)->first();
-                $update_details->org_type=$this->registration_type;
-                $update_details->save();
+                $update_details->update(['org_type'=>$this->registration_type]);
        
                }
                 
@@ -248,8 +247,8 @@ class AccountSetup extends Component
        
                     //Update Registration Type for Existing Organization 
                 $update_details=OrgProfiles::where('id', $org->id)->first();
-                $update_details->org_type=$this->registration_type;
-                $update_details->save();
+                $update_details->update(['org_type'=>$this->registration_type]);
+               
        
                }
                 
@@ -275,8 +274,8 @@ class AccountSetup extends Component
        
                     //Update Registration Type for Existing Organization 
                 $update_details=OrgProfiles::where('id', $org->id)->first();
-                $update_details->org_type=$this->registration_type;
-                $update_details->save();
+                $update_details->update(['org_type'=>$this->registration_type]);
+                
        
                }
                 
@@ -302,8 +301,8 @@ class AccountSetup extends Component
        
                     //Update Registration Type for Existing Organization 
                 $update_details=OrgProfiles::where('id', $org->id)->first();
-                $update_details->org_type=$this->registration_type;
-                $update_details->save();
+                $update_details->update(['org_type'=>$this->registration_type]);
+                
        
                }
                 
@@ -380,8 +379,7 @@ class AccountSetup extends Component
 
             //Update Logo for Existing Organization 
             $update_details=OrgProfiles::where('id', $org->id)->first();
-            $update_details->org_logo=$this->logo;
-            $update_details->save();
+            $update_details->update(['org_logo'=>$this->logo]);
     
         }
         
