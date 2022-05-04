@@ -17,11 +17,11 @@
                             </a>
                         </div>
                         <!-- Toggle Button -->
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="main-menu">
+                        {{-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="main-menu">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                        </button>
+                        </button> --}}
                     </div>
 
                     <div class="navbar-collapse collapse clearfix" id="main-menu">
@@ -52,8 +52,8 @@
                                     <li><a href="single-service.html">service single</a></li>
                                     <li><a href="team-details.html">Team Profile</a></li>
                                 </ul>
-                            </li>
-                            <li><a href="contact.html">contact</a></li>--}}
+                            </li>--}}
+                            {{-- <li><a href="{{URL::Route('home')}}">Learn More</a></li> --}}
                         </ul> 
                     </div>
 

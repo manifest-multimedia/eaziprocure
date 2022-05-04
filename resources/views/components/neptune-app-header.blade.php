@@ -69,7 +69,7 @@
                                         <a class="nav-link toggle-search" href="#"><i class="material-icons">search</i></a>
                                     </li>
                                     <li class="nav-item hidden-on-mobile">
-                                        <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown" data-bs-toggle="dropdown"><img src="{{ Auth::user()->profile_photo_url }}" alt=""></a>
+                                        <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown" data-bs-toggle="dropdown"><img src="{{Auth::user()->profile_photo_url}}" alt=""></a>
                                             <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
                                                 {{-- <li><a class="dropdown-item" href="#"><img src="../../assets/images/flags/germany.png" alt="">German</a></li>--}}
                                                 <li><a class="dropdown-item" href="/user/profile">{{__('Profile')}}</a></li> 

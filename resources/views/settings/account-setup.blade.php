@@ -1,8 +1,8 @@
-<x-backend-layout> 
+<x-neptune-layout> 
     <x-slot name="title"> 
-        EaziProcure &mdash; Account Setup
+        EaziProcure &mdash; {{__('Account Setup')}}
     </x-slot>
 
     @livewire('account-setup')
 
-</x-backend-layout>
+</x-neptune-layout>

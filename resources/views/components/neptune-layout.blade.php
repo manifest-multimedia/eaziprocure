@@ -111,6 +111,22 @@
             }
             </script> 
 
+            {{-- Account Setup Next Button Script --}}
+<script> 
+    $(document).ready(function(e) {
+        $('.nextbtn').click(function(e){
+            e.preventDefault();
+            $('.nav-item > .active').parent().next('li').find('a').trigger('click');
+                    });
+    
+            $('.previousbtn').click(function(e){
+            e.preventDefault();
+            $('.nav-item > .active').parent().prev('li').find('a').trigger('click');
+                    });
+    });
+    
+    </script> 
+
         <!-- Javascripts -->
         <script src="{{asset('neptune/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('neptune/plugins/bootstrap/js/popper.min.js')}}"></script>

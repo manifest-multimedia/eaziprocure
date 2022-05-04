@@ -1,27 +1,27 @@
 
 <x-jet-form-section submit="updateProfileInformation">
 
-   
-
     <x-slot name="form">
         <x-slot name="title">
-            {{ __('Profile Information') }}
+           <div class="mt-5">
+               {{ __('Profile Information') }}
+               </span> 
         </x-slot>
     
         <x-slot name="description">
-            {{-- {{ __('Update your account\'s profile information and email address.') }} --}}
+            {{ __('Update your account\'s profile information and email address.') }}
         </x-slot>
         <div class="row align-items-center">
-            <div class="col-md-7">
+            <div class="col-md-12">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
 
-                <div x-data="{photoName: null, photoPreview: null}" class="d-md-flex align-items-center">
-                    <div class="text-center text-sm-left ">
+                <div x-data="{photoName: null, photoPreview: null}" class="col-md-12">
+                    <div class="">
                         {{-- <div class="avatar avatar-image" style="width: 150px; height:150px"> --}}
                             {{-- <img src="assets/images/avatars/thumb-3.jpg" alt=""> --}}
                             <div  class="col-span-6 sm:col-span-4">
                                 <!-- Profile Photo File Input -->
-                                <input type="file" class="hidden"
+                                <input type="file" class="hidden d-none"
                                             wire:model="photo"
                                             x-ref="photo"
                                             x-on:change="
@@ -53,69 +53,30 @@
                              @endif
                         </div>
                     </div>
-                    <div class="text-center text-sm-left m-v-15 p-l-30">
-                        {{-- <h2 class="m-b-5">{{Auth::user()->name}}</h2>
-                        <p class="text-opacity font-size-13">@Marshallnich</p>
-                        <p class="text-dark m-b-20">Frontend Developer, UI/UX Designer</p> --}}
-                        <div class="btn-group">
-                            <x-jet-secondary-button class="btn btn-primary btn-tone" type="button" x-on:click.prevent="$refs.photo.click()">
-                                {{ __('Select A New Photo') }}
-                            </x-jet-secondary-button>
-            
-                            @if ($this->user->profile_photo_path)
-                                <x-jet-secondary-button type="button" class="btn btn-danger btn-tone" wire:click="deleteProfilePhoto">
-                                    {{ __('Remove Photo') }}
+                    
+                    <div class="row mt-2 pb-2">
+                        <div class="col-md-12">
+                            {{-- <h2 class="m-b-5">{{Auth::user()->name}}</h2>
+                            <p class="text-opacity font-size-13">@Marshallnich</p>
+                            <p class="text-dark m-b-20">Frontend Developer, UI/UX Designer</p> --}}
+                            <div class="btn-group">
+                                <x-jet-secondary-button class="btn btn-primary" type="button" x-on:click.prevent="$refs.photo.click()">
+                                    {{ __('Select A New Photo') }}
                                 </x-jet-secondary-button>
-                            @endif
-                            </div>
-                            {{-- <button class="btn btn-primary btn-tone">Contact</button> --}}
+                
+                                @if ($this->user->profile_photo_path)
+                                    <x-jet-secondary-button type="button" class="btn btn-danger" wire:click="deleteProfilePhoto">
+                                        {{ __('Remove Photo') }}
+                                    </x-jet-secondary-button>
+                                @endif
+                                </div>
+                                {{-- <button class="btn btn-primary btn-tone">Contact</button> --}}
+                        </div>
                     </div>
                 </div>
+                
             </div>
-            <div class="col-md-5">
-                <div class="row">
-                    <div class="d-md-block d-none border-left col-1"></div>
-                    {{-- <div class="col">
-                        <ul class="list-unstyled m-t-10">
-                            <li class="row">
-                                <p class="col-sm-4 col-4 font-weight-semibold text-dark m-b-5">
-                                    <i class="m-r-10 text-primary anticon anticon-mail"></i>
-                                    <span>Emails: </span> 
-                                </p>
-                                <p class="col font-weight-semibold"> Marshall123@gmail.com</p>
-                            </li>
-                            <li class="row">
-                                <p class="col-sm-4 col-4 font-weight-semibold text-dark m-b-5">
-                                    <i class="m-r-10 text-primary anticon anticon-phone"></i>
-                                    <span>Phone: </span> 
-                                </p>
-                                <p class="col font-weight-semibold"> +12-123-1234</p>
-                            </li>
-                            <li class="row">
-                                <p class="col-sm-4 col-5 font-weight-semibold text-dark m-b-5">
-                                    <i class="m-r-10 text-primary anticon anticon-compass"></i>
-                                    <span>Location: </span> 
-                                </p>
-                                <p class="col font-weight-semibold"> Los Angeles, CA</p>
-                            </li>
-                        </ul>
-                        <div class="d-flex font-size-22 m-t-15">
-                            <a href="" class="text-gray p-r-20">
-                                <i class="anticon anticon-facebook"></i>
-                            </a>        
-                            <a href="" class="text-gray p-r-20">    
-                                <i class="anticon anticon-twitter"></i>
-                            </a>
-                            <a href="" class="text-gray p-r-20">
-                                <i class="anticon anticon-behance"></i>
-                            </a> 
-                            <a href="" class="text-gray p-r-20">   
-                                <i class="anticon anticon-dribbble"></i>
-                            </a>
-                        </div>
-                    </div> --}}
-                </div>
-            </div>
+        
         </div>
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">

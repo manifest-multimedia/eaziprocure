@@ -19,7 +19,7 @@
         </ul>
     </div>
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="tab-content m-t-15">
             <div class="tab-pane fade show active" id="tab-account" wire:ignore.self>
                 <div class="card">
