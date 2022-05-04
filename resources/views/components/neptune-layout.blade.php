@@ -72,11 +72,11 @@
                 <div class="app-content">
                     <div class="content-wrapper">
                         <div class="container-fluid">
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col">
                                   <x-neptune-large-header />
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col">
                                     {{$slot}}

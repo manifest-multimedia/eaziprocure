@@ -17,17 +17,18 @@
                             </a>
                         </div>
                         <!-- Toggle Button -->
-                        {{-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="main-menu">
+                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="main-menu">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                        </button> --}}
+                        </button> 
                     </div>
 
                     <div class="navbar-collapse collapse clearfix" id="main-menu">
                         <ul class="navigation clearfix">
-                        {{--     <li class="current"><a href="#">home</a>
-                                <ul>
+                            <li class="d-lg-none d-md-none"><a href="{{url('login')}}">Login</a>
+                            <li class="d-lg-none d-md-none"><a href="{{url('register')}}">Register</a>
+                            {{--     <ul>
                                     <li><a href="index.html">Home One</a></li>
                                     <li><a href="index2.html">Home Two</a></li>
                                     <li><a href="index3.html">Home Three</a></li>

@@ -1,6 +1,6 @@
     <!-- Simplicity is the consequence of refined emotions. - Jean D'Alembert -->
 
-    <div class="media-body m-l-15 mt-3 mb-4">
+    <div class="media-body mt-3 mb-4">
         <h4 class="m-b-0">Welcome back {{getFirstName(Auth::user()->name)}}!</h4>
         {{-- <span class="text-gray">{{ucfirst(Auth::user()->user_role)}}</span> --}}
     </div>

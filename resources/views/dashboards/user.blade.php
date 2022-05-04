@@ -2,7 +2,10 @@
 <x-slot name="title"> 
     Eazibusiness &mdash; Dashboard
 </x-slot>
-
+{{-- Header --}}
+<div class="col">
+    <x-neptune-large-header />
+  </div>
     <!-- Content Wrapper START -->
         <div class="row">
             <x-net-revenue-widget />
