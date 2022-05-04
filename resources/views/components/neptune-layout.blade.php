@@ -47,7 +47,7 @@
         <div class="app header-large align-content-stretch d-flex flex-wrap">
             <div class="app-sidebar">
                 <div class="logo">
-                    <a href="#" class="logo-icon"><span class="logo-text">Eazibusiness</span></a>
+                    <a href="{{URL::Route('dashboard')}}" class="logo-icon"><span class="logo-text">Eazibusiness</span></a>
                     <div class="sidebar-user-switcher user-activity-online">
                         <a href="#">
                             <img src="{{Auth::user()->profile_photo_url}}">
@@ -58,7 +58,7 @@
                         </a>
                     </div>
                 </div>
-               {{-- <x-app-navigation />  --}}
+               <x-app-navigation /> 
             </div>
             <div class="app-container">
                 <div class="search">

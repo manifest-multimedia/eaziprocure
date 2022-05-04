@@ -1,6 +1,8 @@
 <x-jet-form-section submit="updatePassword">
     <x-slot name="title">
-        {{ __('Update Password') }}
+        <div class="mt-5">
+            {{ __('Update Password') }}
+        </div>
     </x-slot>
 
     <x-slot name="description">
@@ -14,13 +16,13 @@
             <x-jet-input-error for="current_password" class="mt-2" />
         </div>
 
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-4 mt-2">
             <x-jet-label for="password" value="{{ __('New Password') }}" />
             <x-jet-input id="password" type="password" class="mt-1 block w-full" wire:model.defer="state.password" autocomplete="new-password" />
             <x-jet-input-error for="password" class="mt-2" />
         </div>
 
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-4 mt-2">
             <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
             <x-jet-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="state.password_confirmation" autocomplete="new-password" />
             <x-jet-input-error for="password_confirmation" class="mt-2" />
