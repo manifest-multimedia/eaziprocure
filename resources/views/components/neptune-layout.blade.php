@@ -14,6 +14,7 @@
         <title>{{$title}}</title>
     
         <!-- Styles -->
+        <link rel="stylesheet" href="{{asset('css/app.min.css')}}">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -90,8 +91,8 @@
         @include('sweetalert::alert')
         
         @livewire('chart-data')
-        <livewire:scripts />
         <script src="//unpkg.com/alpinejs" defer></script>
+        <livewire:scripts />
 
         {{-- Import --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

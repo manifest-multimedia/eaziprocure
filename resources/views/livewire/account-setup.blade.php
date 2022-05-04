@@ -219,9 +219,14 @@
                                                 </div>
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Facebook {{$facebook_switch}}</div>
                                             </div>
+
+                                            
+
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://facebook.com/           
-                                                    <input type="text" placeholder="@username" wire:model.lazy="facebookUpdated"></label>
+                                                <label class="m-b-0">https://facebook.com/</label>
+                                                <div class="row">
+                                                    <div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="facebookUpdated" class="form-control"></div>
+                                                </div>
                                                         <div class="switch m-t-5 m-l-10">
                                                             <input type="checkbox" id="switch-fb" {{is_null($facebook) ? '' : "checked"}} wire:model="facebook_switch">
                                                             <label for="switch-fb"></label>
@@ -238,7 +243,8 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Instagram</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://instagram.com/ <input type="text" placeholder="@username" wire:model.lazy="instagramUpdated"></label>
+                                                <label class="m-b-0">https://instagram.com/ </label>
+                                                    <div class="row"><div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="instagramUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
                                                     <input type="checkbox" id="switch-inst" {{is_null($instagram) ? '' : "checked"}} disabled>
                                                     <label for="switch-inst"></label>
@@ -255,7 +261,8 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Twitter</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://twitter.com/ <input type="text" placeholder="@username" wire:model.lazy="twitterUpdated"></label>
+                                                <label class="m-b-0">https://twitter.com/ </label>
+                                                <div class="row"><div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="twitterUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
                                                     <input type="checkbox" id="switch-tw" {{is_null($twitter) ? '' : "checked"}} disabled>
                                                     <label for="switch-tw"></label>
@@ -272,7 +279,8 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Dribbble</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://dribble.com/ <input type="text" placeholder="@username" wire:model.lazy="dribbbleUpdated"></label>
+                                                <label class="m-b-0">https://dribble.com/</label>
+                                                <div class="row"><div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="dribbbleUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
                                                     <input type="checkbox" id="switch-dr" {{is_null($dribbble) ? '' : "checked"}} disabled>
                                                     <label for="switch-dr"></label>
@@ -290,8 +298,9 @@
 
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://github.com/ <input type="text" 
-                                                    placeholder="@username" wire:model.lazy="githubUpdated"></label>
+                                                <label class="m-b-0">https://github.com/ </label>
+                                                <div class="row"><div class="col-md-12"><input type="text" 
+                                                    placeholder="@username" wire:model.lazy="githubUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
                                                     <input type="checkbox" id="switch-gh" {{is_null($github) ? '' : "checked"}} disabled>
                                                     <label for="switch-gh"></label>
@@ -308,7 +317,8 @@
                                                 <div class="font-size-15 font-weight-semibold m-l-15">Linkedin</div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://linkedin.com/company/<input type="text" placeholder="@username" wire:model.lazy="linkedinUpdated"></label>
+                                                <label class="m-b-0">https://linkedin.com/company/</label>
+                                                <div class="row"><div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="linkedinUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
                                                     <input type="checkbox" id="switch-ln" {{is_null($linkedin) ? '' : "checked"}} disabled>
                                                     <label for="switch-ln"></label>
@@ -318,23 +328,7 @@
                                     </li>
 
                                    
-                                    {{-- <li class="list-group-item p-h-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-icon" style="color: #005ef7; background: rgba(0, 94, 247, 0.1)">
-                                                    <i class="anticon anticon-dropbox"></i>
-                                                </div>
-                                                <div class="font-size-15 font-weight-semibold m-l-15">Dropbox</div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <label class="m-b-0">https://instagram.com/ <input type="text" placeholder="@username"></label>
-                                                <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-db">
-                                                    <label for="switch-db"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li> --}}
+                            
                                 </ul> 
                             </div>
                         </div>
