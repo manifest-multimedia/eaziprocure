@@ -350,10 +350,10 @@ class AccountSetup extends Component
             ]); 
     
            //    $url = $logo->store('logos', 'public'); 
+           $filename=Auth::user()->id.'_'.$org_id.'_logo_'.$logo->getClientOriginalName();
+           $url = $logo->storeAs('public/logos', $filename); 
     
-           $url = $logo->store('logos', 'public'); 
-    
-           $this->logo = 'storage/'.$url;
+           $this->logo = $url;
     
 
             $store=new UserOrganizations; 
@@ -372,14 +372,16 @@ class AccountSetup extends Component
             ]); 
     
            //    $url = $logo->store('logos', 'public'); 
-    
-           $url = $logo->store('logos', 'public'); 
-    
-           $this->logo = 'storage/'.$url;
+           $filename=Auth::user()->id.'_'.$org_id.'_logo_'.$logo->getClientOriginalName();
+           $url = $logo->storeAs('public/logos', $filename); 
+
+           $this->logo = $url;
 
             //Update Logo for Existing Organization 
             $update_details=OrgProfiles::where('id', $org->id)->first();
             $update_details->update(['org_logo'=>$this->logo]);
+
+            $this->logo=$this->logo;
     
         }
         

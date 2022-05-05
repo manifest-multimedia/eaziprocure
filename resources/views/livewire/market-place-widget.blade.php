@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <div class="m-t-20 text-center">
                                 <div class="avatar avatar-image" style="height: 100px; width: 100px;">
-                                    <img src="{{getCustomerLogo($item->id)}}" alt="Logo">
+                                    <img src="{{Storage::url(getCustomerLogo($item->id))}}" alt="Logo">
                                 </div>
                                 <h4 class="m-t-30">{{$item->org_name}}</h4>
                                 {{-- <p>{{$item->org_email}}</p> --}}

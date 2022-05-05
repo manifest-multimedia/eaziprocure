@@ -30,9 +30,9 @@
                     <form enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="media align-items-center">
-                            <div class="avatar avatar-image  m-h-10 m-r-15" style="height: 90px !important; width: 90px !important; padding:5px">
+                            <div class="avatar avatar-image " style="height: 90px !important; width: 90px !important; ">
                                
-                                <img src="{{asset($logo)}}" alt="Logo" style="object-fit:contain !important; padding:5%; margin:auto">
+                                <img src="{{Storage::url($logo)}}" alt="Logo" style="object-fit:contain !important;  margin:auto">
                                 
                             </div>
                         
@@ -40,7 +40,7 @@
                                 <h5 class="m-b-5 font-size-18">Company Logo</h5>
                                 <p class="opacity-07 font-size-13 m-b-0">
                                     Recommended Dimensions: <br>
-                                    120x120 Max file size: 2MB
+                                    120x120 Max file size: 5MB
                                 </p>
                             </div>
                           
