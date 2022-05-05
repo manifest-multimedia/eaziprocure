@@ -19,6 +19,8 @@
         </ul>
     </div>
 
+    <div class="mt-5"><x-validation-errors /></div>
+
     <div class="container mt-5">
         <div class="tab-content m-t-15">
             <div class="tab-pane fade show active" id="tab-account" wire:ignore.self>
@@ -40,7 +42,7 @@
                                 <h5 class="m-b-5 font-size-18">Company Logo</h5>
                                 <p class="opacity-07 font-size-13 m-b-0">
                                     Recommended Dimensions: <br>
-                                    120x120 Max file size: 5MB
+                                    400 x 400px | Max file size: 5MB
                                 </p>
                             </div>
                           
@@ -73,7 +75,7 @@
                                     <input type="text" class="form-control" id="email" placeholder="Company Email" value="{{$company_email}}" wire:model.lazy='company_email'>
                                 </div>
                             </div>
-                            <h4> Primary User Information </h4> 
+                            <h4 class="card-title"> Primary User Information </h4> 
                             <hr class="m-v-25">
                             
                             <div class="form-row">
@@ -83,17 +85,22 @@
                             </div>
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="phoneNumber">Mobile Number:</label>
-                                    <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
+                                    <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number" wire:model.lazy="newmobile">
                                 </div>
                             </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label class="font-weight-semibold" for="role">Role</label>
                                         
-                                        <select name="role" id="" class="form-control" wire:model="role">
+                                        <select name="role" id="" class="form-control" wire:model="newrole">
                                             <option value="">Select Role in Organization</option>
                                             <option value="staff">Staff </option>
-                                            <option value="administrator" selected>Administrator</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="sales">Sales</option>
+                                            {{-- <option value="sales">Procurement</option> --}}
+                                            <option value="finance">Finance</option>
+                                            <option value="hr">HR</option>
+                                            <option value="administrator" selected>Super Admin</option>
                                             {{-- <option value=""></option> --}}
                                         </select>
                                     </div>
@@ -115,7 +122,7 @@
 
                     </div>
                 </div>
-                @if($role=='administrator')
+                @if($newrole=='administrator')
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Invite Organization Users</h4>
@@ -123,17 +130,27 @@
                     <div class="card-body">
                         <form>
                             <div class="form-row">
-                                <div class="form-group col-md-5">
+                                <div class="form-group col-md-4">
                                     <label class="font-weight-semibold" for="UserName">Name:</label>
                                     <input type="text" class="form-control" id="UserName" placeholder="Staff Name" wire:model="StaffName">
                                 </div>
-                                <div class="form-group col-md-5">
+                                <div class="form-group col-md-4">
                                     <label class="font-weight-semibold" for="user-email">Email:</label>
                                     <input type="text" class="form-control" id="userEmail" placeholder="Email" wire:model="StaffEmail">
                                 </div>
-                                
                                 <div class="form-group col-md-2">
-                                    <a class="btn btn-primary m-t-30" href="#" wire:click='invitation'>Invite</a>
+                                    <label for="">Role</label>
+                                    <select name="role" id="" class="form-control">
+                                        <option value="">Select Role</option>
+                                        <option value="">Staff</option>
+                                        <option value="">Admin</option>
+                                        <option value="">Finance</option>
+                                        <option value="">Sales</option>
+                                        <option value="">HR</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <a class="btn btn-primary btn-lg m-t-30" href="#" wire:click='invitation'>Invite</a>
                                 </div>
                             </div>
                         </form>

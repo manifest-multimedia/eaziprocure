@@ -26,11 +26,15 @@ class AccountSetup extends Component
 {
     use WithFileUploads;
 
+    //User Information 
     public $user=[]; 
     public $role; 
-    public $listcountries=[];
-    public $logo; 
- 
+    public $newrole;
+    public $language; 
+    public $mobile; 
+    public $newmobile;
+   
+    //Socials
     public $socials; 
     public $facebook; 
     public $facebook_switch;
@@ -48,9 +52,12 @@ class AccountSetup extends Component
     public $registration_type='default';
     public $org_count; 
 
+    //Company Details
     public $StaffEmail; 
     public $StaffName; 
 
+    public $listcountries=[];
+    public $logo; 
     public $company_name;
     public $company_email;
     public $company_address;
@@ -71,7 +78,11 @@ class AccountSetup extends Component
         
       
         $this->user=Auth::user(); 
-        $this->role='administrator'; 
+       
+        // $this->newrole='administrator'; 
+        $this->mobile=$this->user->mobile;
+        $this->newmobile=$this->mobile;
+        $this->language=$this->user->language;
 
         $org=User::find($this->user->id)->organizations;
         
@@ -85,7 +96,50 @@ class AccountSetup extends Component
         }
         else {
 
+            
+            //Check for existing role
+            $role=UserOrganizations::where('user_id', $this->user->id)->first()->user_privilege;
+
+            switch ($role) {
+                case '':
+                    $this->newrole='administrator';
+                    break; 
+                case '0':
+                    $this->newrole='staff';
+
+                    break;
+
+                case '1':
+                    $this->newrole='administrator';
+                    break;
+
+                case '2':
+                    $this->newrole='admin';
+                    break; 
+
+                case '3':
+                    $tis->newrole='finance'; 
+                    break; 
+
+                case '4':
+                    $this->newrole='hr';
+
+                    break; 
+
+                case '5': 
+                    $this->newrole='procurement';
+                    break; 
+
+                case '6':
+                    $this->newrole='sales'; 
+                    break; 
+                default:
+                    # code...
+                    break;
+            }
+
             $org_details=OrgProfiles::where('id', $org->org_id)->first(); 
+
             $this->logo=$org_details->org_logo;
             $this->company_name=$org_details->org_name; 
             $this->company_email=$org_details->org_email; 
@@ -318,15 +372,33 @@ class AccountSetup extends Component
 
     public function updatedRole(){
 
-        switch ($this->role) {
-            case 'administrator':
-                return 'Howdy!'; 
-                break;
+        // dd($this->role);
 
-            default:
-                # code...
-                break;
+        if($this->role=='administrator'){
+            dd('Howdy Admin?');
         }
+        if($this->role=='staff'){
+            dd('Howdy Staff?');
+        }
+        
+    }
+
+    public function updatedNewMobile(){
+        //Compare Updated  Mobile Number with Previously Stored Mobile Number
+        // dd($this->mobile);
+        
+        if(!is_null($this->mobile)){
+
+            if ($this->newmobile!=$this->mobile) {
+                # code...
+                $update_mobile=User::where('id', $this->user->id)->first();
+                $update_mobile->update(['mobile'=> $this->newmobile]);
+            }
+        }
+        
+
+        
+        
     }
 
     public function updatedLogo(){

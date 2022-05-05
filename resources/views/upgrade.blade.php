@@ -1,4 +1,4 @@
-<x-backend-layout> 
+<x-neptune-layout> 
     <x-slot name="title"> 
         EaziProcure &mdash; Upgrade
     </x-slot>
@@ -521,4 +521,4 @@
             
             <!-- Content Wrapper END -->
 
-</x-backend-layout>
+</x-neptune-layout>
