@@ -16,7 +16,7 @@ class MarketPlaceWidget extends Component
     }
     public function render()
     {
-        $this->organizations=OrgProfiles::all(); 
+        $this->organizations=OrgProfiles::where('status', 'verified')->get(); 
         return view('livewire.market-place-widget');
     }
 }
