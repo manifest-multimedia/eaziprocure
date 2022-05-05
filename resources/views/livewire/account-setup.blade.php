@@ -7,7 +7,7 @@
             <li class="nav-item" wire:ignore>
                 <a class="nav-link active" role="tab" data-toggle="tab" href="#tab-account">Step One - Organization Details</a>
             </li>
-            @if ($role=="administrator")
+            @if ($newrole=="administrator")
             
             <li class="nav-item" wire:ignore>
                 <a class="nav-link" role="tab" data-toggle="tab" href="#tab-socials">Step Two - Socials</a>

@@ -15,29 +15,35 @@
     <div class="card">
         <div class="card-body">
             <div class="row m-b-30">
-                <div class="col-lg-8">
+                <div class="col-md-8">
                     <div class="d-md-flex">
-                        <div class="m-b-10 m-r-15">
-                            <select class="custom-select" style="min-width: 180px;">
-                                <option selected>Catergory</option>
-                                <option value="all">All</option>
-                                @foreach ($product_categories as $item)    
-                                <option value="$item->name">{{$item->name}}</option>
-                                @endforeach
-                                
-                            </select>
+                        <div class="col-md-3 ml-3 mr-3">
+                            <div class="form-group">
+                                <select class="form-control custom-select" style="min-width: 180px;">
+                                    <option selected>Catergory</option>
+                                    <option value="all">All</option>
+                                    @foreach ($product_categories as $item)    
+                                    <option value="$item->name">{{$item->name}}</option>
+                                    @endforeach
+                                    
+                                </select>
+                            </div>
+                            
                         </div>
                         
-                        <div class="m-b-10">
-                            <select class="custom-select" style="min-width: 180px;">
-                                <option selected>Status</option>
-                                <option value="all">All</option>
-                                <option value="inStock">In Stock </option>
-                                <option value="outOfStock">Out of Stock</option>
-                            </select>
+                        <div class="col-md-3 mr-3 ml-3">
+                            <div class="form-group">
+                                <select class="form-control custom-select" style="min-width: 180px;">
+                                    <option selected>Status</option>
+                                    <option value="all">All</option>
+                                    <option value="inStock">In Stock </option>
+                                    <option value="outOfStock">Out of Stock</option>
+                                </select>
+                            </div>
+                            
                         </div>
 
-                        <div class="col-md-9">
+                        <div class="col-md-8 mr-3 ml-3">
                                 <div class="input-affix">
                                     <i class="prefix-icon anticon anticon-search opacity-04"></i>
                                     <input type="text" class="form-control" placeholder="Product Search" wire:model='livesearch'>
