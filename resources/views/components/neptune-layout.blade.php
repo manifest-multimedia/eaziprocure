@@ -137,6 +137,21 @@
         <script src="{{asset('neptune/plugins/highlight/highlight.pack.js')}}"></script>
         <script src="{{asset('neptune/js/main.min.js')}}"></script>
         <script src="{{asset('neptune/js/custom.js')}}"></script>
+
+        {{-- Tawk.To --}}
+        <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6273f491b0d10b6f3e70c86b/1g2af6n0v';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
     </body>
     
     </html>
