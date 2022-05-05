@@ -92,7 +92,7 @@
                                     <div class="form-group col-md-6">
                                         <label class="font-weight-semibold" for="role">Role</label>
                                         
-                                        <select name="role" id="" class="form-control" wire:model="newrole">
+                                        <select name="role" id="" class="form-control custom-select" wire:model="newrole">
                                             <option value="">Select Role in Organization</option>
                                             <option value="staff">Staff </option>
                                             <option value="admin">Admin</option>
@@ -106,7 +106,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="font-weight-semibold" for="language">Language</label>
-                                        <select id="language" class="form-control">
+                                        <select id="language" class="form-control custom-select">
                                             <option>English</option>
                                             <option>French</option>
                                             {{-- <option>German</option> --}}
@@ -140,20 +140,59 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="">Role</label>
-                                    <select name="role" id="" class="form-control">
+                                    <select name="role" id="" class="form-control custom-select" wire:model="inviteduser_role">
                                         <option value="">Select Role</option>
-                                        <option value="">Staff</option>
-                                        <option value="">Admin</option>
-                                        <option value="">Finance</option>
-                                        <option value="">Sales</option>
-                                        <option value="">HR</option>
+                                        <option value="staff">Staff</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="finance">Finance</option>
+                                        <option value="sales">Sales</option>
+                                        <option value="hr">HR</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <a class="btn btn-primary btn-lg m-t-30" href="#" wire:click='invitation'>Invite</a>
+                                    <a class="btn btn-primary btn-lg m-t-30" href="" wire:click='invitation'>Invite</a>
                                 </div>
                             </div>
                         </form>
+
+                        @if ($invitedusers->count()>0)
+                            <h4 class="card-title">Invited</h4>
+                            <hr />
+                        
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <strong>Name</strong>
+                                </div>
+                                <div class="col-md-4">
+                                    <strong>Email</strong>
+                                </div>
+                                <div class="col-md-2">
+                                    <strong>Role</strong>
+                                </div>
+                                <div class="col-md-2">
+                                    <strong>Status</strong>
+                                </div>
+                            </div>
+                            @foreach ($invitedusers as $item)
+                                
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{$item->invited_name}}
+                                </div>
+                                <div class="col-md-4">
+                                    {{$item->invited_email}}
+                                </div>
+                                <div class="col-md-2">
+                                    {{$item->invited_role}}
+                                </div>
+                                <div class="col-md-2">
+                                    {{$item->status}}
+                                </div>
+                            </div>
+                            @endforeach
+                        @endif
+
+                        
                     </div>
                 </div>
 
@@ -175,7 +214,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="font-weight-semibold" for="language">Country</label>
-                                    <select id="country" class="form-control" value="{{$company_country}}" wire:model.lazy="company_country">
+                                    <select id="country" class="form-control custom-select" value="{{$company_country}}" wire:model.lazy="company_country">
                                         <option value="">Select Country</option>
                                         
                                         @foreach ($listcountries as $country)

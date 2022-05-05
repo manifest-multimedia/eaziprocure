@@ -73,4 +73,4 @@ Route::get('/business-profiles', function(){ return view('profile.biz-profiles')
 Route::get('/disabled', function() { return view('disabled');})->name('account_disabled'); 
 Route::get('/deleted', function() { return view('disabled');})->name('account_deleted'); 
 
-Route::get('/invitation/{user}/{org}', [InvitationController::class, 'getInvidationDetails']);
+Route::get('/invitation/{user}/{org}/{role}', [InvitationController::class, 'getInvidationDetails']);

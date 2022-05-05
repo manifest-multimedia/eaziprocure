@@ -10,7 +10,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class InvitationController extends Controller
 {
 
-    function getInvidationDetails($user, $org){
+    function getInvidationDetails($user, $org, $role){
         
         // Get Invitation Details 
 

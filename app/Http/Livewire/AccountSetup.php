@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Models\UserOrganizations; 
 use App\Models\OrgProfiles;
 use App\Models\SocialProfiles;
+use App\Models\UserInvitation;
 // use Livewire\Carbon;
 
 // Track & Delete Unwanted/Unused Images 
@@ -73,6 +74,11 @@ class AccountSetup extends Component
     public $ssnit_clearance_doc; 
     public $tax_clearance_doc; 
     public $ppa_cert_doc; 
+
+
+    //Invitation
+    public $inviteduser_role;
+    public $invitedusers=[];
 
     public function mount(){
         
@@ -204,6 +210,12 @@ class AccountSetup extends Component
 
     public function render()
     {
+        
+        $org_id=UserOrganizations::where('user_id', $this->user->id)->first()->org_id; 
+
+        $this->invitedusers=UserInvitation::where('user_id',$this->user->id)
+        ->where('org_id',$org_id)
+        ->where('status', 'pending')->get();
 
         $this->listcountries=getCountriesList(); 
         $query=User::find($this->user->id)->organizations();
@@ -675,17 +687,37 @@ class AccountSetup extends Component
         $current_organization=User::find($this->user->id)->organizations->first();
         $organization_name=$current_organization->org_name;
         $organization_id=$current_organization->id; 
+        $inviteduser_role=$this->inviteduser_role;
         // dd($current_organization);
         $name=getFirstName($name); 
         $email;     
-        $systemurl='https://eaziprocure.com';
+        // $systemurl='https://eazibusiness.com';
+        $systemurl=config("app.url");
         //build url
-        $buldurl=$systemurl."/invitation".'/'.$current_user_id.'/'.$organization_id;
-    
-        //Send invitation 
-        Notification::route('mail', $email)->notify(new NewUserInvitationNotification($name, $email, $buldurl, $organization_name, $current_user_name));
+        $buldurl=$systemurl."/invitation".'/'.$current_user_id.'/'.$organization_id.'/'.$inviteduser_role;
+        // dd($inviteduser_role);
+        if (!is_null($inviteduser_role)) {
+            # code...
+            
+            //Store Invitation Details 
+            $store_invitation=new UserInvitation;
+            $store_invitation->user_id=$this->user->id;
+            $store_invitation->org_id=$organization_id;
+            $store_invitation->invited_name=$name;
+            $store_invitation->invited_email=$email;
+            $store_invitation->invited_role=$this->inviteduser_role; 
+            $store_invitation->status='pending';
+            $store_invitation->save();
 
-        //Store Invitation Details 
+            //Send invitation 
+            Notification::route('mail', $email)->notify(new NewUserInvitationNotification($name, $email, $buldurl, $organization_name, $current_user_name));
+    
+
+            //Clear Invitation Data
+            $this->StaffEmail='';
+            $this->StaffName='';
+            $this->inviteduser_role='';
+        }
 
 
     }
