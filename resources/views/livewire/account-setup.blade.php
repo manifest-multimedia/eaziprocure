@@ -273,7 +273,7 @@
                                                 <div class="avatar avatar-icon" style="color: #4267b1; background: rgba(66, 103, 177, 0.1)">
                                                     <i class="anticon anticon-facebook"></i>
                                                 </div>
-                                                <div class="font-size-15 font-weight-semibold m-l-15">Facebook {{$facebook_switch}}</div>
+                                                <div class="font-size-15 font-weight-semibold m-l-15">Facebook </div>
                                             </div>
 
                                             

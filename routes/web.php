@@ -35,42 +35,44 @@ Route::view('/privacy', 'privacy')->name('privacy');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardController::class)->name('dashboard');
 
-Route::get('/organizations', function(){ return view('marketplace');}); 
-Route::get('/shopping-area', function(){ return view('shopping-area'); })->name('shopping-area'); 
+Route::middleware(['auth:sanctum'])->group(function (){
 
-
-//Procurement
-Route::get('/tenders', function(){ return view('tenders.view');})->name('tenders'); 
-Route::get('/new-tender', function(){ return view('tenders.create');})->name('new-tender'); 
-Route::get('/edit-tender', function(){ return view('tenders.edit');})->name('edit-tender'); 
-Route::get('/tender-history', function(){ return view('tenders.history');})->name('tender-history'); 
-
-//Finance 
-Route::get('/invoices', function(){ return view('invoices.list'); });
-Route::get('/quotes', function(){ return view('quotes.view'); });
-Route::get('/create-invoice', function(){ return view('invoices.new'); });
-Route::get('finance-reports', function(){ return view('reports.financial-reports');})->name('reports');
-
-//Products 
-Route::get('products', function(){ return view('products.list');})->name('products');
-Route::get('new-product', function(){ return view('products.create');})->name('new-product');
-Route::get('stock-management', function(){ return view('products.stock-management');})->name('stocks');
-
-//Contracts
-Route::get('/new-contract', function(){ return '';})->name('contract'); 
-
-//CRM
-Route::get('/contacts', function(){return view('crm.contacts');})->name('contacts'); 
-Route::get('/sms', function(){ return view('sms'); });
-
-
-
-//Settings 
-Route::get('/account-setup', function(){ return view('settings.account-setup');})->name('account_setup'); 
-Route::get('/upgrade', function(){ return view('upgrade'); });
-Route::get('/business-profiles', function(){ return view('profile.biz-profiles'); });
-
-Route::get('/disabled', function() { return view('disabled');})->name('account_disabled'); 
-Route::get('/deleted', function() { return view('disabled');})->name('account_deleted'); 
-
-Route::get('/invitation/{user}/{org}/{role}', [InvitationController::class, 'getInvidationDetails']);
+    Route::get('/organizations', function(){ return view('marketplace');}); 
+    Route::get('/shopping-area', function(){ return view('shopping-area'); })->name('shopping-area'); 
+    
+    //Procurement
+    Route::get('/tenders', function(){ return view('tenders.view');})->name('tenders'); 
+    Route::get('/new-tender', function(){ return view('tenders.create');})->name('new-tender'); 
+    Route::get('/edit-tender', function(){ return view('tenders.edit');})->name('edit-tender'); 
+    Route::get('/tender-history', function(){ return view('tenders.history');})->name('tender-history'); 
+    
+    //Finance 
+    Route::get('/invoices', function(){ return view('invoices.list'); });
+    Route::get('/quotes', function(){ return view('quotes.view'); });
+    Route::get('/create-invoice', function(){ return view('invoices.new'); });
+    Route::get('finance-reports', function(){ return view('reports.financial-reports');})->name('reports');
+    
+    //Products 
+    Route::get('products', function(){ return view('products.list');})->name('products');
+    Route::get('new-product', function(){ return view('products.create');})->name('new-product');
+    Route::get('stock-management', function(){ return view('products.stock-management');})->name('stocks');
+    
+    //Contracts
+    Route::get('/new-contract', function(){ return '';})->name('contract'); 
+    
+    //CRM
+    Route::get('/contacts', function(){return view('crm.contacts');})->name('contacts'); 
+    Route::get('/sms', function(){ return view('sms'); });
+    
+    
+    
+    //Settings 
+    Route::get('/account-setup', function(){ return view('settings.account-setup');})->name('account_setup'); 
+    Route::get('/upgrade', function(){ return view('upgrade'); });
+    Route::get('/business-profiles', function(){ return view('profile.biz-profiles'); });
+    
+    Route::get('/disabled', function() { return view('disabled');})->name('account_disabled'); 
+    Route::get('/deleted', function() { return view('disabled');})->name('account_deleted'); 
+    
+    Route::get('/invitation/{user}/{org}/{role}', [InvitationController::class, 'getInvidationDetails']);
+});
