@@ -97,9 +97,10 @@ class AccountSetup extends Component
         $org=UserOrganizations::where('user_id', $user_id)->first(); 
         if(is_null($org)) {
 
-            $this->logo=asset('images/avatars/thumb-3.jpg');
+            $this->logo='avatars/thumb-3.jpg';
             $this->company_name=''; 
         }
+
         else {
 
             
@@ -211,11 +212,18 @@ class AccountSetup extends Component
     public function render()
     {
         
-        $org_id=UserOrganizations::where('user_id', $this->user->id)->first()->org_id; 
+        $query=UserOrganizations::where('user_id', $this->user->id)->first(); 
+        if($query){
+            $org_id=$query->org_id;
 
         $this->invitedusers=UserInvitation::where('user_id',$this->user->id)
         ->where('org_id',$org_id)
         ->where('status', 'pending')->get();
+        } else{
+            $this->invitedusers=UserInvitation::where('user_id', $this->user->id)->get();
+        }
+
+        
 
         $this->listcountries=getCountriesList(); 
         $query=User::find($this->user->id)->organizations();
