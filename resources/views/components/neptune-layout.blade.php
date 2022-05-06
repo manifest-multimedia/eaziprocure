@@ -23,7 +23,8 @@
         <link href="{{asset('neptune/plugins/perfectscroll/perfect-scrollbar.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/plugins/pace/pace.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/plugins/highlight/styles/github-gist.css')}}" rel="stylesheet">
-    
+        <link href="{{asset('neptune/plugins/apexcharts/apexcharts.css')}}" rel="stylesheet">
+
     
         <!-- Theme Styles -->
         <link href="{{asset('neptune/css/main.min.css')}}" rel="stylesheet">
@@ -42,7 +43,7 @@
             <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
             <![endif]-->
-            
+
             {{-- Alpine JS --}}
             <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
             {{-- Alpine JS --}}
@@ -108,7 +109,8 @@
 <!-- page js -->
 <script src="{{asset('js/pages/pricing.js')}}" defer></script>
 <script src="{{asset('vendors/chartjs/Chart.min.js')}}" defer></script>
-<script src="{{asset('js/pages/dashboard-crm.js')}}" defer></script>
+
+
 {{-- Imported --}}
         <script> 
             function logout() {
@@ -142,6 +144,8 @@
         <script src="{{asset('neptune/js/main.min.js')}}"></script>
         <script src="{{asset('neptune/js/custom.js')}}"></script>
 
+        <script src="{{asset('neptune/plugins/apexcharts/apexcharts.min.js')}}"></script>
+
         {{-- Tawk.To --}}
         <!--Start of Tawk.to Script-->
 <script type="text/javascript">
@@ -158,4 +162,6 @@
     <!--End of Tawk.to Script-->
     </body>
     
+
+
     </html>
