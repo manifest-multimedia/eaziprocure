@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
 use App\Models\User;
 
-class CustomResetPasswordNotification extends Notification
+class CustomResetPasswordNotification extends Notification 
 {
     /**
      * The password reset token.

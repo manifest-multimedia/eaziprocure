@@ -42,6 +42,17 @@
                   height: 250,
                   type: 'bar',
               },
+              export:{
+                  csv:{
+                      filename: 'Total Overview CSV',
+                  }, 
+                  svg:{
+                      filename: 'Total Overview SVG',
+                  }, 
+                  png:{
+                      filename: 'Total Overview PNG',
+                  }
+              },
               colors: ['#886cff', '#f3f0ff'],
               plotOptions: {
                   bar: {

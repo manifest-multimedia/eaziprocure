@@ -1,8 +1,8 @@
-<x-backend-layout>  
+<x-neptune-layout>  
     <x-slot name="title"> 
         EaziProcure &mdash; SMS
     </x-slot>
 
-    @component('components.sms') @endcomponent 
+    <x-sms /> 
 
-</x-backend-layout>
+</x-neptune-layout>

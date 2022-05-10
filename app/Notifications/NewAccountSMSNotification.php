@@ -10,7 +10,7 @@ use NotificationChannels\Infobip\InfobipChannel;
 use NotificationChannels\Infobip\InfobipMessage;
 use Auth; 
 
-class NewAccountSMSNotification extends Notification
+class NewAccountSMSNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
