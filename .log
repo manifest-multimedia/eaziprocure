@@ -1,0 +1,81 @@
+
+       Removed from Account Setup Livewire Controller 
+
+public function updatedCompanyName(){
+
+         //Check for existing organization for user. 
+         $user_id=Auth::user()->id; 
+         $org=UserOrganizations::where('user_id', $user_id)->first();
+         
+         if(is_null($org)) {
+
+            $create_organization=new OrgProfiles;
+            $create_organization->org_name='';
+            $create_organization->save();
+            
+            $org_id=$create_organization->id; 
+
+            $store=new UserOrganizations; 
+            $store->timestamps=false;
+            $store->user_id=$user_id; 
+            $store->org_id=$org_id;
+            $store->save();
+
+         }
+         else{
+
+            $update_details=OrgProfiles::where('id', $org->id)->first();
+            $update_details->org_name=$this->company_name;
+            $update_details->save();
+
+         }
+    }
+
+
+
+ public function updatedCompanyEmail(){
+       //Check for existing organization for user. 
+       $user_id=Auth::user()->id; 
+       $org=UserOrganizations::where('user_id', $user_id)->first();
+       
+       if(is_null($org)) {
+
+          $create_organization=new OrgProfiles;
+          $create_organization->org_email='';
+          $create_organization->save();
+          
+          $org_id=$create_organization->id; 
+
+          $store=new UserOrganizations; 
+          $store->timestamps=false;
+          $store->user_id=$user_id; 
+          $store->org_id=$org_id;
+          $store->save();
+
+
+       }
+       else{
+
+          $update_details=OrgProfiles::where('id', $org->id)->first();
+          $update_details->org_email=$this->company_email;
+          $update_details->save();
+
+       }
+   }
+
+       
+        $query=User::find($this->user->id)->organizations();
+
+        // if($query->count()){
+        //     $this->org_count=$query->count(); 
+
+        //     $organizations=User::find($this->user->id);
+           
+        //     // Tag::whereHas('categories', function ($query) use ($chosenCategoriesIds) {
+        //     //     $query->whereIn('id', $chosenCategoriesIds);
+        //     // })->get();
+
+        //  } else {
+        //      $this->org_count=0; 
+        //      $organizations=[]; 
+        //  }

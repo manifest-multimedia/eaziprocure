@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User; 
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Notification;
@@ -19,7 +19,8 @@ use App\Models\UserInvitation;
 //     File::delete($image_path);
 // }
 
-use App\Notifications\NewUserInvitationNotification; 
+use App\Notifications\NewUserInvitationNotification;
+use stdClass;
 
 class AccountSetup extends Component
 
@@ -28,7 +29,7 @@ class AccountSetup extends Component
     use WithFileUploads;
 
     //User Information 
-    public $user=[]; 
+    public $user=null; 
     public $role; 
     public $newrole;
     public $language; 
@@ -64,6 +65,7 @@ class AccountSetup extends Component
     public $company_address;
     public $company_city;
     public $company_country;
+    public $org_id;
 
     //verification documents
     
@@ -82,31 +84,48 @@ class AccountSetup extends Component
 
     public function mount(){
         
-      
+        //Assign User Details to $user variable; 
         $this->user=Auth::user(); 
-       
-        // $this->newrole='administrator'; 
         $this->mobile=$this->user->mobile;
         $this->newmobile=$this->mobile;
         $this->language=$this->user->language;
-
-        $org=User::find($this->user->id)->organizations;
         
         //Check for existing orgnization for user. 
-        $user_id=Auth::user()->id; 
+       
+        // $org=User::find($this->user->id)->organizations; 
+        $user_id=$this->user->id; 
         $org=UserOrganizations::where('user_id', $user_id)->first(); 
         if(is_null($org)) {
 
+            //Create Blank Organization For User
             $this->logo='avatars/thumb-3.jpg';
             $this->company_name=''; 
+
+            $new_org=new OrgProfiles; 
+            $new_org->org_logo=$this->logo; 
+            $new_org->save(); 
+            //Update $org_id;
+            $this->org_id=$new_org->id; 
+            // Associate Newly Created Organation Profile to User
+            $associate_profile=new UserOrganizations; 
+            $associate_profile->timestamps=false;
+            $associate_profile->user_id=$this->user->id; 
+            $associate_profile->org_id=$this->org_id; 
+            $associate_profile->save();
+            
         }
+
+            //Where User Already Has an Associted Org Profile
 
         else {
 
-            
-            //Check for existing role
-            $role=UserOrganizations::where('user_id', $this->user->id)->first()->user_privilege;
+            //Set/Update $org_id;
+            $this->org_id = $org->org_id;
 
+            //Check for Role in Organization 
+            $role=UserOrganizations::where('org_id', $this->org_id)
+            ->where('user_id', $this->user->id)->first()->user_privilege;
+           
             switch ($role) {
                 case '':
                     $this->newrole='administrator';
@@ -125,7 +144,7 @@ class AccountSetup extends Component
                     break; 
 
                 case '3':
-                    $tis->newrole='finance'; 
+                    $this->newrole='finance'; 
                     break; 
 
                 case '4':
@@ -141,11 +160,12 @@ class AccountSetup extends Component
                     $this->newrole='sales'; 
                     break; 
                 default:
-                    # code...
+                    $this->newrole='administrator';
                     break;
             }
 
-            $org_details=OrgProfiles::where('id', $org->org_id)->first(); 
+            // Assign Org Profile Details to Fields  
+            $org_details=OrgProfiles::find($this->org_id); 
 
             $this->logo=$org_details->org_logo;
             $this->company_name=$org_details->org_name; 
@@ -156,31 +176,41 @@ class AccountSetup extends Component
 
         }
 
-
+        //Find Associated Social Profiles for Organization 
         $this->socials=User::find($this->user->id)->socials; 
+       
 
-        if(!is_null($this->socials)) {
+        if($this->socials->count() >= 1){
             
             foreach ($this->socials as $item) {
                
                 switch (strtolower($item->platform)) {
-                    case 'facebook':      
-                           if(is_null($this->facebookUpdated=$item->username)){
-                            $this->facebook=null; 
-                        }   else {
-                               $this->facebook=$this->facebookUpdated;                          
+                    case 'facebook':     
+                        
+                        $this->facebook=$item->username;
+                        $this->facebookUpdated=$item->username;
 
-                           }
+                        // dd($this->item->username); 
+
+                        //    if(is_null($this->facebookUpdated=$item->username)){
+                        //     $this->facebook=null; 
+                        // }   else {
+                        //        $this->facebook=$this->facebookUpdated.'jay';                          
+
+                        //    }
                     break; 
 
                     case 'instagram':
-                            $this->instagramUpdated=$item->username; 
-                            $this->instagram=$this->instagramUpdated;
+                            // $this->instagramUpdated=$item->username; 
+                            // $this->instagram=$this->instagramUpdated;
+
+                            $this->instagram=$item->username;
+                            $this->instagramUpdated=$item->username;
                     break; 
 
                     case 'twitter':
-                           $this->twitterUpdated=$item->username;
-                           $this->twitter=$this->twitterUpdated; 
+                           $this->twitter=$item->username;
+                           $this->twitterUpdated=$item->username; 
                     break; 
 
                     case 'dribbble':
@@ -212,7 +242,7 @@ class AccountSetup extends Component
     public function render()
     {
         
-        $query=UserOrganizations::where('user_id', $this->user->id)->first(); 
+        $query=UserOrganizations::where('org_id', $this->org_id)->where('user_id', $this->user->id)->first(); 
         if($query){
             $org_id=$query->org_id;
 
@@ -223,26 +253,11 @@ class AccountSetup extends Component
             $this->invitedusers=UserInvitation::where('user_id', $this->user->id)->get();
         }
 
-        
-
         $this->listcountries=getCountriesList(); 
-        $query=User::find($this->user->id)->organizations();
-        if($query->count()){
-            $this->org_count=$query->count(); 
-            $organizations=User::find($this->user->id);
-           
-            // Tag::whereHas('categories', function ($query) use ($chosenCategoriesIds) {
-            //     $query->whereIn('id', $chosenCategoriesIds);
-            // })->get();
-
-         } else {
-             $this->org_count=0; 
-             $organizations=[]; 
-         }
                 
         $this->user=User::find($this->user->id); 
        
-        return view('livewire.account-setup', compact('organizations'));
+        return view('livewire.account-setup');
     }
 
     public function updatedRegistrationType() {
@@ -390,16 +405,18 @@ class AccountSetup extends Component
 
     }
 
-    public function updatedRole(){
+    public function updatedNewRole(){
 
-        // dd($this->role);
+        $update=UserOrganizations::where('user_id', $this->user->id)
+        ->where('org_id', $this->org_id)
+        ->update(['user_privilege'=>$this->newrole]);
 
-        if($this->role=='administrator'){
-            dd('Howdy Admin?');
-        }
-        if($this->role=='staff'){
-            dd('Howdy Staff?');
-        }
+        // if($this->newrole=='administrator'){
+        //     dd('Howdy Admin?');
+        // }
+        // if($this->newrole=='staff'){
+        //     dd('Howdy Staff?');
+        // }
         
     }
 
@@ -411,9 +428,12 @@ class AccountSetup extends Component
 
             if ($this->newmobile!=$this->mobile) {
                 # code...
-                $update_mobile=User::where('id', $this->user->id)->first();
-                $update_mobile->update(['mobile'=> $this->newmobile]);
+                $update_mobile=User::where('id', $this->user->id)
+                ->update(['mobile'=> $this->newmobile]);
             }
+        } else {
+            $update_mobile=User::where('id', $this->user->id)
+            ->update(['mobile'=> $this->newmobile]);
         }
         
 
@@ -481,23 +501,16 @@ class AccountSetup extends Component
 
     }
     public function updatedFacebookUpdated(){
-        if(empty($this->facebookUpdated)){
-            $this->facebook=null;
-        } else {
-            
-            $this->facebook=$this->facebookUpdated;
-        }
-        //Check for existing organization for user. 
-        $user_id=Auth::user()->id; 
-        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
-        
-        $profile=SocialProfiles::where('org_id', $org_id)
+
+       $this->facebook=$this->facebookUpdated;
+      
+        $profile=SocialProfiles::where('org_id', $this->org_id)
         ->where('platform', 'facebook')->first();
 
         if(is_null($profile)){
             // Create Profile 
             $create_profile=new SocialProfiles; 
-            $create_profile->org_id=$org_id; 
+            $create_profile->org_id=$this->org_id; 
             $create_profile->platform='facebook'; 
             $create_profile->link='https://facebook.com/'.$this->facebookUpdated; 
             $create_profile->username=$this->facebookUpdated;
@@ -505,32 +518,27 @@ class AccountSetup extends Component
 
         }
         else{
-            
                 // Update Profile
-                $update_profile=SocialProfiles::where('org_id', $org_id)
-                ->where('platform', 'facebook')->first();
-                $update_profile->link='https://facebook.com/'.$this->facebookUpdated; 
-    
-                $update_profile->username=$this->facebookUpdated; 
-                $update_profile->save();
-
+                $update_profile=SocialProfiles::where('org_id', $this->org_id)
+                ->where('platform', 'facebook')->update([
+                    'link'=>'https://facebook.com/'.$this->facebookUpdated, 
+                    'username'=>$this->facebookUpdated
+                ]);
         }
-
-        
       
     }
+
     public function updatedInstagramUpdated(){
-        //Check for existing organization for user. 
-        $user_id=Auth::user()->id; 
-        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
+
+        $this->instagram=$this->instagramUpdated;
         
-        $profile=SocialProfiles::where('org_id', $org_id)
+        $profile=SocialProfiles::where('org_id', $this->org_id)
         ->where('platform', 'instagram')->first();
 
         if(is_null($profile)){
             // Create Profile 
             $create_profile=new SocialProfiles; 
-            $create_profile->org_id=$org_id; 
+            $create_profile->org_id=$this->org_id; 
             $create_profile->platform='instagram'; 
             $create_profile->link='https://instagram.com/'.$this->instagramUpdated; 
             $create_profile->username=$this->instagramUpdated;
@@ -540,29 +548,27 @@ class AccountSetup extends Component
         else{
             
                 // Update Profile
-                $update_profile=SocialProfiles::where('org_id', $org_id)
-                ->where('platform', 'instagram')->first();
-                $update_profile->link='https://instagram.com/'.$this->instagramUpdated; 
-    
-                $update_profile->username=$this->instagramUpdated; 
-                $update_profile->save(); 
+                $update_profile=SocialProfiles::where('org_id', $this->org_id)
+                ->where('platform', 'instagram')->update([
+                    'link'=>'https://instagram.com/'.$this->instagramUpdated, 
+                    'username'=>$this->instagramUpdated
+                ]);
 
         }
  
      }
 
      public function updatedTwitterUpdated(){
-       //Check for existing organization for user. 
-       $user_id=Auth::user()->id; 
-       $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
-       
-       $profile=SocialProfiles::where('org_id', $org_id)
+        
+        $this->twitter=$this->twitterUpdated;
+
+       $profile=SocialProfiles::where('org_id', $this->org_id)
        ->where('platform', 'twitter')->first();
 
        if(is_null($profile)){
            // Create Profile 
            $create_profile=new SocialProfiles; 
-           $create_profile->org_id=$org_id; 
+           $create_profile->org_id=$this->org_id; 
            $create_profile->platform='twitter'; 
            $create_profile->link='https://twitter.com/'.$this->twitterUpdated; 
            $create_profile->username=$this->twitterUpdated;
@@ -572,29 +578,27 @@ class AccountSetup extends Component
        else{
            
                // Update Profile
-               $update_profile=SocialProfiles::where('org_id', $org_id)
-               ->where('platform', 'twitter')->first();
-               $update_profile->link='https://twitter.com/'.$this->twitterUpdated; 
+               $update_profile=SocialProfiles::where('org_id', $this->org_id)
+               ->where('platform', 'twitter')->update([
+                'link'=>'https://twitter.com/'.$this->twitterUpdated, 
+                'username'=>$this->twitterUpdated, 
    
-               $update_profile->username=$this->twitterUpdated; 
-               $update_profile->save(); 
-
+               ]);
+               
        }
  
     }
     
     public function updatedDribbbleUpdated(){
-        //Check for existing organization for user. 
-        $user_id=Auth::user()->id; 
-        $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
+        $this->dribbble=$this->dribbbleUpdated;
         
-        $profile=SocialProfiles::where('org_id', $org_id)
+        $profile=SocialProfiles::where('org_id', $this->org_id)
         ->where('platform', 'dribbble')->first();
 
         if(is_null($profile)){
             // Create Profile 
             $create_profile=new SocialProfiles; 
-            $create_profile->org_id=$org_id; 
+            $create_profile->org_id=$this->org_id; 
             $create_profile->platform='dribbble'; 
             $create_profile->link='https://dribbble.com/'.$this->dribbbleUpdated; 
             $create_profile->username=$this->dribbbleUpdated;
@@ -603,30 +607,26 @@ class AccountSetup extends Component
         }
         else{
             
-            
-                // Update Profile
-                $update_profile=SocialProfiles::where('org_id', $org_id)
-                ->where('platform', 'dribbble')->first();
-                $update_profile->link='https://dribbble.com/'.$this->dribbbleUpdated; 
+                $update_profile=SocialProfiles::where('org_id', $this->org_id)
+                ->where('platform', 'dribbble')->update([
+                    'link'=>'https://dribbble.com/'.$this->dribbbleUpdated, 
+                    'username'=>$this->dribbbleUpdated, 
     
-                $update_profile->username=$this->dribbbleUpdated; 
-                $update_profile->save(); 
+                ]);
 
         }
  
     }
     public function updatedGithubUpdated(){
-       //Check for existing organization for user. 
-       $user_id=Auth::user()->id; 
-       $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
+        $this->github=$this->githubUpdated;
        
-       $profile=SocialProfiles::where('org_id', $org_id)
+       $profile=SocialProfiles::where('org_id', $this->org_id)
        ->where('platform', 'github')->first();
 
        if(is_null($profile)){
            // Create Profile 
            $create_profile=new SocialProfiles; 
-           $create_profile->org_id=$org_id; 
+           $create_profile->org_id=$this->org_id; 
            $create_profile->platform='github'; 
            $create_profile->link='https://github.com/'.$this->githubUpdated; 
            $create_profile->username=$this->githubUpdated;
@@ -634,34 +634,29 @@ class AccountSetup extends Component
 
        }
        else{
-           
-        // dd($this->githubUpdated);
                // Update Profile
                $username=$this->githubUpdated; 
-               $update_profile=SocialProfiles::where('org_id', $org_id)
-               ->where('platform', 'github')->first();
-               $update_profile->link='https://github.com/'.$username; 
-
-               $update_profile->username=$this->githubUpdated; 
-               $update_profile->save(); 
-
+               $update_profile=SocialProfiles::where('org_id', $this->org_id)
+               ->where('platform', 'github')->update([
+                'link'=>'https://github.com/'.$username, 
+                'username'=>$this->githubUpdated, 
+               ]);
        }
  
     }
+
     public function updatedLinkedinUpdated(){
-        //Check for existing organization for user. 
-       $user_id=Auth::user()->id; 
-       $org_id=UserOrganizations::where('user_id', $user_id)->first()->org_id; 
-       
+        $this->linkedin=$this->linkedinUpdated;
+
        $profile=SocialProfiles::where([
-           ['org_id', $org_id], 
+           ['org_id', $this->org_id], 
            ['platform', 'linkedin'],
         ])->first();
 
        if(is_null($profile)){
            // Create Profile 
            $create_profile=new SocialProfiles; 
-           $create_profile->org_id=$org_id; 
+           $create_profile->org_id=$this->org_id; 
            $create_profile->platform='linkedin'; 
            $create_profile->link='https://linkedin.com/company'.'/'.$this->linkedinUpdated;           
            $create_profile->username=$this->linkedinUpdated;
@@ -669,16 +664,12 @@ class AccountSetup extends Component
 
        }
        else{
-           
-           
                // Update Profile
-               $update_profile=SocialProfiles::where('org_id', $org_id)
-               ->where('platform', 'linkedin')->first();
-               $update_profile->link='https://linkedin.com/company'.'/'.$this->linkedinUpdated; 
-   
-               $update_profile->username=$this->linkedinUpdated; 
-               $update_profile->save(); 
-
+               $update_profile=SocialProfiles::where('org_id', $this->org_id)
+               ->where('platform', 'linkedin')->update([
+                'link'=>'https://linkedin.com/company'.'/'.$this->linkedinUpdated,      
+                'username'=>$this->linkedinUpdated, 
+               ]);
        }
  
     }
@@ -696,17 +687,19 @@ class AccountSetup extends Component
         $organization_name=$current_organization->org_name;
         $organization_id=$current_organization->id; 
         $inviteduser_role=$this->inviteduser_role;
-        // dd($current_organization);
+       
         $name=getFirstName($name); 
         $email;     
+
         // $systemurl='https://eazibusiness.com';
+
         $systemurl=config("app.url");
+
         //build url
         $buldurl=$systemurl."/invitation".'/'.$current_user_id.'/'.$organization_id.'/'.$inviteduser_role;
-        // dd($inviteduser_role);
+        
         if (!is_null($inviteduser_role)) {
-            # code...
-            
+
             //Store Invitation Details 
             $store_invitation=new UserInvitation;
             $store_invitation->user_id=$this->user->id;
@@ -719,169 +712,39 @@ class AccountSetup extends Component
 
             //Send invitation 
             Notification::route('mail', $email)->notify(new NewUserInvitationNotification($name, $email, $buldurl, $organization_name, $current_user_name));
-    
-
+  
             //Clear Invitation Data
             $this->StaffEmail='';
             $this->StaffName='';
             $this->inviteduser_role='';
         }
 
-
     }
     
     public function updatedCompanyName(){
-
-         //Check for existing organization for user. 
-         $user_id=Auth::user()->id; 
-         $org=UserOrganizations::where('user_id', $user_id)->first();
-         
-         if(is_null($org)) {
-
-            $create_organization=new OrgProfiles;
-            $create_organization->org_name='';
-            $create_organization->save();
-            
-            $org_id=$create_organization->id; 
-
-            $store=new UserOrganizations; 
-            $store->timestamps=false;
-            $store->user_id=$user_id; 
-            $store->org_id=$org_id;
-            $store->save();
-
-
-         }
-         else{
-
-            $update_details=OrgProfiles::where('id', $org->id)->first();
-            $update_details->org_name=$this->company_name;
-            $update_details->save();
-
-         }
-    }
+                $update_details=OrgProfiles::where('id', $this->org_id)
+                ->update(['org_name'=>$this->company_name]);
+        }
 
     public function updatedCompanyEmail(){
-       //Check for existing organization for user. 
-       $user_id=Auth::user()->id; 
-       $org=UserOrganizations::where('user_id', $user_id)->first();
-       
-       if(is_null($org)) {
-
-          $create_organization=new OrgProfiles;
-          $create_organization->org_email='';
-          $create_organization->save();
-          
-          $org_id=$create_organization->id; 
-
-          $store=new UserOrganizations; 
-          $store->timestamps=false;
-          $store->user_id=$user_id; 
-          $store->org_id=$org_id;
-          $store->save();
-
-
-       }
-       else{
-
-          $update_details=OrgProfiles::where('id', $org->id)->first();
-          $update_details->org_email=$this->company_email;
-          $update_details->save();
-
-       }
-   }
-
-   public function updatedCompanyAddress(){
-   
-    //Check for existing organization for user. 
-    $user_id=Auth::user()->id; 
-    $org=UserOrganizations::where('user_id', $user_id)->first();
-    
-    if(is_null($org)) {
-
-       $create_organization=new OrgProfiles;
-       $create_organization->org_address='';
-       $create_organization->save();
-       
-       $org_id=$create_organization->id; 
-
-       $store=new UserOrganizations; 
-       $store->timestamps=false;
-       $store->user_id=$user_id; 
-       $store->org_id=$org_id;
-       $store->save();
-
-
+            $update_details=OrgProfiles::where('id', $this->org_id)
+            ->update(['org_email'=>$this->company_email]);
     }
-    else{
 
-       $update_details=OrgProfiles::where('id', $org->id)->first();
-       $update_details->org_address=$this->company_address;
-       $update_details->save();
-
+    public function updatedCompanyAddress(){
+        $update_details=OrgProfiles::where('id', $this->org_id)
+        ->update(['org_address'=>$this->company_address]);
     }
-}
 
-public function updatedCompanyCity(){
-   
-    //Check for existing organization for user. 
-    $user_id=Auth::user()->id; 
-    $org=UserOrganizations::where('user_id', $user_id)->first();
-    
-    if(is_null($org)) {
-
-       $create_organization=new OrgProfiles;
-       $create_organization->org_city='';
-       $create_organization->save();
-       
-       $org_id=$create_organization->id; 
-
-       $store=new UserOrganizations; 
-       $store->timestamps=false;
-       $store->user_id=$user_id; 
-       $store->org_id=$org_id;
-       $store->save();
-
+    public function updatedCompanyCity(){
+        $update_details=OrgProfiles::where('id', $this->org_id)->
+        update(['org_city'=>$this->company_city]);
     }
-    else{
 
-       $update_details=OrgProfiles::where('id', $org->id)->first();
-       $update_details->org_city=$this->company_city;
-       $update_details->save();
-
+    public function updatedCompanyCountry(){
+        $update_details=OrgProfiles::where('id', $this->org_id)
+        ->update(['org_country'=>$this->company_country]);
     }
-}
-
-
-public function updatedCompanyCountry(){
-   
-    //Check for existing organization for user. 
-    $user_id=Auth::user()->id; 
-    $org=UserOrganizations::where('user_id', $user_id)->first();
-    
-    if(is_null($org)) {
-
-       $create_organization=new OrgProfiles;
-       $create_organization->org_country='';
-       $create_organization->save();
-       
-       $org_id=$create_organization->id; 
-
-       $store=new UserOrganizations; 
-       $store->timestamps=false;
-       $store->user_id=$user_id; 
-       $store->org_id=$org_id;
-       $store->save();
-
-    }
-    else{
-
-       $update_details=OrgProfiles::where('id', $org->id)->first();
-       $update_details->org_country=$this->company_country;
-       $update_details->save();
-
-    }
-}
 
 // Verification Documents Upload 
   
@@ -937,22 +800,18 @@ public function updatedPPACertDoc(){
 public function CompleteSetup(){
 
     //Check for existing organization for user. 
-    $user_id=Auth::user()->id; 
-    $org=UserOrganizations::where('user_id', $user_id)->first();
-
+    $org=UserOrganizations::where('user_id', $this->user->id)->first();
 
     //Check for all details
 
-
     //Mark Account as Verified
 
-    $complete_setup=User::find($user_id);
+    $complete_setup=User::find($this->user->id);
     $complete_setup->account_status='1';
     $complete_setup->save(); 
 
-    return redirect('/dashboard'); 
-
     //Proceed to dashboard
+    return redirect('/dashboard'); 
 
 }
 

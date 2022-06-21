@@ -47,7 +47,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('/tender-history', function(){ return view('tenders.history');})->name('tender-history'); 
     
     //Finance 
-    Route::get('/invoices', function(){ return view('invoices.list'); });
+    Route::get('/invoices', function(){ return view('invoices.list'); })->name('invoices');
     Route::get('/quotes', function(){ return view('quotes.view'); });
     Route::get('/create-invoice', function(){ return view('invoices.new'); });
     Route::get('finance-reports', function(){ return view('reports.financial-reports');})->name('reports');

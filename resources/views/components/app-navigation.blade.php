@@ -1,6 +1,5 @@
    <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
     <!-- Side Nav START -->
-
  <div class="app-menu">
                     <ul class="accordion-menu">
                         <li class="sidebar-title">
@@ -9,10 +8,21 @@
                         <li>
                             <a href="{{URL::Route('dashboard')}}"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
                         </li>
-                        
+                                                
                         <li>
                             <a href="{{url('organizations')}}"><i class="material-icons-two-tone">manage_accounts</i>Businesses</a>
                         </li>
+
+                        <li>
+                            <a href="{{URL::Route('shopping-area')}}"><i class="material-icons-two-tone">shopping_cart_checkout</i>Shopping Area</a>
+                        </li>
+                        <li>
+                            <a href="{{URL::Route('tenders')}}"><i class="material-icons-two-tone">dataset_linked</i>Tenders</a>
+                        </li>
+                        <li>
+                            <a href="{{URL::Route('invoices')}}"><i class="material-icons-two-tone">payments</i>Invoices</a>
+                        </li>
+
                         <li>
                             <a href="#settings"><i class="material-icons-two-tone">settings</i>Settings<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                             <ul class="sub-menu" style="">

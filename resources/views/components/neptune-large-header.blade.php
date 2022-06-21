@@ -6,6 +6,6 @@
     </div>
         @if(Auth::user()->account_status==0)
             <div class="alert alert-warning"> Hello {{getFirstName(Auth::user()->name)}}, your account setup is incomplete. <a href="/account-setup">Click Here</a> to setup your business profile!</div>
-            <div class="alert alert-danger"> We're updating our systems! You will be able to access your full free 30-day trial after that. View status!</div>
+            {{-- <div class="alert alert-danger"> We're updating our systems! You will be able to access your full free 30-day trial after that. View status!</div> --}}
             {{-- <div class="alert alert-warning"> Hello {{getFirstName(Auth::user()->name)}}, you're currently on our forever free plan. <a href="/upgrade">Upgrade</a> to access premium features and services!</div> --}}
         @endif 

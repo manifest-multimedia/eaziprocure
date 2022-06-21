@@ -284,7 +284,9 @@
                                                     <div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="facebookUpdated" class="form-control"></div>
                                                 </div>
                                                         <div class="switch m-t-5 m-l-10">
-                                                            <input type="checkbox" id="switch-fb" {{is_null($facebook) ? '' : "checked"}} wire:model="facebook_switch">
+                                                            {{-- @dd($facebook) --}}
+                                                            {{-- <input type="checkbox" id="switch-fb" wire:model="facebook_switch" checked> --}}
+                                                            <input type="checkbox" id="switch-fb" {{(is_null($facebook)) || ($facebook==="") ? "" : "checked"}} disabled>
                                                             <label for="switch-fb"></label>
                                                         </div>              
                                             </div>
@@ -302,7 +304,7 @@
                                                 <label class="m-b-0">https://instagram.com/ </label>
                                                     <div class="row"><div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="instagramUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-inst" {{is_null($instagram) ? '' : "checked"}} disabled>
+                                                    <input type="checkbox" id="switch-inst" {{(is_null($instagram)) || ($instagram==="") ? "" : "checked"}} disabled>
                                                     <label for="switch-inst"></label>
                                                 </div>
                                             </div>
@@ -320,7 +322,7 @@
                                                 <label class="m-b-0">https://twitter.com/ </label>
                                                 <div class="row"><div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="twitterUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-tw" {{is_null($twitter) ? '' : "checked"}} disabled>
+                                                    <input type="checkbox" id="switch-tw" {{(is_null($twitter)) || ($twitter==="") ? "" : "checked"}} disabled>
                                                     <label for="switch-tw"></label>
                                                 </div>
                                             </div>
@@ -338,7 +340,7 @@
                                                 <label class="m-b-0">https://dribble.com/</label>
                                                 <div class="row"><div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="dribbbleUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-dr" {{is_null($dribbble) ? '' : "checked"}} disabled>
+                                                    <input type="checkbox" id="switch-dr" {{(is_null($dribbble)) || ($dribbble==="") ? "" : "checked"}} disabled>
                                                     <label for="switch-dr"></label>
                                                 </div>
                                             </div>
@@ -358,7 +360,7 @@
                                                 <div class="row"><div class="col-md-12"><input type="text" 
                                                     placeholder="@username" wire:model.lazy="githubUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-gh" {{is_null($github) ? '' : "checked"}} disabled>
+                                                    <input type="checkbox" id="switch-gh" {{(is_null($github)) || ($github==="") ? "" : "checked"}} disabled>
                                                     <label for="switch-gh"></label>
                                                 </div>
                                             </div>
@@ -376,7 +378,7 @@
                                                 <label class="m-b-0">https://linkedin.com/company/</label>
                                                 <div class="row"><div class="col-md-12"><input type="text" placeholder="@username" wire:model.lazy="linkedinUpdated" class="form-control"></div></div>
                                                 <div class="switch m-t-5 m-l-10">
-                                                    <input type="checkbox" id="switch-ln" {{is_null($linkedin) ? '' : "checked"}} disabled>
+                                                    <input type="checkbox" id="switch-ln" {{(is_null($linkedin)) || ($linkedin==="") ? "" : "checked"}} disabled>
                                                     <label for="switch-ln"></label>
                                                 </div>
                                             </div>
