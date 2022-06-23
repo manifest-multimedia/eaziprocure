@@ -264,136 +264,42 @@ class AccountSetup extends Component
 
         switch ($this->registration_type) {
             case 'Sole Proprietorship':
-               //Check if Org Profile Exists
-
-               $user_id=Auth::user()->id; 
-               $org=UserOrganizations::where('user_id', $user_id)->first(); 
-               
-               if(is_null($org)) {
-                //Create Organization 
-                $create_organization=new OrgProfiles;
-                $create_organization->org_type=$this->registration_type;
-                $create_organization->save();
-                
-                $org_id=$create_organization->id; 
-                   
-               }
-               
-               else {
        
-                    //Update Registration Type for Existing Organization 
-                $update_details=OrgProfiles::where('id', $org->id)->first();
+                //Update Registration Type for Existing Organization 
+                $update_details=OrgProfiles::where('id', $this->org_id)->first();
                 $update_details->update(['org_type'=>$this->registration_type]);
-                // $update_details->save();
-       
-               }
-
+               
                 break;
 
             case 'Company Limited by Shares':
-                 //Check if Org Profile Exists
-
-               $user_id=Auth::user()->id; 
-               $org=UserOrganizations::where('user_id', $user_id)->first(); 
-               
-               if(is_null($org)) {
-                //Create Organization 
-                $create_organization=new OrgProfiles;
-                $create_organization->org_type=$this->registration_type;
-                $create_organization->save();
-                
-                $org_id=$create_organization->id; 
-                   
-               }
-               
-               else {
-       
-                    //Update Registration Type for Existing Organization 
-                $update_details=OrgProfiles::where('id', $org->id)->first();
+              
+                //Update Registration Type for Existing Organization 
+                $update_details=OrgProfiles::where('id', $this->org_id)->first();
                 $update_details->update(['org_type'=>$this->registration_type]);
-       
-               }
                 
                 break;
 
             case 'Company Limited by Guarantee':
-                 //Check if Org Profile Exists
-
-               $user_id=Auth::user()->id; 
-               $org=UserOrganizations::where('user_id', $user_id)->first(); 
-               
-               if(is_null($org)) {
-                //Create Organization 
-                $create_organization=new OrgProfiles;
-                $create_organization->org_type=$this->registration_type;
-                $create_organization->save();
                 
-                $org_id=$create_organization->id; 
-                   
-               }
-               
-               else {
-       
-                    //Update Registration Type for Existing Organization 
-                $update_details=OrgProfiles::where('id', $org->id)->first();
+                //Update Registration Type for Existing Organization 
+                $update_details=OrgProfiles::where('id', $this->org_id)->first();
                 $update_details->update(['org_type'=>$this->registration_type]);
-               
-       
-               }
                 
                 break;
             
             case 'Unlimited Company':
-                 //Check if Org Profile Exists
-
-               $user_id=Auth::user()->id; 
-               $org=UserOrganizations::where('user_id', $user_id)->first(); 
-               
-               if(is_null($org)) {
-                //Create Organization 
-                $create_organization=new OrgProfiles;
-                $create_organization->org_type=$this->registration_type;
-                $create_organization->save();
                 
-                $org_id=$create_organization->id; 
-                   
-               }
-               
-               else {
-       
-                    //Update Registration Type for Existing Organization 
-                $update_details=OrgProfiles::where('id', $org->id)->first();
+                //Update Registration Type for Existing Organization 
+                $update_details=OrgProfiles::where('id', $this->org_id)->first();
                 $update_details->update(['org_type'=>$this->registration_type]);
-                
-       
-               }
                 
                 break;
 
             case 'External Company':
-                 //Check if Org Profile Exists
-
-               $user_id=Auth::user()->id; 
-               $org=UserOrganizations::where('user_id', $user_id)->first(); 
-               
-               if(is_null($org)) {
-                //Create Organization 
-                $create_organization=new OrgProfiles;
-                $create_organization->org_type=$this->registration_type;
-                $create_organization->save();
-                
-                $org_id=$create_organization->id; 
-                   
-               }
-               
-               else {
-       
-                    //Update Registration Type for Existing Organization 
-                $update_details=OrgProfiles::where('id', $org->id)->first();
+            
+                //Update Registration Type for Existing Organization 
+                $update_details=OrgProfiles::where('id', $this->org_id)->first();
                 $update_details->update(['org_type'=>$this->registration_type]);
-                
-       
-               }
                 
                 break;
         
@@ -410,13 +316,6 @@ class AccountSetup extends Component
         $update=UserOrganizations::where('user_id', $this->user->id)
         ->where('org_id', $this->org_id)
         ->update(['user_privilege'=>$this->newrole]);
-
-        // if($this->newrole=='administrator'){
-        //     dd('Howdy Admin?');
-        // }
-        // if($this->newrole=='staff'){
-        //     dd('Howdy Staff?');
-        // }
         
     }
 
@@ -436,25 +335,11 @@ class AccountSetup extends Component
             ->update(['mobile'=> $this->newmobile]);
         }
         
-
-        
-        
     }
 
     public function updatedLogo(){
 
-        //Check for existing organization for user. 
-        $user_id=Auth::user()->id; 
-        $org=UserOrganizations::where('user_id', $user_id)->first(); 
-
-        if(is_null($org) ){
-            //Create Organization 
-            $create_organization=new OrgProfiles;
-            $create_organization->org_logo=$this->logo;
-            $create_organization->save();
-            
-            $org_id=$create_organization->id; 
-
+            $org_id=$this->org_id;
             $logo=$this->logo;
 
             $this->validate([
@@ -462,41 +347,17 @@ class AccountSetup extends Component
             ]); 
     
            //    $url = $logo->store('logos', 'public'); 
-           $filename=Auth::user()->id.'_'.$org_id.'_logo_'.$logo->getClientOriginalName();
-           $url = $logo->storeAs('public/logos', $filename); 
-    
-           $this->logo = $url;
-    
-
-            $store=new UserOrganizations; 
-            $store->timestamps=false;
-            $store->user_id=$user_id; 
-            $store->org_id=$org_id;
-            $store->save();
-            
-        } else {
-
-            $org_id=$org->id;
-            $logo=$this->logo;
-
-            $this->validate([
-                'logo' => 'image|max:5024', 
-            ]); 
-    
-           //    $url = $logo->store('logos', 'public'); 
-           $filename=Auth::user()->id.'_'.$org_id.'_logo_'.$logo->getClientOriginalName();
+           $filename=$this->user->id.'_'.$org_id.'_logo_'.$logo->getClientOriginalName();
            $url = $logo->storeAs('public/logos', $filename); 
 
            $this->logo = $url;
 
-            //Update Logo for Existing Organization 
-            $update_details=OrgProfiles::where('id', $org->id)->first();
-            $update_details->update(['org_logo'=>$this->logo]);
+           //Update Logo for Existing Organization 
+           $update_details=OrgProfiles::where('id', $this->org_id)->first();
+           $update_details->update(['org_logo'=>$this->logo]);
 
-            $this->logo=$this->logo;
-    
-        }
-        
+           $this->logo=$this->logo;
+      
         $this->logo=$this->logo;
 
     }
