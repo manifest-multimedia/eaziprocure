@@ -1,6 +1,74 @@
 
        Removed from Account Setup Livewire Controller 
 
+         // $email = $this->StaffEmail;
+        // $name = $this->StaffName; 
+        // $user=[$email, $name];
+    
+        // $current_user=$this->user;
+        // $current_user_id=$current_user->id; 
+        // $current_organization=User::find($this->user->id)->organizations->first();
+
+       public function updatedLogo(){
+
+        //Check for existing organization for user. 
+        $user_id=Auth::user()->id; 
+        $org=UserOrganizations::where('user_id', $user_id)->first(); 
+
+        if(is_null($org) ){
+            //Create Organization 
+            $create_organization=new OrgProfiles;
+            $create_organization->org_logo=$this->logo;
+            $create_organization->save();
+            
+            $org_id=$create_organization->id; 
+
+            $logo=$this->logo;
+
+            $this->validate([
+                'logo' => 'image|max:5024', 
+            ]); 
+    
+           //    $url = $logo->store('logos', 'public'); 
+           $filename=Auth::user()->id.'_'.$org_id.'_logo_'.$logo->getClientOriginalName();
+           $url = $logo->storeAs('public/logos', $filename); 
+    
+           $this->logo = $url;
+    
+
+            $store=new UserOrganizations; 
+            $store->timestamps=false;
+            $store->user_id=$user_id; 
+            $store->org_id=$org_id;
+            $store->save();
+            
+        } else {
+
+            $org_id=$org->id;
+            $logo=$this->logo;
+
+            $this->validate([
+                'logo' => 'image|max:5024', 
+            ]); 
+    
+           //    $url = $logo->store('logos', 'public'); 
+           $filename=Auth::user()->id.'_'.$org_id.'_logo_'.$logo->getClientOriginalName();
+           $url = $logo->storeAs('public/logos', $filename); 
+
+           $this->logo = $url;
+
+            //Update Logo for Existing Organization 
+            $update_details=OrgProfiles::where('id', $org->id)->first();
+            $update_details->update(['org_logo'=>$this->logo]);
+
+            $this->logo=$this->logo;
+    
+        }
+        
+        $this->logo=$this->logo;
+
+    }
+
 public function updatedCompanyName(){
 
          //Check for existing organization for user. 

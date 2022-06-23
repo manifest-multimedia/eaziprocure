@@ -537,27 +537,18 @@ class AccountSetup extends Component
 
     public function invitation() {
 
-        $email = $this->StaffEmail;
-        $name = $this->StaffName; 
-        $user=[$email, $name];
-    
-        $current_user=$this->user;
-        $current_user_id=$current_user->id; 
-        $current_user_name=$current_user->name; 
-        $current_organization=User::find($this->user->id)->organizations->first();
+        $current_user_name=$this->user->name; 
+        $current_organization=OrgProfiles::where('id', $this->org_id)->first();
         $organization_name=$current_organization->org_name;
         $organization_id=$current_organization->id; 
         $inviteduser_role=$this->inviteduser_role;
        
-        $name=getFirstName($name); 
-        $email;     
-
-        // $systemurl='https://eazibusiness.com';
-
-        $systemurl=config("app.url");
+        $name=getFirstName($this->StaffName); 
+        $email=$this->StaffEmail;     
 
         //build url
-        $buldurl=$systemurl."/invitation".'/'.$current_user_id.'/'.$organization_id.'/'.$inviteduser_role;
+        $systemurl=config("app.url");
+        $buldurl=$systemurl."/invitation".'/'.$this->user->id.'/'.$this->org_id.'/'.$inviteduser_role;
         
         if (!is_null($inviteduser_role)) {
 
@@ -565,7 +556,7 @@ class AccountSetup extends Component
             $store_invitation=new UserInvitation;
             $store_invitation->user_id=$this->user->id;
             $store_invitation->org_id=$organization_id;
-            $store_invitation->invited_name=$name;
+            $store_invitation->invited_name=$this->StaffName;
             $store_invitation->invited_email=$email;
             $store_invitation->invited_role=$this->inviteduser_role; 
             $store_invitation->status='pending';
