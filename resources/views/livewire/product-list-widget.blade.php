@@ -54,10 +54,11 @@
 
                 <div class="col-lg-4 text-right">
                    {{-- @if(Auth::user()->account_status!=0) --}}
-                    <a href="{{url('new-product')}}" class="btn btn-primary">
+                    <x-product-modal />
+                    {{-- <a href="{{url('new-product')}}" class="btn btn-primary">
                         <i class="anticon anticon-plus-circle m-r-5"></i>
                         <span>Add Product</span>
-                    </a>
+                    </a> --}}
                     {{-- @endif --}}
                 </div>
             </div>

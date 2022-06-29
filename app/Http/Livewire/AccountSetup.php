@@ -569,6 +569,7 @@ class AccountSetup extends Component
             $this->StaffEmail='';
             $this->StaffName='';
             $this->inviteduser_role='';
+            
         }
 
     }
