@@ -44,7 +44,7 @@
             </div>
             <div class="app-auth-container">
                 <div class="logo">
-                    <a href="{{URL::Route('home')}}">Eazibusiness</a>
+                    <a href="{{URL::Route('home')}}">Commerce Box</a>
                 </div>
                 {{$slot}}
             </div>

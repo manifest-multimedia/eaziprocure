@@ -1,6 +1,6 @@
 <x-backend-layout>  
     <x-slot name="title"> 
-        EaziProcure &mdash; Invoices
+        Commerce Box &mdash; Invoices
     </x-slot>
 
     @component('components.invoice') @endcomponent

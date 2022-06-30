@@ -1,6 +1,6 @@
 <x-auth-layout>
     <x-slot name="title"> 
-        EaziProcure &mdash; Two Factor Authentication 
+        Commerce Box &mdash; Two Factor Authentication 
     </x-slot>
     <x-slot name="page_title">
     Authorize

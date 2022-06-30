@@ -1,6 +1,6 @@
 <x-neptune-layout> 
     <x-slot name="title"> 
-        EaziProcure &mdash; Upgrade
+        Commerce Box &mdash; Upgrade
     </x-slot>
                 <div class="page-header">
                     <h2 class="header-title">Upgrade</h2>

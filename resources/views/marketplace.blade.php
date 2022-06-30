@@ -1,6 +1,6 @@
 <x-neptune-layout> 
     <x-slot name="title"> 
-        EaziProcure &mdash; Organizations
+        Commerce Box &mdash; Organizations
     </x-slot>
 
     @component('components.market-place-widget') @endcomponent

@@ -37,7 +37,7 @@
                     </a>
                 </div>
                 <div class="logo logo-white">
-                    <a href="index.html">
+                    <a href="/">
                         <img src="{{asset('images/logo/logo-white.png')}}" alt="Logo"> 
                         <img class="logo-fold" src="{{asset('images/logo/logo-fold-white.png')}}" alt="Logo">
                     </a>

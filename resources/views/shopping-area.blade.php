@@ -1,6 +1,6 @@
 <x-neptune-layout> 
     <x-slot name="title"> 
-        EaziProcure &mdash; Shopping Area
+        Commerce Box &mdash; Shopping Area
     </x-slot>
 
     @component('components.product-list-widget') @endcomponent

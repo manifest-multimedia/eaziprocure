@@ -41,11 +41,11 @@ class WelcomeEmailNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('⚡ Welcome to Eazibusiness')
+                    ->subject('⚡ Welcome to Commerce Box')
                     ->greeting('Hello '.getFirstName($notifiable->name).'!')
-                    ->line('Welcome to Eazibusiness and thanks for signing up! You have joined thousands of organizations just like yours who manage their entire business processes in one place with Eazibusiness.')
-                    ->action('Sign In To Your Account', url('https://eazibusiness.com/login'))
-                    ->line('We hope you enjoy this opportunity to take Eazibusiness for a spin. Feel free to kick the tires and get acquainted with no limits and no obligations on your forever free plan!')
+                    ->line('Welcome to Commerce Box and thanks for signing up! You have joined thousands of organizations just like yours who manage their entire business processes in one place with Commerce Box.')
+                    ->action('Sign In To Your Account', url('https://commercebox.com.gh/login'))
+                    ->line('We hope you enjoy this opportunity to take Commerce Box for a spin. Feel free to kick the tires and get acquainted with no limits and no obligations on your forever free plan!')
                     ->line('PS: You can always upgrade to a paid plan anytime to enjoy more features and limitless possibilities!');   
     }
 

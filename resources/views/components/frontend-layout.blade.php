@@ -11,7 +11,7 @@
         <meta name="viewport"  />
     
         <!--====== Title ======-->
-        <title>EaziBusiness - Complete Business Automation </title>
+        <title>Commerce Box - Complete Business Automation </title>
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="{{asset('frontend/images/favicon.png')}}" type="image/x-icon">
         <!--====== Google Fonts ======-->
@@ -54,7 +54,7 @@
                 <!--Header-Top-->
                 <div class="header-top text-center text-white bg-blue py-5">
                     <div class="container rel z-1">
-                        <p>{{__('Welcome to Eazibusiness - Your Number 1 Complete Business Automation Platform')}}</p>
+                        <p>{{__('Welcome to Commerce Box - Your Number 1 Complete Business Automation Platform')}}</p>
                         <img class="header-left-shape" src="{{asset('frontend/images/shapes/header-top-left.png')}}" alt="shape">
                         <img class="header-right-shape slideLeftRight infinite" src="{{asset('frontend/images/shapes/header-top-right.png')}}" alt="shape">
                     </div>

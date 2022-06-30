@@ -1,6 +1,6 @@
 <x-neptune-layout>  
     <x-slot name="title"> 
-        EaziProcure &mdash; SMS
+        Commerce Box &mdash; SMS
     </x-slot>
 
     <x-sms /> 

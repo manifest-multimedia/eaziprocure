@@ -1,6 +1,6 @@
 <x-backend-layout> 
     <x-slot name="title"> 
-        EaziProcure &mdash; Dashboard
+        Commerce Box &mdash; Dashboard
     </x-slot>
 
 Admin Dashboard 

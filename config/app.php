@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Eazibusiness'),
+    'name' => env('APP_NAME', 'Commerce Box'),
 
     /*
     |--------------------------------------------------------------------------

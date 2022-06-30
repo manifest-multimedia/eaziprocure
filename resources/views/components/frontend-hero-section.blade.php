@@ -7,11 +7,11 @@
                 <div class="hero-content rmb-75">
                     <span class="sub-title wow fadeInUp delay-0-2s">{{__('Complete Business Automation Software')}}</span>
                     <h1 class="mb-15 wow fadeInUp delay-0-4s">{{__('One App for All Your Business Needs!')}}</h1>
-                    <p class="wow fadeInUp delay-0-5s">{{__('Eazibusiness is built to do the heavy lifting so you can run your business with breeze! Running a business has never been easier!')}}</p>
+                    <p class="wow fadeInUp delay-0-5s">{{__('Commerce Box is built to do the heavy lifting so you can run your business with breeze! Running a business has never been easier!')}}</p>
                     <ul class="list-style-one mt-30 wow fadeInUp delay-0-6s">
                         <li>{{__('Enjoy 14-day free trial')}}</li>
                         <li> {{__('Access to All Premium Features during trial')}}</li>
-                        <li> {{__('Complete Whitelable Solution for Partners')}}</li>
+                        <li> {{__('Complete Whitelabel Solution for Partners')}}</li>
                         <li> {{__('Restful API for Developers')}}</li>
                     </ul>
                     <div class="hero-btns mt-40 wow fadeInUp delay-0-8s">

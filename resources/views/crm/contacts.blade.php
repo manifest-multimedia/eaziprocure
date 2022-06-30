@@ -1,6 +1,6 @@
 <x-neptune-layout>
     <x-slot name="title">
-           EaziProcure &mdash; {{ __('Contacts') }}
+           Commerce Box &mdash; {{ __('Contacts') }}
     </x-slot>
 
 </x-neptune-layout>

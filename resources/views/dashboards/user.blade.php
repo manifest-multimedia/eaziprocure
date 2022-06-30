@@ -1,6 +1,6 @@
 <x-neptune-layout>  
 <x-slot name="title"> 
-    Eazibusiness &mdash; Dashboard
+    Commerce Box &mdash; Dashboard
 </x-slot>
 {{-- Header --}}
 <div class="col">

@@ -1,7 +1,7 @@
 <x-backend-layout>
     <x-slot name="title">
         {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight"> --}}
-           EaziProcure &mdash; {{ __('Profile') }}
+           Commerce Box &mdash; {{ __('Profile') }}
         {{-- </h2> --}}
     </x-slot>
 

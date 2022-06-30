@@ -1,6 +1,6 @@
 <x-neptune-layout>
     <x-slot name="title">
-           EaziProcure &mdash; {{ __('Tenders') }}
+           Commerce Box &mdash; {{ __('Tenders') }}
     </x-slot>
     <div class="page-header no-gutters">
         <div class="row align-items-md-center">
