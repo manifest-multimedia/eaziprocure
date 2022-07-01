@@ -192,7 +192,7 @@
                                         <x-slot name='order_id'> standard_license </x-slot>    
                                         <x-slot name='amount'> {{15*8.07*(100)}} </x-slot>    
                                         <x-slot name='qty'> 1 </x-slot>    
-                                        <x-slot name='currency'> GHS </x-slot>    
+                                        <x-slot name='currency'>USD</x-slot>    
                                     </x-payment-link>
                                 </div>
                             </div>
