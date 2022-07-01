@@ -21,7 +21,8 @@
         "livewire/livewire": "^2.5",
         "monarobase/country-list": "^3.2",
         "princeton255/laravel-notifications-infobip": "^1.2",
-        "realrashid/sweet-alert": "^4.1"
+        "realrashid/sweet-alert": "^4.1",
+        "unicodeveloper/laravel-paystack": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

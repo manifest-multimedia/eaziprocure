@@ -176,7 +176,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        
+        Unicodeveloper\Paystack\PaystackServiceProvider::class,
         
 
 
@@ -252,7 +252,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Countries' => Monarobase\CountryList\CountryListFacade::class,
-
+        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
 
     ],
 

@@ -2,14 +2,14 @@
     <!-- Side Nav START -->
  <div class="app-menu">
                     <ul class="accordion-menu">
-                        @can('isSuperAdmin')
+                        {{-- @can('isSuperAdmin') --}}
                         <li class="sidebar-title">
                             SUPER ADMIN
                         </li>
                             <li>
-                                <a href="{{URL::Route('')}}"><i class="material-icons-two-tone">supervised_user_circle</i>Administration</a>
+                                <a href="{{url('')}}"><i class="material-icons-two-tone">supervised_user_circle</i>Administration</a>
                             </li>
-                        @endcan
+                        {{-- @endcan --}}
                         <li class="sidebar-title">
                             NAVIGATION
                         </li>

@@ -19,12 +19,21 @@ use Illuminate\Http\Response;
 use App\Notifications\NewAccountSMSNotification; 
 use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\InvitationController; 
+use App\Http\Controllers\PaymentController;
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
     session()->put('locale', $locale);
     return redirect()->back();
 });
+
+// Paystack Payment
+Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+
+Route::get('/checkout', function(){ return view('payments.checkout');});
+
+// Paystack Payment Callback
+Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 
 Route::get('/', function() {return view('frontend.home');})->name('home');
 
@@ -66,7 +75,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     
     //Settings 
     Route::get('/account-setup', function(){ return view('settings.account-setup');})->name('account_setup'); 
-    Route::get('/upgrade', function(){ return view('upgrade'); });
+    Route::get('/upgrade', function(){ return view('settings.upgrade'); });
     Route::get('/business-profiles', function(){ return view('profile.biz-profiles'); });
     
     Route::get('/disabled', function() { return view('disabled');})->name('account_disabled'); 
