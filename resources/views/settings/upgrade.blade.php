@@ -362,7 +362,7 @@
                                         </li>
                                     </ul>
                                     <div class="text-center">
-                                        <button class="btn btn-primary">Get Started</button>
+                                        <button class="btn btn-disabled">Active Plan</button>
                                     </div>
                                 </div>
                             </div>
@@ -442,9 +442,13 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <div class="text-center">
-                                        <button class="btn btn-primary">Get Started</button>
-                                    </div>
+                                    <x-payment-link>
+                                        <x-slot name='email'> {{Auth::user()->email}} </x-slot>    
+                                        <x-slot name='order_id'> premium_license </x-slot>    
+                                        <x-slot name='amount'> {{149*8.07*(100)}} </x-slot>    
+                                        <x-slot name='qty'> 1 </x-slot>    
+                                        <x-slot name='currency'> GHS </x-slot>    
+                                    </x-payment-link>
                                 </div>
                             </div>
                         </div>
@@ -523,9 +527,13 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <div class="text-center">
-                                        <button class="btn btn-primary">Get Started</button>
-                                    </div>
+                                    <x-payment-link>
+                                        <x-slot name='email'> {{Auth::user()->email}} </x-slot>    
+                                        <x-slot name='order_id'> premium_license </x-slot>    
+                                        <x-slot name='amount'> {{499*8.07*(100)}} </x-slot>    
+                                        <x-slot name='qty'> 1 </x-slot>    
+                                        <x-slot name='currency'> GHS </x-slot>    
+                                    </x-payment-link>
                                 </div>
                             </div>
                         </div>
