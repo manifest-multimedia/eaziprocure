@@ -187,7 +187,7 @@
                                         </li>
                                     </ul>
                                   
-                                    <x-payment-link email="{{Auth::user()->email}}" quantity='1' amount="{{15*8.07*(100)}}" />
+                                    <x-payment-link :email="$email" quantity='1' amount="{{15}}" />
                                 </div>
                             </div>
                         </div>
@@ -266,7 +266,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <x-payment-link email="{{Auth::user()->email}}" quantity='1' amount="{{50*8.07*(100)}}" />
+                                    <x-payment-link :email="$email" quantity='1' amount="{{50}}" />
                                 </div>
                             </div>
                         </div>
@@ -430,7 +430,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <x-payment-link email="{{Auth::user()->email}}" quantity='1' amount="{{149*8.07*(100)}}" />
+                                    <x-payment-link :email="$email" quantity='1' amount="{{149}}" />
                                 </div>
                             </div>
                         </div>
@@ -510,7 +510,7 @@
                                         </li>
                                     </ul>
                                
-                                    <x-payment-link email="{{Auth::user()->email}}" quantity='1' amount="{{499*8.07*(100)}}" />
+                                    <x-payment-link :email="$email" quantity='1' amount="{{499}}" />
 
                                 </div>
                             </div>

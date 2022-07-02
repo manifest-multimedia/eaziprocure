@@ -75,7 +75,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     
     //Settings 
     Route::get('/account-setup', function(){ return view('settings.account-setup');})->name('account_setup'); 
-    Route::get('/upgrade', function(){ return view('settings.upgrade'); });
+    Route::get('/upgrade', [DashboardController::class, 'accountUpgrade']);
     Route::get('/business-profiles', function(){ return view('profile.biz-profiles'); });
     
     Route::get('/disabled', function() { return view('disabled');})->name('account_disabled'); 

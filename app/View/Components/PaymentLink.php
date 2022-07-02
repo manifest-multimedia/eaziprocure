@@ -20,8 +20,10 @@ class PaymentLink extends Component
      */
     public function __construct($email, $amount, $quantity)
     {
+        $rate=getCurrentDollarRate('usdghs'); 
+        
         $this->email=$email;
-        $this->amount=$amount;
+        $this->amount=$amount*$rate*(100);
         $this->quantity=$quantity;
         $this->currency="GHS";
         $this->order_id="generate_order_id";

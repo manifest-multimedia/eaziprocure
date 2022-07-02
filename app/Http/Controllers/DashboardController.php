@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Auth; 
+use Illuminate\Support\Facades\Auth; 
 
 
 class DashboardController extends Controller
@@ -47,6 +47,14 @@ class DashboardController extends Controller
             }
 
 
+
+    }
+
+    public function accountUpgrade(){
+
+        $email=Auth::user()->email; 
+        
+        return view('settings.upgrade', compact('email'));
 
     }
 }
