@@ -187,13 +187,7 @@
                                         </li>
                                     </ul>
                                   
-                                    <x-payment-link>
-                                        <x-slot name='email'> {{Auth::user()->email}} </x-slot>    
-                                        <x-slot name='order_id'> standard_license </x-slot>    
-                                        <x-slot name='amount'> {{15*8.07*(100)}} </x-slot>    
-                                        <x-slot name='qty'> 1 </x-slot>    
-                                        <x-slot name='currency'>GHS</x-slot>    
-                                    </x-payment-link>
+                                    <x-payment-link email="{{Auth::user()->email}}" quantity='1' amount="{{15*8.07*(100)}}" />
                                 </div>
                             </div>
                         </div>
@@ -272,13 +266,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <x-payment-link>
-                                        <x-slot name='email'> {{Auth::user()->email}} </x-slot>    
-                                        <x-slot name='order_id'> premium_license </x-slot>    
-                                        <x-slot name='amount'> {{50*8.07*(100)}} </x-slot>    
-                                        <x-slot name='qty'> 1 </x-slot>    
-                                        <x-slot name='currency'> GHS </x-slot>    
-                                    </x-payment-link>
+                                    <x-payment-link email="{{Auth::user()->email}}" quantity='1' amount="{{50*8.07*(100)}}" />
                                 </div>
                             </div>
                         </div>
@@ -442,13 +430,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <x-payment-link>
-                                        <x-slot name='email'> {{Auth::user()->email}} </x-slot>    
-                                        <x-slot name='order_id'> premium_license </x-slot>    
-                                        <x-slot name='amount'> {{149*8.07*(100)}} </x-slot>    
-                                        <x-slot name='qty'> 1 </x-slot>    
-                                        <x-slot name='currency'> GHS </x-slot>    
-                                    </x-payment-link>
+                                    <x-payment-link email="{{Auth::user()->email}}" quantity='1' amount="{{149*8.07*(100)}}" />
                                 </div>
                             </div>
                         </div>
@@ -527,13 +509,9 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <x-payment-link>
-                                        <x-slot name='email'> {{Auth::user()->email}} </x-slot>    
-                                        <x-slot name='order_id'> premium_license </x-slot>    
-                                        <x-slot name='amount'> {{499*8.07*(100)}} </x-slot>    
-                                        <x-slot name='qty'> 1 </x-slot>    
-                                        <x-slot name='currency'> GHS </x-slot>    
-                                    </x-payment-link>
+                               
+                                    <x-payment-link email="{{Auth::user()->email}}" quantity='1' amount="{{499*8.07*(100)}}" />
+
                                 </div>
                             </div>
                         </div>
