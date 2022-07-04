@@ -71,7 +71,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     
     //CRM
     Route::get('/contacts', function(){return view('crm.contacts');})->name('contacts'); 
-    Route::get('/sms', function(){ return view('sms'); });
+    Route::get('/sms', function(){ return view('crm.sms'); });
     
     //Settings 
     Route::get('/account-setup', function(){ return view('settings.account-setup');})->name('account_setup'); 

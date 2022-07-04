@@ -188,6 +188,7 @@
                                     </ul>
                                   
                                     <x-payment-link :email="$email" quantity='1' amount="{{15}}" />
+                                    
                                 </div>
                             </div>
                         </div>

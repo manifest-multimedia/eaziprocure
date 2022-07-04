@@ -2,14 +2,14 @@
     <!-- Side Nav START -->
  <div class="app-menu">
                     <ul class="accordion-menu">
-                        {{-- @can('isSuperAdmin') --}}
+                        @can('isSuperAdmin')
                         <li class="sidebar-title">
                             SUPER ADMIN
                         </li>
                             <li>
                                 <a href="{{url('')}}"><i class="material-icons-two-tone">supervised_user_circle</i>Administration</a>
                             </li>
-                        {{-- @endcan --}}
+                        @endcan
                         <li class="sidebar-title">
                             NAVIGATION
                         </li>
@@ -29,7 +29,7 @@
                             <a href="#procurement"><i class="material-icons-two-tone"> dataset_linked</i>Procurement<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                             <ul class="sub-menu" style="">
                                 <li>
-                                    <a href="{{url('account-setup')}}">Tenders</a>
+                                    <a href="{{url('tenders')}}">Tenders</a>
                                 </li>
                                 
                             </ul>
@@ -73,10 +73,10 @@
                             <a href="#crm"><i class="material-icons-two-tone">ads_click</i>CRM<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                             <ul class="sub-menu" style="">
                                 <li>
-                                    <a href="{{url('')}}">Contacts</a>
+                                    <a href="{{url('contacts')}}">Contacts</a>
                                 </li>
                                 <li>
-                                    <a href="{{url('')}}">SMS</a>
+                                    <a href="{{url('sms')}}">SMS</a>
                                 </li>
                                 {{-- <li>
                                     <a href="{{url('user/profile')}}">User Profile</a>

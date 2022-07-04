@@ -24,8 +24,7 @@
         <link href="{{asset('neptune/plugins/pace/pace.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/plugins/highlight/styles/github-gist.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/plugins/apexcharts/apexcharts.css')}}" rel="stylesheet">
-
-    
+        
         <!-- Theme Styles -->
         <link href="{{asset('neptune/css/main.min.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/css/custom.css')}}" rel="stylesheet">
@@ -34,6 +33,13 @@
         <!--====== Flaticon CSS ======-->
         <link rel="stylesheet" href="{{asset('frontend/css/flaticon.css')}}">
         
+        <!-- Device Mockups --> 
+        <link href="{{asset('css/dist/devices.css')}}" rel="stylesheet">
+        <link href="{{asset('css/dist/devices.min.css')}}" rel="stylesheet">
+
+ 
+
+
         <link rel="icon" type="image/png" sizes="32x32" href="{{asset('frontend/images/favicon.png')}}" />
         <link rel="icon" type="image/png" sizes="16x16" href="{{asset('frontend/images/favicon.png')}}" />
     
