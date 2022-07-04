@@ -21,7 +21,6 @@ class Sms extends Component
     {
         $this->sender_name=SmsSender::where('user_id', $this->user_id)
         ->where('org_id', $this->org_id)->get();
-
         return view('livewire.sms');
     }
 }
