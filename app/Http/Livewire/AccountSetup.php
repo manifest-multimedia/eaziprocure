@@ -86,6 +86,7 @@ class AccountSetup extends Component
         
         //Assign User Details to $user variable; 
         $this->user=Auth::user(); 
+        $this->role='Super Admin';
         $this->mobile=$this->user->mobile;
         $this->newmobile=$this->mobile;
         $this->language=$this->user->language;

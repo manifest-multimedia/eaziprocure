@@ -8,7 +8,7 @@
                         <i class="anticon anticon-star"></i>
                     </div>
                     <div class="media-body m-l-15">
-                        <h6 class="mb-0">All Organizations ({{$org_count}})</h6>
+                        <h6 class="mb-0">All Organizations</h6>
                         <span class="text-gray font-size-13">Verified Entities</span>
                     </div>
                 </div>

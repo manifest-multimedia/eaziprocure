@@ -59,13 +59,13 @@
         <div class="app header-large align-content-stretch d-flex flex-wrap">
             <div class="app-sidebar">
                 <div class="logo">
-                    <a href="{{URL::Route('dashboard')}}" class="logo-icon"><span class="logo-text">Commerce Box</span></a>
+                    <a href="{{URL::Route('dashboard')}}" class="logo-icon"><span class="logo-text" style="white-space: nowrap;">Commerce Box</span></a>
                     <div class="sidebar-user-switcher user-activity-online">
                         <a href="#">
                             <img src="{{Auth::user()->profile_photo_url}}">
                             <span class="activity-indicator"></span>
                             <span class="user-info-text">{{getFirstName(Auth::user()->name)}}<br>
-                                {{-- <span class="user-state-info">On a call</span> --}}
+                                <span class="user-state-info">Online</span>
                         </span>
                         </a>
                     </div>

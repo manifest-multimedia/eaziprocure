@@ -92,7 +92,7 @@
                                     <div class="form-group col-md-6">
                                         <label class="font-weight-semibold" for="role">Role</label>
                                         
-                                        <select name="role" id="" class="form-control custom-select" wire:model="newrole">
+                                        <select name="role" id="" class="form-control custom-select" wire:model="newrole" disabled>
                                             <option value="">Select Role in Organization</option>
                                             <option value="staff">Staff </option>
                                             <option value="admin">Admin</option>

@@ -16,7 +16,6 @@ class ContactsManager extends Component
 
     }
 
-
     public function render()
     {
         $this->contacts=Contact::where('user_id', $this->user_id)

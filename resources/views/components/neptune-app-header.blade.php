@@ -12,9 +12,11 @@
                                             <i class="material-icons">add</i>
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="addDropdownLink">
-                                            {{-- <li><a class="dropdown-item" href="#">New Business</a></li> --}}
-                                            {{-- <li><a class="dropdown-item" href="#">New Board</a></li> --}}
-                                            {{-- <li><a class="dropdown-item" href="#">Create Project</a></li> --}}
+                                            <li><a class="dropdown-item" href="#">+ New Business</a></li>
+                                            <li><a class="dropdown-item" href="#">+ New Quote</a></li>
+                                            <li><a class="dropdown-item" href="#">+ New Invoice</a></li>
+                                            <li><a class="dropdown-item" href="#">+ New Contact</a></li>
+                                            <li><a class="dropdown-item" href="#">+ New Product</a></li>
                                         </ul>
                                         
                                     </li>
