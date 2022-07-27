@@ -1,6 +1,6 @@
     <!DOCTYPE html>
     <html lang="en">
-    
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +9,10 @@
         <meta name="keywords" content="admin,dashboard">
         <meta name="author" content="stacks">
         <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
+
         <!-- Title -->
         <title>{{$title}}</title>
-    
+
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/app.min.css')}}">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -24,7 +24,7 @@
         <link href="{{asset('neptune/plugins/pace/pace.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/plugins/highlight/styles/github-gist.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/plugins/apexcharts/apexcharts.css')}}" rel="stylesheet">
-        
+
         <!-- Theme Styles -->
         <link href="{{asset('neptune/css/main.min.css')}}" rel="stylesheet">
         <link href="{{asset('neptune/css/custom.css')}}" rel="stylesheet">
@@ -32,17 +32,17 @@
         <link rel="stylesheet" href="{{asset('frontend/css/fontawesome.5.9.0.min.css')}}">
         <!--====== Flaticon CSS ======-->
         <link rel="stylesheet" href="{{asset('frontend/css/flaticon.css')}}">
-        
-        <!-- Device Mockups --> 
+
+        <!-- Device Mockups -->
         <link href="{{asset('css/dist/devices.css')}}" rel="stylesheet">
         <link href="{{asset('css/dist/devices.min.css')}}" rel="stylesheet">
 
- 
+
 
 
         <link rel="icon" type="image/png" sizes="32x32" href="{{asset('frontend/images/favicon.png')}}" />
         <link rel="icon" type="image/png" sizes="16x16" href="{{asset('frontend/images/favicon.png')}}" />
-    
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -54,7 +54,7 @@
             <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
             {{-- Alpine JS --}}
     </head>
-    
+
     <body>
         <div class="app header-large align-content-stretch d-flex flex-wrap">
             <div class="app-sidebar">
@@ -70,7 +70,7 @@
                         </a>
                     </div>
                 </div>
-               <x-app-navigation /> 
+               <x-app-navigation />
             </div>
             <div class="app-container">
                 <div class="search">
@@ -79,7 +79,7 @@
                     </form>
                     <a href="#" class="toggle-search"><i class="material-icons">close</i></a>
                 </div>
-                <x-neptune-app-header /> 
+                <x-neptune-app-header />
                 <div class="app-content">
                     <div class="content-wrapper">
                         <div class="container-fluid">
@@ -100,7 +100,7 @@
         </div>
 
         @include('sweetalert::alert')
-        
+
         @livewire('chart-data')
         <script src="//unpkg.com/alpinejs" defer></script>
         <livewire:scripts />
@@ -118,27 +118,27 @@
 
 
 {{-- Imported --}}
-        <script> 
+        <script>
             function logout() {
-                document.getElementById('logout').submit(); 
+                document.getElementById('logout').submit();
             }
-            </script> 
+            </script>
 
             {{-- Account Setup Next Button Script --}}
-<script> 
+<script>
     $(document).ready(function(e) {
         $('.nextbtn').click(function(e){
             e.preventDefault();
             $('.nav-item > .active').parent().next('li').find('a').trigger('click');
                     });
-    
+
             $('.previousbtn').click(function(e){
             e.preventDefault();
             $('.nav-item > .active').parent().prev('li').find('a').trigger('click');
                     });
     });
-    
-    </script> 
+
+    </script>
 
         <!-- Javascripts -->
         <script src="{{asset('neptune/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
@@ -147,8 +147,11 @@
         <script src="{{asset('neptune/plugins/perfectscroll/perfect-scrollbar.min.js')}}"></script>
         <script src="{{asset('neptune/plugins/pace/pace.min.js')}}"></script>
         <script src="{{asset('neptune/plugins/highlight/highlight.pack.js')}}"></script>
+        <script src="{{asset('neptune/plugins/chartjs/chart.bundle.min.js')}}"></script>
+
         <script src="{{asset('neptune/js/main.min.js')}}"></script>
         <script src="{{asset('neptune/js/custom.js')}}"></script>
+        <script src="{{asset('neptune/js/pages/charts-chartjs.js')}}"></script>
 
         <script src="{{asset('neptune/plugins/apexcharts/apexcharts.min.js')}}"></script>
 
@@ -167,7 +170,7 @@
     </script>
     <!--End of Tawk.to Script-->
     </body>
-    
+
 
 
     </html>
