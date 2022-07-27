@@ -68,12 +68,9 @@
                                         </div>
                                     </th>
                                     {{-- <th>ID</th> --}}
-                                    <th>Product</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Stock Left</th>
-                                    <th>Status</th>
-                                    {{-- <th></th> --}}
+                                    <th>Location</th>
+                                    <th>Wharehouses</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
