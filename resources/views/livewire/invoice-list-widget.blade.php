@@ -29,10 +29,10 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-right">
-                        <button class="btn btn-primary">
+                        {{-- <button class="btn btn-primary">
                             <i class="anticon anticon-file-excel m-r-5"></i>
                             <span>Export</span>
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
                 <div class="table-responsive">

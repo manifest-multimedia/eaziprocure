@@ -3,4 +3,5 @@
            Commerce Box &mdash; {{ __('Quotes') }}
     </x-slot>
 
+    <x-quotes /> 
 </x-neptune-layout>
