@@ -3,4 +3,6 @@
            Commerce Box &mdash; {{ __('Stock Management') }}
     </x-slot>
 
+    <x-stock-management />
+
 </x-neptune-layout>

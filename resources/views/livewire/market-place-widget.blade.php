@@ -9,12 +9,12 @@
                     </div>
                     <div class="media-body m-l-15">
                         <h6 class="mb-0">All Organizations</h6>
-                        <span class="text-gray font-size-13">Verified Entities</span>
+                        <span class="text-gray font-size-13">Interact with Verified Business Entities</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="text-md-right m-v-10">
+                {{-- <div class="text-md-right m-v-10">
                     <div class="btn-group">
                         <button id="list-view-btn" type="button" class="btn btn-default btn-icon">
                             <i class="anticon anticon-ordered-list"></i>
@@ -23,7 +23,7 @@
                             <i class="anticon anticon-appstore"></i>
                         </button>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
                                 </button> --}}
                             </div>
                             <div class="text-center m-t-30">
-                                <a href="" class="btn btn-primary btn-tone">
+                                <a href="{{url("org-profiles/$item->id")}}" class="btn btn-primary btn-tone">
                                     <i class="anticon anticon-profile"></i>
                                     <span class="m-l-5">Profile</span>
                                 </a>

@@ -19,6 +19,7 @@ use Illuminate\Http\Response;
 use App\Notifications\NewAccountSMSNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\OrgProfilesController;
 use App\Http\Controllers\PaymentController;
 
 Route::get('language/{locale}', function ($locale) {
@@ -45,8 +46,11 @@ Route::view('/privacy', 'privacy')->name('privacy');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardController::class)->name('dashboard');
 
 Route::middleware(['auth:sanctum'])->group(function (){
+    //SuperAdmin Area
+    // Route::get('/admin-area', function(){ return view('superadmin.dashboard');});
 
     Route::get('/organizations', function(){ return view('marketplace');});
+    Route::get('/org-profiles/{id}', [OrgProfilesController::class, 'overview']);
     Route::get('/shopping-area', function(){ return view('shopping-area'); })->name('shopping-area');
 
     //Procurement
@@ -59,13 +63,15 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('/invoices', function(){ return view('invoices.list'); })->name('invoices');
     Route::get('/quotes', function(){ return view('quotes.view'); });
     Route::get('/create-invoice', function(){ return view('invoices.new'); });
+    Route::get('/payroll', function(){ return view('payroll.list'); });
     Route::get('finance-reports', function(){ return view('reports.financial-reports');})->name('reports');
 
     //Products
     Route::get('warehousing', function(){ return view('warehousing.overview');})->name('warehouse');
     Route::get('products', function(){ return view('products.list');})->name('products');
     Route::get('new-product', function(){ return view('products.create');})->name('new-product');
-    Route::get('stock-management', function(){ return view('products.stock-management');})->name('stocks');
+    Route::get('product-reports', function(){ return view('products.report');})->name('new-product');
+    Route::get('stock-management', function(){ return view('products.stock-management');})->name('stock');
 
     //Contracts
     Route::get('/new-contract', function(){ return '';})->name('contract');
@@ -83,4 +89,5 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('/deleted', function() { return view('disabled');})->name('account_deleted');
 
     Route::get('/invitation/{user}/{org}/{role}', [InvitationController::class, 'getInvidationDetails']);
+
 });

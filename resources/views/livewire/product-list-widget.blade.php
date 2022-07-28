@@ -2,7 +2,7 @@
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
 
     <div class="page-header">
-        <h2 class="header-title">Shopping Area</h2>
+        <h2 class="header-title">Products</h2>
         <div class="header-sub-title">
             <nav class="breadcrumb breadcrumb-dash">
                 <a href="#" class="breadcrumb-item"><i class="anticon anticon-shopping-cart m-r-5"></i>Shop</a>

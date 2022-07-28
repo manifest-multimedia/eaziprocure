@@ -111,7 +111,9 @@ class AccountSetup extends Component
             $associate_profile=new UserOrganizations; 
             $associate_profile->timestamps=false;
             $associate_profile->user_id=$this->user->id; 
-            $associate_profile->org_id=$this->org_id; 
+            $associate_profile->org_id=$this->org_id;
+            $associate_profile->status='default'; 
+            $associate_profile->user_privilege=$this->role; 
             $associate_profile->save();
             
         }

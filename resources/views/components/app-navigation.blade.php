@@ -7,7 +7,7 @@
                    SUPER ADMIN
                </li>
                <li>
-                   <a href="{{ url('') }}"><i
+                   <a href="{{ url('admin-area') }}"><i
                            class="material-icons-two-tone">supervised_user_circle</i>Administration</a>
                </li>
            @endcan
@@ -45,13 +45,13 @@
                        <a href="{{ url('quotes') }}">Quotes</a>
                    </li>
                    <li>
-                       <a href="{{ url('') }}">Invoices</a>
+                       <a href="{{ url('invoices') }}">Invoices</a>
                    </li>
                    <li>
-                       <a href="{{ url('') }}">Payroll Management</a>
+                       <a href="{{ url('payroll') }}">Payroll Management</a>
                    </li>
                    <li>
-                       <a href="{{ url('') }}">Reports</a>
+                       <a href="{{ url('finance-reports') }}">Reports</a>
                    </li>
 
 
@@ -65,13 +65,13 @@
                        <a href="{{ route('warehouse') }}">Overview</a>
                    </li>
                    <li>
-                       <a href="{{ url('') }}">Products</a>
+                       <a href="{{ url('products') }}">Products</a>
                    </li>
                    <li>
-                       <a href="{{ url('') }}">Stock Management</a>
+                       <a href="{{ url('stock-management') }}">Stock Management</a>
                    </li>
                    <li>
-                       <a href="{{ url('') }}">Reports</a>
+                       <a href="{{ url('product-reports') }}">Reports</a>
                    </li>
 
 

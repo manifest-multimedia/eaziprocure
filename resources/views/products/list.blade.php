@@ -3,4 +3,6 @@
            Commerce Box &mdash; {{ __('My Products') }}
     </x-slot>
 
+    <x-product-list-widget />
+  
 </x-neptune-layout>
