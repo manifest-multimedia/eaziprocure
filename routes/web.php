@@ -70,7 +70,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('warehousing', function(){ return view('warehousing.overview');})->name('warehouse');
     Route::get('products', function(){ return view('products.list');})->name('products');
     Route::get('new-product', function(){ return view('products.create');})->name('new-product');
-    Route::get('product-reports', function(){ return view('products.report');})->name('new-product');
+    Route::get('product-reports', function(){ return view('products.report');})->name('product-reports');
     Route::get('stock-management', function(){ return view('products.stock-management');})->name('stock');
 
     //Contracts
