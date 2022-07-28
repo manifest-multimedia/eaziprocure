@@ -47,7 +47,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardCont
 
 Route::middleware(['auth:sanctum'])->group(function (){
     //SuperAdmin Area
-    // Route::get('/admin-area', function(){ return view('superadmin.dashboard');});
+    Route::get('/admin-area', [DashboardController::class, 'adminArea']);
 
     Route::get('/organizations', function(){ return view('marketplace');});
     Route::get('/org-profiles/{id}', [OrgProfilesController::class, 'overview']);

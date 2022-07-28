@@ -3,4 +3,8 @@
            Commerce Box &mdash; {{ __('Create New Product') }}
     </x-slot>
 
+
+    
+
+
 </x-neptune-layout>

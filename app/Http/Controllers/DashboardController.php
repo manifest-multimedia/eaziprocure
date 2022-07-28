@@ -20,7 +20,7 @@ class DashboardController extends Controller
                 switch($role) {
 
                     case "superadmin": 
-                        return view('superadmin.dashboard'); 
+                        return view('dashboards.user'); 
                     break;
                     
                     case "admin":
@@ -50,6 +50,20 @@ class DashboardController extends Controller
 
     }
 
+    public function adminArea(){
+        if(Gate::any(['isSuperAdmin'])){
+
+            return view('superadmin.dashboard');
+
+        }
+        
+        else {
+            abort(403, 'Unauthorized Request');
+        }
+        
+        
+    }
+
     public function accountUpgrade(){
 
         $email=Auth::user()->email; 
@@ -57,4 +71,5 @@ class DashboardController extends Controller
         return view('settings.upgrade', compact('email'));
 
     }
+
 }

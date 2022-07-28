@@ -124,7 +124,26 @@
             }
             </script>
 
+<script defer> 
+$(document).ready(function(e) {
+$('#revoke-business').on('click', function() { 
+    $('#blockui-card-1').block({ 
+        message: '<div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span><div>',
+        timeout: 2000 
+    });                                                     
+});
+
+$('#blockui-1').on('click', function() { 
+    $('#blockui-card-1').block({ 
+        message: '<div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span><div>',
+        timeout: 2000 
+    });                                                     
+});
+}
+
+</script>
             {{-- Account Setup Next Button Script --}}
+
 <script>
     $(document).ready(function(e) {
         $('.nextbtn').click(function(e){
@@ -148,6 +167,7 @@
         <script src="{{asset('neptune/plugins/pace/pace.min.js')}}"></script>
         <script src="{{asset('neptune/plugins/highlight/highlight.pack.js')}}"></script>
         <script src="{{asset('neptune/plugins/chartjs/chart.bundle.min.js')}}"></script>
+        <script src="{{asset('neptune/plugins/blockUI/jquery.blockUI.min.js')}}"></script>
 
         <script src="{{asset('neptune/js/main.min.js')}}"></script>
         <script src="{{asset('neptune/js/custom.js')}}"></script>

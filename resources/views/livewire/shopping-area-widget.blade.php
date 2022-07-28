@@ -20,17 +20,50 @@
         </div>
         
     </div>
-    
+   
     <div class="tab-content mt-3 mr-3 ml-3" id="productType">
         <div class="tab-pane fade show active" id="products">
-            @foreach ($products as $item)
-            
-            {{$item->product_image}}
-            {{$item->name}} 
-            {{$item->description}}
-            {{$item->price}}
+            <div class="row">
+                @foreach ($products as $item)
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="widget-popular-product-container">
+                                        <div class="widget-popular-product-image">
+                                            @if(isset($item->product_image))
+                                                <img src="{{asset("$item->product_image")}}" alt="product_image">
+                                            @endif 
+                                        </div>
+                                        <div class="widget-popular-product-tags">
+                                            <span class="badge rounded-pill badge-secondary badge-style-light">{{getProductCategory($item->category_id)}}</span>
+                                        </div>
+                                        <div class="widget-popular-product-content">
+                                            <h3 class="widget-popular-product-title">{{$item->name}}</h3>
+                                            <p class="widget-popular-product-text m-b-md">{{$item->description}}</p>
+                                            {{-- <span class="widget-popular-product-rating">
+                                                <i class="material-icons">star</i>
+                                                <i class="material-icons">star</i>
+                                                <i class="material-icons">star</i>
+                                                <i class="material-icons">star</i>
+                                                <i class="material-icons">star_half</i>
+                                                <span class="widget-popular-product-rating-num">4.4</span>
+                                            </span> --}}
+                                            <p> {{$item->price}} </p> 
 
-            @endforeach
+                                            {{-- <button class="btn btn-primary">Add to Cart</button> --}}
+                                            <button class="btn btn-primary">Purcahse</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                        
+                        
+                
+                        </div>
+                @endforeach
+            </div>
+            
         </div>
         <div class="tab-pane fade show" id="services">
            @foreach ($services as $item)
