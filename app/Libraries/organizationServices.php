@@ -18,6 +18,27 @@ if(!function_exists('getOrganizationName')){
 
 }
 
+
+if(!function_exists('getOrgCurrency')){
+
+    function getOrgCurrency($id){
+        $org_currency=OrgProfiles::where('id',$id)->first()->currency_id;
+        $currency=getCurrencyName($org_currency);
+        return $currency;
+    }
+
+}
+
+if(!function_exists('getOrgEmail')){
+    function getOrgEmail($id){
+
+        $org_email=OrgProfiles::where('id',$id)->first()->org_email;
+
+        return $org_email;
+
+    }
+}
+
 if(!function_exists('getOrganizationStatus')){
     function getOrganizationStatus(){
         return 'Status Unvailable';

@@ -23,6 +23,8 @@
                 <thead class="table-dark">
                  
                     <th>Name of Business</th>
+                    <th> Email </th> 
+                    <th> Default Currency</th>
                     <th>Status</th>
                     <th>Action</th>
                 </thead>
@@ -36,9 +38,23 @@
                         {{getOrganizationName($item->org_id)}}
                         @endif 
                     </td>
+                    <td>{{getOrgEmail($item->org_id)}}</td>
+                    
+                    <td>
+                        {{getOrgCurrency($item->org_id)}} 
+                    </td>
                     <td>{{getOrganizationStatus($item->org_id)}}</td>
                     <td>
-                        <button class="btn btn-danger"  id="revoke-business">Revoke Business</button>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <button class="btn btn-danger"  id="revoke-business">Revoke</button>
+                            </div>
+                            <div class="col-md-6">
+
+                                <button class="btn btn-primary"  id="udpate-business">Update</button>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

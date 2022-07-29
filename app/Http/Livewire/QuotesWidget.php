@@ -8,6 +8,7 @@ class QuotesWidget extends Component
 {
     public function render()
     {
-        return view('livewire.quotes-widget');
+        $quotes=[]; 
+        return view('livewire.quotes-widget', compact('quotes'));
     }
 }
