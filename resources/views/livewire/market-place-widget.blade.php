@@ -54,7 +54,7 @@
                                 </button> --}}
                             </div>
                             <div class="text-center m-t-30">
-                                <a href="{{url("org-profiles/$item->id")}}" class="btn btn-primary btn-tone">
+                                <a href="{{url("business/$item->id")}}" class="btn btn-primary btn-tone">
                                     <i class="anticon anticon-profile"></i>
                                     <span class="m-l-5">Profile</span>
                                 </a>

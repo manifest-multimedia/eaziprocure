@@ -62,20 +62,23 @@ if(!function_exists('getOrgCurrency')){
 
 if(!function_exists('getOrgCurrencySymbol')){
     function getOrgCurrencySymbol($id){
-        $default_currency="$";
-return $default_currency;
-        // try {
-         
-        //  return $currency=getOrgCurrencySymbol(OrgProfiles::where('id',$id)->first()->currency_id);
-
-        //     // return $currency;
-
-        // } catch (\Throwable $th) {
-
-        //     return $default_currency;
-        //     //throw $th;
-        // }    
         
+        $currency="$";
+
+        try {
+         
+         $update_currency=getCurrencyCode(OrgProfiles::where('id',$id)->first()->currency_id);
+
+        
+            return $update_currency;
+
+        } catch (\Throwable $th) {
+
+            return $currency;
+            //throw $th;
+        }    
+        
+        return $currency; 
     }
 }
 

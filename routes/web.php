@@ -22,6 +22,7 @@ use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\OrgProfilesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Models\ProductCategory;
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
@@ -51,7 +52,9 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('/admin-area', [DashboardController::class, 'adminArea']);
 
     Route::get('/organizations', function(){ return view('marketplace');});
-    Route::get('/org-profiles/{id}', [OrgProfilesController::class, 'overview']);
+    Route::get('/business/{id}', [OrgProfilesController::class, 'overview']);
+    Route::get('/p/details/{id}', [ProductController::class, 'productDetails']);
+    Route::get('/p/category/{id}', [ProductController::class, 'productCategory']);
     Route::get('/shopping-area', function(){ return view('shopping-area'); })->name('shopping-area');
 
     //Procurement

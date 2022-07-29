@@ -8,7 +8,6 @@ if(!function_exists('getCurrencyName')){
 
         $currency=Currency::where('id', $id)->first()->currency;
 
-
         return $currency;
 
     }
@@ -19,7 +18,20 @@ if(!function_exists('getCurrencyCode')){
 
     function getCurrencyCode($id){
 
-        return $id;
+        $currency_symbol="$";
+
+        try {
+            $currency_symbol=Currency::where('id', $id)->first()->code;
+            //code...
+            return $currency_symbol; 
+        } catch (\Throwable $th) {
+            //throw $th;
+            $currency_symbol="$";
+        }
+
+
+        return $currency_symbol;
+
     }
 
 }
