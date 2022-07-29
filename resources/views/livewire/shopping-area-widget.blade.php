@@ -42,7 +42,7 @@
                                                 <a href="{{url("p/category/$item->category_id")}}"> <span class="badge rounded-pill badge-secondary badge-style-light">{{getProductCategory($item->category_id)}}</span></a>
                                             </div>
                                             <div class="widget-popular-product-content">
-                                                <p> <a class="widget-popular-product-text" style="text-decoration:none" href="{{url("p/details/$item->id")}}"> {{$item->name}}</a></p>
+                                                <p> <a class="widget-popular-product-text" style="text-decoration:none" href="{{url("p/details/$item->id")}}" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"> {{add3dots($item->name, '...', 20)}}</a></p>
                                                 <p style="color:blue; font-weight:400; font-size:18px"> <a href="{{url("p/details/$item->id")}}" style="text-decoration:none"> {{getOrgCurrencySymbol($item->owner)}}{{$item->price}} </a></p> 
                                                
                                                 {{-- <h3 class="widget-popular-product-title">{{$item->name}}</h3> --}}

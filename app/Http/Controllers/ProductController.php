@@ -9,6 +9,7 @@ class ProductController extends Controller
     public function productDetails($id){
         return $id;
     }
+    
     public function productCategory($id){
         return $id;
     }
