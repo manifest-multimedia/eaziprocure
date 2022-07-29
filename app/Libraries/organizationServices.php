@@ -2,6 +2,33 @@
 
 use App\Models\OrgProfiles;
 
+
+if(!function_exists('getCustomerName')){
+    function getCustomerName($id){
+        $customer_name=OrgProfiles::where('id', $id)->first()->org_name;
+        return $customer_name;
+    }
+}
+
+if(!function_exists('getCustomerLogo')){
+    function getCustomerLogo($id){
+        $customer_logo=OrgProfiles::where('id', $id)->first()->org_logo;
+        
+        if(is_null($customer_logo)){
+            $customer_logo="images/avatars/thumb-1.jpg"; 
+        }
+
+        return $customer_logo;
+    }
+}
+
+ if(!function_exists("getFirstName")){
+    function getFirstName($name){
+        $firstname=explode(' ', trim($name))[0];
+        return $firstname; 
+    }
+}
+
 if(!function_exists('getOrganizationName')){
     function getOrganizationName($id){
         $org_name=OrgProfiles::where('id', $id)->first()->org_name;
@@ -18,16 +45,40 @@ if(!function_exists('getOrganizationName')){
 
 }
 
-
 if(!function_exists('getOrgCurrency')){
 
     function getOrgCurrency($id){
-        $org_currency=OrgProfiles::where('id',$id)->first()->currency_id;
-        $currency=getCurrencyName($org_currency);
-        return $currency;
+        if(isset($id)){
+            $org_currency=OrgProfiles::where('id',$id)->first()->currency_id;
+            $currency=getCurrencyName($org_currency);
+            return $currency;
+        }else{
+            $default_currency="United States Dollar";
+            return $default_currency;
+        }
     }
 
 }
+
+if(!function_exists('getOrgCurrencySymbol')){
+    function getOrgCurrencySymbol($id){
+        $default_currency="$";
+return $default_currency;
+        // try {
+         
+        //  return $currency=getOrgCurrencySymbol(OrgProfiles::where('id',$id)->first()->currency_id);
+
+        //     // return $currency;
+
+        // } catch (\Throwable $th) {
+
+        //     return $default_currency;
+        //     //throw $th;
+        // }    
+        
+    }
+}
+
 
 if(!function_exists('getOrgEmail')){
     function getOrgEmail($id){

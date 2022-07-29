@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\OrgProfilesController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProductController;
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
@@ -72,7 +73,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('new-product', function(){ return view('products.create');})->name('new-product');
     Route::get('product-reports', function(){ return view('products.report');})->name('product-reports');
     Route::get('stock-management', function(){ return view('products.stock-management');})->name('stock');
-
+    Route::get('product_details/{id}', [ProductController::class, 'productDetails']);
     //Contracts
     Route::get('/new-contract', function(){ return '';})->name('contract');
 

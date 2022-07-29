@@ -8,17 +8,15 @@ use Livewire\Component;
 
 class ShoppingAreaWidget extends Component
 {
-    public $products; 
-    public $services; 
-
+  
 
     public function render()
     {
         
-        $this->products=Product::all();
+        $products=Product::where('status', 1)->get();
 
-        $this->services=Service::all();
+        $services=Service::where('status', 1)->get();
 
-        return view('livewire.shopping-area-widget');
+        return view('livewire.shopping-area-widget', compact('products', 'services'));
     }
 }

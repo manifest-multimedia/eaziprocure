@@ -24,53 +24,58 @@
     <div class="tab-content mt-3 mr-3 ml-3" id="productType">
         <div class="tab-pane fade show active" id="products">
             <div class="row">
-                @foreach ($products as $item)
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="widget-popular-product-container">
-                                        <div class="widget-popular-product-image">
-                                            @if(isset($item->product_image))
-                                                <img src="{{asset("$item->product_image")}}" alt="product_image">
-                                            @endif 
-                                        </div>
-                                        <div class="widget-popular-product-tags">
-                                            <span class="badge rounded-pill badge-secondary badge-style-light">{{getProductCategory($item->category_id)}}</span>
-                                        </div>
-                                        <div class="widget-popular-product-content">
-                                            <h3 class="widget-popular-product-title">{{$item->name}}</h3>
-                                            <p class="widget-popular-product-text m-b-md">{{$item->description}}</p>
-                                            {{-- <span class="widget-popular-product-rating">
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star_half</i>
-                                                <span class="widget-popular-product-rating-num">4.4</span>
-                                            </span> --}}
-                                            <p> {{$item->price}} </p> 
+                @if (isset($products) && $products->count()>0)
+                    
+               
+                    @foreach ($products as $item)
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="widget-popular-product-container">
+                                            <div class="widget-popular-product-image">
+                                                @if(isset($item->product_image))
+                                                    <img src="{{Storage::url($item->product_image)}}" alt="product_image" width="100%">
+                                                @endif 
+                                            </div>
+                                            <div class="widget-popular-product-tags">
+                                                <span class="badge rounded-pill badge-primary badge-style-light">Company</span>
+                                                {{-- <span class="badge rounded-pill badge-secondary badge-style-light">{{getProductCategory($item->category_id)}}</span> --}}
+                                            </div>
+                                            <div class="widget-popular-product-content">
+                                                <p class="widget-popular-product-text">{{$item->name}}</p>
+                                                <p style="color:blue; font-weight:400; font-size:18px"> {{getOrgCurrencySymbol($item->owner)}}{{$item->price}} </p> 
+                                                {{-- <h3 class="widget-popular-product-title">{{$item->name}}</h3> --}}
+                                                {{-- <p class="widget-popular-product-text m-b-md">{{$item->description}}</p> --}}
+                                                {{-- <span class="widget-popular-product-rating">
+                                                    <i class="material-icons">star</i>
+                                                    <i class="material-icons">star</i>
+                                                    <i class="material-icons">star</i>
+                                                    <i class="material-icons">star</i>
+                                                    <i class="material-icons">star_half</i>
+                                                    <span class="widget-popular-product-rating-num">4.4</span>
+                                                </span> --}}
 
-                                            {{-- <button class="btn btn-primary">Add to Cart</button> --}}
-                                            <button class="btn btn-primary">Purcahse</button>
+                                                {{-- <button class="btn btn-primary">Add to Cart</button> --}}
+                                                {{-- <button class="btn btn-primary">Purchase</button> --}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                    
                             </div>
-                
-                        
-                        
-                
-                        </div>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
             
         </div>
         <div class="tab-pane fade show" id="services">
-           @foreach ($services as $item)
-               {{$item->name}}
-               {{$item->description}}
-               {{$item->getServicePrice($item->id)}}
-           @endforeach
+            @if (isset($services) && $services->count()>0)
+                @foreach ($services as $item)
+                    {{$item->name}}
+                    {{$item->description}}
+                    {{$item->getServicePrice($item->id)}}
+                @endforeach
+            @endif
         </div>
 
     </div>

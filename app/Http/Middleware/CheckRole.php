@@ -3,11 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route; 
 use Illuminate\Support\Facades\Gate;
-
+use Illuminate\Support\Facades\Auth;
 
 // class BeforeMiddleware
 // {
@@ -71,8 +71,10 @@ class CheckRole
             }
         }
 
-        catch(exception $e) {
+        catch(\exception $e) {
+
             return $e->message(); 
+            
         }
 
 
