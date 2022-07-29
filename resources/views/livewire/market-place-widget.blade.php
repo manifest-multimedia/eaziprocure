@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-11 mx-auto">
+        <div class="col-lg-12 mx-auto">
             <!-- Card View -->
             <div class="row" id="card-view">
                 @foreach ($organizations as $item)
@@ -36,8 +36,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="m-t-20 text-center">
-                                <div class="avatar avatar-image" style="height: 100px; width: 100px;">
-                                    <img src="{{Storage::url(getCustomerLogo($item->id))}}" alt="Logo">
+                                <div class="avatar avatar-image" style="height: 100px; max-width: 100px; width:100%">
+                                    <img src="{{Storage::url(getCustomerLogo($item->id))}}" class="p-2" alt="Logo" style="object-fit:contain">
                                 </div>
                                 <h4 class="m-t-30">{{$item->org_name}}</h4>
                                 {{-- <p>{{$item->org_email}}</p> --}}
