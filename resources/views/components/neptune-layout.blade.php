@@ -38,6 +38,8 @@
         <link href="{{asset('css/dist/devices.min.css')}}" rel="stylesheet">
 
 
+{{-- App JS --}}
+<script src="{{ mix('js/app.js') }}" defer></script>
 
 
         <link rel="icon" type="image/png" sizes="32x32" href="{{asset('frontend/images/favicon.png')}}" />

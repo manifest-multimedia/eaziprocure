@@ -39,7 +39,7 @@
                                 <div class="avatar avatar-image" style="height: 100px; max-width: 100px; width:100%">
                                     <img src="{{Storage::url(getCustomerLogo($item->id))}}" class="p-2" alt="Logo" style="object-fit:contain">
                                 </div>
-                                <h4 class="m-t-30">{{$item->org_name}}</h4>
+                                <h4 class="m-t-30">{{add3dots($item->org_name, '...', 20)}}</h4>
                                 {{-- <p>{{$item->org_email}}</p> --}}
                             </div>
                             <div class="text-center m-t-15">
