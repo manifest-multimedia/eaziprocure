@@ -23,6 +23,7 @@ use App\Http\Controllers\OrgProfilesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Models\ProductCategory;
+use App\Http\Controllers\PdfController;
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
@@ -62,6 +63,12 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('/new-tender', function(){ return view('tenders.create');})->name('new-tender');
     Route::get('/edit-tender', function(){ return view('tenders.edit');})->name('edit-tender');
     Route::get('/tender-history', function(){ return view('tenders.history');})->name('tender-history');
+
+
+    //Pdf Generator
+
+    Route::post('/invoice/preview/{id}', [PdfController::class, 'generateInvoice']);
+    Route::post('/invoice/download/{id}', [PdfController::class, 'downloadInvoice']);
 
     //Finance
     Route::get('/invoices', function(){ return view('invoices.list'); })->name('invoices');

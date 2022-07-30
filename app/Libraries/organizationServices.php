@@ -2,16 +2,18 @@
 
 use App\Models\OrgProfiles;
 
-function add3dots($string, $repl, $limit) 
-{
-  if(strlen($string) > $limit) 
-  {
-    return substr($string, 0, $limit) . $repl; 
-  }
-  else 
-  {
-    return $string;
-  }
+if(!function_exists('add3dots')){
+        function add3dots($string, $repl, $limit) 
+    {
+    if(strlen($string) > $limit) 
+    {
+        return substr($string, 0, $limit) . $repl; 
+    }
+    else 
+    {
+        return $string;
+    }
+    }
 }
 
 

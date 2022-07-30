@@ -39,7 +39,7 @@
 
 
 {{-- App JS --}}
-<script src="{{ mix('js/app.js') }}" defer></script>
+{{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
 
 
         <link rel="icon" type="image/png" sizes="32x32" href="{{asset('frontend/images/favicon.png')}}" />
@@ -162,24 +162,24 @@ $('#blockui-1').on('click', function() {
     </script>
 
         <!-- Javascripts -->
-        <script src="{{asset('neptune/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
-        <script src="{{asset('neptune/plugins/bootstrap/js/popper.min.js')}}"></script>
-        <script src="{{asset('neptune/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('neptune/plugins/perfectscroll/perfect-scrollbar.min.js')}}"></script>
-        <script src="{{asset('neptune/plugins/pace/pace.min.js')}}"></script>
-        <script src="{{asset('neptune/plugins/highlight/highlight.pack.js')}}"></script>
-        <script src="{{asset('neptune/plugins/chartjs/chart.bundle.min.js')}}"></script>
-        <script src="{{asset('neptune/plugins/blockUI/jquery.blockUI.min.js')}}"></script>
+        <script src="{{asset('neptune/plugins/jquery/jquery-3.5.1.min.js')}}" defer></script>
+        <script src="{{asset('neptune/plugins/bootstrap/js/popper.min.js')}}" defer></script>
+        <script src="{{asset('neptune/plugins/bootstrap/js/bootstrap.min.js')}}" defer></script>
+        <script src="{{asset('neptune/plugins/perfectscroll/perfect-scrollbar.min.js')}}" defer></script>
+        <script src="{{asset('neptune/plugins/pace/pace.min.js')}}" defer></script>
+        <script src="{{asset('neptune/plugins/highlight/highlight.pack.js')}}" defer></script>
+        <script src="{{asset('neptune/plugins/chartjs/chart.bundle.min.js')}}" defer></script>
+        <script src="{{asset('neptune/plugins/blockUI/jquery.blockUI.min.js')}}" defer></script>
 
-        <script src="{{asset('neptune/js/main.min.js')}}"></script>
-        <script src="{{asset('neptune/js/custom.js')}}"></script>
-        <script src="{{asset('neptune/js/pages/charts-chartjs.js')}}"></script>
+        <script src="{{asset('neptune/js/main.min.js')}}" defer></script>
+        <script src="{{asset('neptune/js/custom.js')}}" defer></script>
+        <script src="{{asset('neptune/js/pages/charts-chartjs.js')}}" defer></script>
 
-        <script src="{{asset('neptune/plugins/apexcharts/apexcharts.min.js')}}"></script>
+        <script src="{{asset('neptune/plugins/apexcharts/apexcharts.min.js')}}" defer></script>
 
         {{-- Tawk.To --}}
         <!--Start of Tawk.to Script-->
-<script type="text/javascript">
+<script type="text/javascript" defer>
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
